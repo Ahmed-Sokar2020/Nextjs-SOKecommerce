@@ -14,8 +14,8 @@ import ProductGallery from "@/components/shared/product/product-gallery";
 import ProductSlider from "@/components/shared/product/product-slider";
 import { Separator } from "@/components/ui/separator";
 import Rating from "@/components/shared/product/rating";
-// import AddToBrowsingHistory from '@/components/shared/product/add-to-browsing-history'
-// import BrowsingHistoryList from '@/components/shared/browsing-history-list'
+import BrowsingHistoryList from "@/components/shared/browsing-history-list";
+import AddToBrowsingHistory from "@/components/shared/product/add-to-browsing-history";
 // import RatingSummary from '@/components/shared/product/rating-summary'
 // import { getTranslations } from 'next-intl/server'
 
@@ -59,7 +59,11 @@ export default async function ProductDetails(props: {
   // const t = await getTranslations()
   return (
     <div>
-      {/* <AddToBrowsingHistory id={product._id} category={product.category} /> */}
+      <AddToBrowsingHistory
+        id={product._id.toString()}
+        category={product.category}
+      />
+
       <section>
         <div className="grid grid-cols-1 md:grid-cols-5  ">
           <div className="col-span-2">
@@ -162,9 +166,9 @@ export default async function ProductDetails(props: {
         />
       </section>
 
-      {/* <section>
+      <section>
         <BrowsingHistoryList className="mt-10" />
-      </section> */}
+      </section>
     </div>
   );
 }
