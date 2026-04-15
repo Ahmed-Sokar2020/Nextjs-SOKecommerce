@@ -19,7 +19,7 @@ export default async function Header() {
   // const t = await getTranslations()
   return (
     <header className="bg-black  text-white">
-      <div className="px-2">
+      <div className="p-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             {/* LOGO */}
@@ -28,9 +28,10 @@ export default async function Header() {
               className="flex items-center header-button font-extrabold text-2xl m-1 "
             >
               <Image
-                src="icons/logo.svg"
-                width={40}
-                height={40}
+                className="w-10 h-auto"
+                src="/icons/logo.svg"
+                width={100}
+                height={100}
                 alt={`${APP_NAME} logo`}
               />
               <span className="text-orange-400 text-xl font-bold ml-3">
