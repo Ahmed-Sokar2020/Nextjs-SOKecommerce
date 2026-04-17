@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+
 type BrowsingHistory = {
   products: { id: string; category: string }[];
 };
