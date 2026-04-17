@@ -5,7 +5,7 @@ import Link from "next/link";
 import useIsMounted from "@/hooks/use-is-mounted";
 import { cn } from "@/lib/utils";
 import useCartStore from "@/hooks/use-cart-store";
-// import useShowSidebar from '@/hooks/use-cart-sidebar'
+import useCartSidebar from "@/hooks/use-cart-sidebar";
 // import { useLocale, useTranslations } from 'next-intl'
 // import { getDirection } from '@/i18n-config'
 
@@ -15,7 +15,7 @@ export default function CartButton() {
     cart: { items },
   } = useCartStore();
   const cartItemsCount = items.reduce((a, c) => a + c.quantity, 0);
-  // const showSidebar = useShowSidebar()
+  const isCartSidebarOpen = useCartSidebar();
   // const t = useTranslations()
 
   // const locale = useLocale()
@@ -37,15 +37,11 @@ export default function CartButton() {
         )}
         <span className="font-bold">Cart</span>
 
-        {/* {showSidebar && (
+        {isCartSidebarOpen && (
           <div
-            className={`absolute top-[20px] ${
-              getDirection(locale) === 'rtl'
-                ? 'left-[-16px] rotate-[-270deg]'
-                : 'right-[-16px] rotate-[-90deg]'
-            }  z-10   w-0 h-0 border-l-[7px] border-r-[7px] border-b-[8px] border-transparent border-b-background`}
+            className={`absolute top-[20px] right-[-16px] rotate-[-90deg] z-10  w-0 h-0 border-l-[7px] border-r-[7px] border-b-[8px] border-transparent border-b-background`}
           ></div>
-        )} */}
+        )}
       </div>
     </Link>
   );
