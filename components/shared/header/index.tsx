@@ -32,6 +32,7 @@ export default async function Header() {
                 width={100}
                 height={100}
                 alt={`${APP_NAME} logo`}
+                priority
               />
               <span className="text-orange-400 text-xl font-bold ml-3">
                 {APP_NAME}

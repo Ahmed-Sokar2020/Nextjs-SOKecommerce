@@ -20,6 +20,7 @@ export default function CheckoutLayout({
               width={100}
               height={100}
               alt={`${APP_NAME} logo`}
+              priority
             />
           </Link>
 

@@ -1,3 +1,5 @@
+"use server";
+
 import { connectToDatabase } from "@/lib/db";
 import Product, { IProduct } from "@/lib/db/models/product.model";
 // import { revalidatePath } from 'next/cache'

@@ -27,7 +27,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
-// import { createOrder } from '@/lib/actions/order.actions'
+import { createOrder } from "@/lib/actions/order.actions";
 import {
   calculateFutureDate,
   formatDateTime,
@@ -69,7 +69,6 @@ const shippingAddressDefaultValues =
       };
 
 const CheckoutForm = () => {
-  // const { toast } = useToast()
   const router = useRouter();
   // const {
   //   setting: {
@@ -95,7 +94,7 @@ const CheckoutForm = () => {
     setPaymentMethod,
     updateItem,
     removeItem,
-    // clearCart,
+    clearCart,
     setDeliveryDateIndex,
   } = useCartStore();
 
@@ -105,6 +104,7 @@ const CheckoutForm = () => {
     resolver: zodResolver(ShippingAddressSchema),
     defaultValues: shippingAddress || shippingAddressDefaultValues,
   });
+
   const onSubmitShippingAddress: SubmitHandler<ShippingAddress> = (values) => {
     setShippingAddress(values);
     setIsAddressSelected(true);
@@ -129,35 +129,39 @@ const CheckoutForm = () => {
   const [isDeliveryDateSelected, setIsDeliveryDateSelected] =
     useState<boolean>(false);
 
+  // When User click on Place Order button
   const handlePlaceOrder = async () => {
-    // const res = await createOrder({
-    //   items,
-    //   shippingAddress,
-    //   expectedDeliveryDate: calculateFutureDate(
-    //     AVAILABLE_DELIVERY_DATES[deliveryDateIndex!].daysToDeliver
-    //   ),
-    //   deliveryDateIndex,
-    //   paymentMethod,
-    //   itemsPrice,
-    //   shippingPrice,
-    //   taxPrice,
-    //   totalPrice,
-    // })
-    // if (!res.success) {
-    //   toast.error(res.message)
-    // } else {
-    //   toast.success(res.message)
-    //   clearCart()
-    //   router.push(`/checkout/${res.data?.orderId}`)
-    // }
+    const res = await createOrder({
+      items,
+      shippingAddress,
+      expectedDeliveryDate: calculateFutureDate(
+        AVAILABLE_DELIVERY_DATES[deliveryDateIndex!].daysToDeliver,
+      ),
+      deliveryDateIndex,
+      paymentMethod,
+      itemsPrice,
+      shippingPrice,
+      taxPrice,
+      totalPrice,
+    });
+    if (!res.success) {
+      toast.error(res.message);
+    } else {
+      toast.success(res.message);
+      clearCart();
+      router.push(`/checkout/${res.data?.orderId}`);
+    }
   };
+
   const handleSelectPaymentMethod = () => {
     setIsAddressSelected(true);
     setIsPaymentMethodSelected(true);
   };
+
   const handleSelectShippingAddress = () => {
     shippingAddressForm.handleSubmit(onSubmitShippingAddress)();
   };
+
   const CheckoutSummary = () => (
     <Card>
       <CardContent className="p-4">
