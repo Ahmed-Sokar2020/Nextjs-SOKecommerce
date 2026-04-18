@@ -156,9 +156,9 @@ export default function Footer() {
       </div>
       <div className="p-4">
         <div className="flex justify-center  gap-3 text-sm">
-          <Link href="/page/conditions-of-use">Conditions of Use</Link>
-          <Link href="/page/privacy-policy">Privacy Notice</Link>
-          <Link href="/page/help">Help</Link>
+          <Link href="/conditions-of-use">Conditions of Use</Link>
+          <Link href="/privacy-policy">Privacy Notice</Link>
+          <Link href="/help">Help</Link>
         </div>
 
         <div className="flex justify-center text-sm">

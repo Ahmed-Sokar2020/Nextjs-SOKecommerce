@@ -4,6 +4,7 @@ import type { NextAuthConfig } from "next-auth";
 export default {
   providers: [],
   secret: process.env.AUTH_SECRET, // ✅ REQUIRED
+  trustHost: true, // Dev only or fallback
   callbacks: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     authorized({ request, auth }: any) {

@@ -25,3 +25,45 @@ export const FREE_SHIPPING_MIN_PRICE = Number(
 export const USER_ROLES = ["Admin", "User"];
 export const COLORS = ["Gold", "Green", "Red"];
 export const THEMES = ["Light", "Dark", "System"];
+
+export const AVAILABLE_PAYMENT_METHODS = [
+  {
+    name: "Paypal",
+    commission: 0,
+    isDefault: true,
+  },
+  {
+    name: "Stripe",
+    commission: 0,
+    isDefault: false,
+  },
+  {
+    name: "Cash on delivery",
+    commission: 0,
+    isDefault: false,
+  },
+];
+
+export const DEFAULT_PAYMENT_METHODS =
+  process.env.DEFAULT_PAYMENT_METHODS || "Paypal";
+
+export const AVAILABLE_DELIVERY_DATES = [
+  {
+    name: "Tomorrow",
+    daysToDeliver: 1,
+    shippingPrice: 12.9,
+    freeShippingMinPrice: 0,
+  },
+  {
+    name: "Next 3 Days",
+    daysToDeliver: 3,
+    shippingPrice: 6.9,
+    freeShippingMinPrice: 0,
+  },
+  {
+    name: "Next 5 Days",
+    daysToDeliver: 5,
+    shippingPrice: 4.9,
+    freeShippingMinPrice: 35,
+  },
+];
