@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CredentialsSignInForm from "./credentials-signin-form";
 import { Button } from "@/components/ui/button";
 import { APP_NAME } from "@/lib/constants";
-// import { GoogleSignInForm } from './google-signin-form'
+import { GoogleSignInForm } from "./google-signin-form";
 // import { getSetting } from '@/lib/actions/setting.actions'
 
 export const metadata: Metadata = {
@@ -37,15 +37,17 @@ export default async function SignInPage(props: {
         <CardHeader>
           <CardTitle className="text-2xl">Sign In</CardTitle>
         </CardHeader>
+
         <CardContent>
           <div>
             <CredentialsSignInForm />
-            <div className="mt-4">{/* <GoogleSignInForm /> */}</div>
+          </div>
+          <SeparatorWithOr />
+          <div className="mt-4">
+            <GoogleSignInForm />
           </div>
         </CardContent>
       </Card>
-
-      <SeparatorWithOr />
 
       <SeparatorWithOr>New to {APP_NAME}?</SeparatorWithOr>
 
