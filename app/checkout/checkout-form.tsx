@@ -704,13 +704,8 @@ const CheckoutForm = () => {
                     <p className="text-xs">
                       {" "}
                       By placing your order, you agree to {APP_NAME}&apos;s{" "}
-                      <Link href="/page/privacy-policy">privacy notice</Link>{" "}
-                      and
-                      <Link href="/page/conditions-of-use">
-                        {" "}
-                        conditions of use
-                      </Link>
-                      .
+                      <Link href="/privacy-policy">privacy notice</Link> and
+                      <Link href="/conditions-of-use"> conditions of use</Link>.
                     </p>
                   </div>
                 </CardContent>

@@ -1,5 +1,7 @@
 // configuration for.env.local file
 export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "SOKecommerce";
+export const SERVER_URL =
+  process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
 
 export const APP_SLOGAN =
   process.env.NEXT_PUBLIC_APP_SLOGAN || "Spend less, enjoy more";
@@ -28,7 +30,7 @@ export const THEMES = ["Light", "Dark", "System"];
 
 export const AVAILABLE_PAYMENT_METHODS = [
   {
-    name: "Paypal",
+    name: "PayPal",
     commission: 0,
     isDefault: true,
   },
@@ -38,14 +40,14 @@ export const AVAILABLE_PAYMENT_METHODS = [
     isDefault: false,
   },
   {
-    name: "Cash on delivery",
+    name: "Cash On Delivery",
     commission: 0,
     isDefault: false,
   },
 ];
 
 export const DEFAULT_PAYMENT_METHODS =
-  process.env.DEFAULT_PAYMENT_METHODS || "Paypal";
+  process.env.DEFAULT_PAYMENT_METHODS || "PayPal";
 
 export const AVAILABLE_DELIVERY_DATES = [
   {
