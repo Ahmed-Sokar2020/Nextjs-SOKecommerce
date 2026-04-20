@@ -17,7 +17,7 @@ export default async function Header() {
   // const { site } = await getSetting()
   // const t = await getTranslations()
   return (
-    <header className="bg-black  text-white">
+    <header className="bg-black sticky top-0 z-50 text-white">
       <div className="p-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -34,7 +34,7 @@ export default async function Header() {
                 alt={`${APP_NAME} logo`}
                 priority
               />
-              <span className="text-orange-400 text-xl font-bold ml-3">
+              <span className="text-orange-400 hidden sm:block text-xl font-bold ml-3">
                 {APP_NAME}
               </span>
             </Link>

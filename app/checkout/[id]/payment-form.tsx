@@ -17,24 +17,27 @@ import CheckoutFooter from "../checkout-footer";
 import { redirect, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import ProductPrice from "@/components/shared/product/product-price";
-// import StripeForm from './stripe-form'
-// import { Elements } from '@stripe/react-stripe-js'
-// import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from "@stripe/react-stripe-js";
+import StripeForm from "./stripe-form";
+import { loadStripe } from "@stripe/stripe-js";
 
-// const stripePromise = loadStripe(
-//   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
-// )
-export default function OrderDetailsForm({
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string,
+);
+
+export default function PaymentForm({
   order,
   paypalClientId,
-  // clientSecret,
+  clientSecret,
 }: {
   order: IOrder;
   paypalClientId: string;
   isAdmin: boolean;
-  // clientSecret: string | null;
+  clientSecret: string | null;
 }) {
+  // console.log("paypalClientId", paypalClientId);
   const router = useRouter();
+
   const {
     shippingAddress,
     items,
@@ -50,6 +53,7 @@ export default function OrderDetailsForm({
   if (isPaid) {
     redirect(`/account/orders/${order._id}`);
   }
+
   function PrintLoadingState() {
     const [{ isPending, isRejected }] = usePayPalScriptReducer();
     let status = "";
@@ -129,7 +133,7 @@ export default function OrderDetailsForm({
                 </PayPalScriptProvider>
               </div>
             )}
-            {/* {!isPaid && paymentMethod === "Stripe" && clientSecret && (
+            {!isPaid && paymentMethod === "Stripe" && clientSecret && (
               <Elements
                 options={{
                   clientSecret,
@@ -138,10 +142,10 @@ export default function OrderDetailsForm({
               >
                 <StripeForm
                   priceInCents={Math.round(order.totalPrice * 100)}
-                  orderId={order._id}
+                  orderId={order._id.toString()}
                 />
               </Elements>
-            )} */}
+            )}
 
             {!isPaid && paymentMethod === "Cash On Delivery" && (
               <Button
