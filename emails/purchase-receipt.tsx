@@ -133,7 +133,7 @@ export default async function PurchaseReceiptEmail({
                 </Row>
               ))}
               {[
-                { name: "Items", price: order.itemsPrice },
+                { name: "Items Price", price: order.itemsPrice },
                 { name: "Tax", price: order.taxPrice },
                 { name: "Shipping", price: order.shippingPrice },
                 { name: "Total", price: order.totalPrice },

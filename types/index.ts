@@ -3,12 +3,22 @@ import {
   OrderInputSchema,
   OrderItemSchema,
   ProductInputSchema,
+  ReviewInputSchema,
   ShippingAddressSchema,
   UserInputSchema,
   UserSignInSchema,
   UserSignUpSchema,
 } from "@/lib/validator";
 import { z } from "zod";
+
+export type IReviewInput = z.infer<typeof ReviewInputSchema>;
+export type IReviewDetails = IReviewInput & {
+  _id: string;
+  createdAt: string;
+  user: {
+    name: string;
+  };
+};
 
 //Product
 export type IProductInput = z.infer<typeof ProductInputSchema>;
@@ -17,11 +27,11 @@ export type Data = {
   // settings: ISettingInput[]
   // webPages: IWebPageInput[]
   users: IUserInput[];
-  // reviews: {
-  //   title: string
-  //   rating: number
-  //   comment: string
-  // }[]
+  reviews: {
+    title: string;
+    rating: number;
+    comment: string;
+  }[];
   products: IProductInput[];
   headerMenus: {
     name: string;
