@@ -31,21 +31,23 @@ export default async function OrdersPage(props: {
   return (
     <div>
       <div className="flex gap-2">
-        <Link href="/account">Your Account</Link>
-        <span>›</span>
-        <span>{PAGE_TITLE}</span>
+        <Link href="/account" className="font-semibold">
+          Your Account
+        </Link>
+        <span className="font-semibold">›</span>
+        <span className="font-semibold">{PAGE_TITLE}</span>
       </div>
       <h1 className="h1-bold pt-4">{PAGE_TITLE}</h1>
       <div className="overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Id</TableHead>
-              <TableHead>Date</TableHead>
-              <TableHead>Total</TableHead>
-              <TableHead>Paid</TableHead>
-              <TableHead>Delivered</TableHead>
-              <TableHead>Actions</TableHead>
+              <TableHead className="font-semibold">Id</TableHead>
+              <TableHead className="font-semibold">Date</TableHead>
+              <TableHead className="font-semibold">Total</TableHead>
+              <TableHead className="font-semibold">Paid</TableHead>
+              <TableHead className="font-semibold">Delivered</TableHead>
+              <TableHead className="font-semibold">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
