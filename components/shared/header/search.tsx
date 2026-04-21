@@ -1,6 +1,6 @@
 import { SearchIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
-// import { getAllCategories } from '@/lib/actions/product.actions'
+import { getAllCategories } from "@/lib/actions/product.actions";
 
 import {
   Select,
@@ -13,14 +13,12 @@ import {
 // import { getTranslations } from 'next-intl/server'
 import { APP_NAME } from "@/lib/constants";
 
-const categories = ["mens", "women", "kids", "accessories"];
-
 export default async function Search() {
   // const {
   //   site: { name },
   // } = await getSetting();
 
-  // const categories = await getAllCategories()
+  const categories = await getAllCategories();
 
   // const t = await getTranslations()
   return (
