@@ -1,29 +1,30 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-// import qs from 'query-string'
+import qs from "query-string";
 
-// export function formUrlQuery({
-//   params,
-//   key,
-//   value,
-// }: {
-//   params: string
-//   key: string
-//   value: string | null
-// }) {
-//   const currentUrl = qs.parse(params)
+// To track the User History Orders
+export function formUrlQuery({
+  params,
+  key,
+  value,
+}: {
+  params: string;
+  key: string;
+  value: string | null;
+}) {
+  const currentUrl = qs.parse(params);
 
-//   currentUrl[key] = value
+  currentUrl[key] = value;
 
-//   return qs.stringifyUrl(
-//     {
-//       url: window.location.pathname,
-//       query: currentUrl,
-//     },
-//     { skipNull: true }
-//   )
-// }
+  return qs.stringifyUrl(
+    {
+      url: window.location.pathname,
+      query: currentUrl,
+    },
+    { skipNull: true },
+  );
+}
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
