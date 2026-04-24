@@ -121,7 +121,7 @@ export default async function SearchPage(props: {
   // const t = await getTranslations()
   return (
     <div>
-      <div className="my-2 bg-card md:border-b  flex-between flex-col md:flex-row ">
+      <div className="my-2 pb-2 bg-card md:border-b  flex-between flex-col md:flex-row ">
         <div className="flex items-center">
           {data.totalProducts === 0
             ? "No"
@@ -145,7 +145,7 @@ export default async function SearchPage(props: {
           (tag !== "all" && tag !== "") ||
           rating !== "all" ||
           price !== "all" ? (
-            <Button variant={"link"} asChild>
+            <Button variant={"destructive"} asChild>
               <Link href="/search">Clear</Link>
             </Button>
           ) : null}
