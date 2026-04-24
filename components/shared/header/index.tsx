@@ -15,7 +15,8 @@ export default async function Header() {
   // const { site } = await getSetting()
   // const t = await getTranslations()
   return (
-    <header className="bg-black sticky top-0 z-50 text-white">
+    <header className="bg-black sticky top-0 z-50 text-white w-full">
+      {/* <header className="sticky top-0 z-50 w-full backdrop-blur supports-backdrop-filter:bg-background/60 text-foreground bg-black"> */}
       <div className="p-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -38,14 +39,14 @@ export default async function Header() {
             </Link>
           </div>
 
-          <div className="hidden md:block flex-1 max-w-xl">
+          <div className="hidden lg:block flex-1 max-w-xl">
             <Search />
           </div>
 
           <Menu />
         </div>
 
-        <div className="md:hidden block py-2">
+        <div className="lg:hidden block py-2">
           <Search />
         </div>
       </div>

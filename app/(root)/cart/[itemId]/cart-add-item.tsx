@@ -8,7 +8,7 @@ import { CheckCircle2Icon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import useCartStore from "@/hooks/use-cart-store";
+import useCartStore from "@/store/use-cart-store";
 import { FREE_SHIPPING_MIN_PRICE } from "@/lib/constants";
 // import useSettingStore from '@/hooks/use-setting-store'
 // import { useTranslations } from 'next-intl'

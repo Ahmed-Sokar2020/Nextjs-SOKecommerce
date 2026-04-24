@@ -159,8 +159,9 @@ export default async function SearchPage(props: {
         </div>
       </div>
       <div className="bg-card grid md:grid-cols-5 md:gap-4">
+        {/* collapsed on mobile screen  */}
         <CollapsibleOnMobile title="Filters">
-          <div className="space-y-4">
+          <div className="space-y-4 pt-2">
             <div>
               <div className="font-bold">Department</div>
               <ul>
@@ -261,7 +262,7 @@ export default async function SearchPage(props: {
           </div>
         </CollapsibleOnMobile>
 
-        <div className="md:col-span-4 space-y-4">
+        <div className="md:col-span-4 space-y-4 pt-2">
           <div>
             <div className="font-bold text-xl">Results</div>
             <div>Check each product page for other buying options</div>

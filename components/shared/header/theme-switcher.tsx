@@ -35,14 +35,21 @@ export function ThemeColorSwitcher() {
   ];
 
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="h-9 px-3 gap-2 border border-white/20"
+          className="h-9 px-3 gap-2 border border-white/20 transition-all duration-500"
         >
-          {theme === "dark" ? <Moon size={16} /> : <Sun size={16} />}
-          <span className="capitalize">{theme}</span>
+          {/* {theme === "dark" ? <Moon size={16} /> : <Sun size={16} />} */}
+          <div className="relative h-[1.2rem] w-[1.2rem]">
+            {theme === "dark" ? (
+              <Moon className="absolute scale-100 transition-all rotate-0" />
+            ) : (
+              <Sun className="absolute scale-100 transition-all rotate-0" />
+            )}
+          </div>
+          <span className="capitalize hidden sm:block">{theme}</span>
           <ChevronDown size={14} className="opacity-50" />
         </Button>
       </DropdownMenuTrigger>

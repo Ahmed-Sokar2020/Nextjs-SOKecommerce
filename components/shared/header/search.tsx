@@ -24,15 +24,19 @@ export default async function Search() {
   return (
     <form action="/search" method="GET" className="flex items-stretch h-10 ">
       <Select name="category">
-        <SelectTrigger className="w-auto h-full dark:border-gray-200 bg-gray-100 text-black border-r  rounded-r-none rounded-l-md rtl:rounded-r-md rtl:rounded-l-none  ">
+        <SelectTrigger className="w-auto h-full dark:border-gray-200 bg-gray-100 text-foreground border-r  rounded-r-none rounded-l-md rtl:rounded-r-md rtl:rounded-l-none  ">
           <SelectValue placeholder="All" />
         </SelectTrigger>
-        <SelectContent position="popper">
-          <SelectItem className="text-black" value="all">
+        <SelectContent position="popper" side="bottom">
+          <SelectItem className="text-foreground" value="all">
             All
           </SelectItem>
           {categories.map((category) => (
-            <SelectItem key={category} value={category}>
+            <SelectItem
+              className="text-foreground"
+              key={category}
+              value={category}
+            >
               {category}
             </SelectItem>
           ))}
@@ -40,7 +44,7 @@ export default async function Search() {
       </Select>
 
       <Input
-        className="flex-1 rounded-none dark:border-gray-200 bg-gray-100 text-black text-base h-full"
+        className="flex-1 rounded-none dark:border-gray-200 bg-gray-100 text-foreground text-base h-full"
         placeholder={`Search Site ${APP_NAME}`}
         name="q"
         type="search"

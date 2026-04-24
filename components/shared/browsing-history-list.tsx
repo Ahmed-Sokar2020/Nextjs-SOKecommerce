@@ -1,4 +1,5 @@
 "use client";
+
 import useBrowsingHistory from "@/hooks/use-browsing-history";
 import React, { useEffect } from "react";
 import ProductSlider from "./product/product-slider";

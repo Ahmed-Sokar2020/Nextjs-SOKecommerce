@@ -19,7 +19,7 @@ import { SignOut } from "@/lib/actions/user.actions";
 export default function UserButtonClient({ session }: any) {
   return (
     <div className="flex gap-2 items-center">
-      <DropdownMenu>
+      <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
           <button className="header-button flex items-center">
             <div className="flex flex-col text-xs text-left">

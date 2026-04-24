@@ -39,7 +39,7 @@ export default function ProductSortSelector({
         </SelectValue>
       </SelectTrigger>
 
-      <SelectContent>
+      <SelectContent position="popper" side="bottom">
         {sortOrders.map((s) => (
           <SelectItem key={s.value} value={s.value}>
             {s.name}

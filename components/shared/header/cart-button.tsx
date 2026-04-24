@@ -4,7 +4,7 @@ import { ShoppingCartIcon } from "lucide-react";
 import Link from "next/link";
 import useIsMounted from "@/hooks/use-is-mounted";
 import { cn } from "@/lib/utils";
-import useCartStore from "@/hooks/use-cart-store";
+import useCartStore from "@/store/use-cart-store";
 import useCartSidebar from "@/hooks/use-cart-sidebar";
 // import { useLocale, useTranslations } from 'next-intl'
 // import { getDirection } from '@/i18n-config'
@@ -27,8 +27,8 @@ export default function CartButton() {
         {isMounted && (
           <span
             className={cn(
-              `bg-orange-400  px-[7px] rounded-full text-white text-base font-bold absolute right-[15px]  
-              top-[-15px] z-10`,
+              `bg-primary text-primary-foreground px-[7px] rounded-full  text-base font-bold absolute right-[15px]  
+              top-[-16px] z-10`,
               cartItemsCount >= 10 && "text-sm px-0 p-px",
             )}
           >

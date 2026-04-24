@@ -84,11 +84,11 @@
 
   .dark {
     --background: 20 14.3% 4.1%;
-    --foreground: 60 9.1% 97.8%;
+    --foreground: 60 9.1% 97.8%; /* Light text */
     --card: 20 14.3% 4.1%;
     --card-foreground: 60 9.1% 97.8%;
-    --popover: 20 14.3% 4.1%;
-    --popover-foreground: 60 9.1% 97.8%;
+    --popover: 20 14.3% 4.1%; /* Dark background */
+    --popover-foreground: 60 9.1% 97.8%; /* Light text for dropdowns */
     --secondary: 12 6.5% 15.1%;
     --secondary-foreground: 60 9.1% 97.8%;
     --muted: 12 6.5% 15.1%;
@@ -101,20 +101,47 @@
     --input: 12 6.5% 15.1%;
     --ring: 35.5 91.7% 32.9%;
   }
-}
 
-@layer base {
   * {
-    @apply border-border outline-ring/50;
+    /* This makes all color changes smooth across the entire app */
+    @apply border-border transition-colors duration-300 ease-in-out;
+  }
+
+  html {
+    /* Force the scrollbar to stay visible always to stop the 'jump or shift to the header' */
+    scrollbar-gutter: stable;
+    overflow-y: scroll !important;
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    /* Ensure the main background also transitions */
+    @apply bg-background text-foreground transition-all duration-300 ease-in-out;
   }
+
+  /* Block Radix UI from injecting padding-right on the body */
+  body[data-scroll-locked] {
+    padding-right: 0px !important;
+    margin-right: 0px !important;
+    /* Ensures the sticky header doesn't jump or flicker */
+    position: relative !important;
+    overflow: visible !important;
+    /* This prevents the "freeze" you're experiencing */
+    pointer-events: auto !important;
+  }
+
+  /* Force the header to stay on top and stable */
+  header {
+    z-index: 50;
+    /* This fixes rendering flickers on scroll in some browsers */
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
   /* Explicitly link primary variables to primary utility classes if needed */
   .text-primary {
     color: hsl(var(--primary));
   }
+
   .bg-primary {
     background-color: hsl(var(--primary));
   }

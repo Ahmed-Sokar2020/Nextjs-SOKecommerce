@@ -13,14 +13,14 @@ export const useThemeStore = create<ThemeState>()(
   persist(
     (set) => ({
       color: "gold", // Default
-      setColor: (color) => {
+      setColor: (newColor) => {
         // Update DOM attribute for CSS selectors
-        document.documentElement.setAttribute("data-theme", color);
-        set({ color });
+        document.documentElement.setAttribute("data-theme", newColor);
+        set({ color: newColor });
       },
     }),
     {
-      name: "accent-color-storage", // key in localStorage
+      name: "accent-color", // key in localStorage
     },
   ),
 );
