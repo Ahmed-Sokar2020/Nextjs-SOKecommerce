@@ -265,7 +265,7 @@ const products: IProductInput[] = [
     name: "Nike Mens Slim-fit Long-Sleeve T-Shirt",
     slug: toSlug("Nike Mens Slim-fit Long-Sleeve T-Shirt"),
     category: "T-Shirts",
-    images: ["/images/p11-1.jpg", "/images/p11-2.jpg"],
+    images: ["/images/p11-1.png", "/images/p11-2.png"],
     tags: ["new-arrival"],
     isPublished: true,
     price: 21.8,
@@ -295,7 +295,7 @@ const products: IProductInput[] = [
     category: "T-Shirts",
     images: [
       "/images/p12-1.jpg",
-      "/images/p12-2.jpg",
+      "/images/p12-2.png",
       "/images/p12-3.jpg",
       "/images/p12-4.jpg",
     ],

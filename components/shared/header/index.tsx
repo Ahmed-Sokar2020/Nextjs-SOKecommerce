@@ -15,8 +15,8 @@ export default async function Header() {
   // const { site } = await getSetting()
   // const t = await getTranslations()
   return (
+    // <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95  backdrop-blur-md supports-[backdrop-filter]:bg-background/60 scrollbar-padding">
     <header className="bg-black sticky top-0 z-50 text-white w-full">
-      {/* <header className="sticky top-0 z-50 w-full backdrop-blur supports-backdrop-filter:bg-background/60 text-foreground bg-black"> */}
       <div className="p-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -53,7 +53,7 @@ export default async function Header() {
 
       <div className="flex items-center px-3 mb-px  bg-gray-800">
         <Sidebar categories={categories} />
-
+        {/* Header Menus after the Navbar */}
         <div className="flex items-center flex-wrap gap-3 overflow-hidden max-h-10.5">
           {data.headerMenus.map((menu) => (
             <Link

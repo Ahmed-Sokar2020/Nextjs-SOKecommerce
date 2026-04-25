@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import useCartSidebar from "@/hooks/use-cart-sidebar";
 import CartSidebar from "./cart-sidebar";

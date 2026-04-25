@@ -36,6 +36,12 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+
+  /* Toast Messages */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
 }
 
 @layer base {
@@ -63,6 +69,13 @@
     --input: 20 5.9% 90%;
     --ring: 20 14.3% 4.1%;
     --radius: 0.5rem;
+
+    /* Success (Usually Green) */
+    --success: 142.1 76.2% 36.3%;
+    --success-foreground: 355.7 100% 97.3%;
+    /* Warning (Usually Gold/Yellow) */
+    --warning: 47.9 95.8% 53.1%;
+    --warning-foreground: 26 83.3% 14.1%;
   }
 
   /* Theme Overrides */
@@ -110,7 +123,7 @@
   html {
     /* Force the scrollbar to stay visible always to stop the 'jump or shift to the header' */
     scrollbar-gutter: stable;
-    overflow-y: scroll !important;
+    /* overflow-y: scroll !important; */
   }
 
   body {
@@ -132,9 +145,6 @@
   /* Force the header to stay on top and stable */
   header {
     z-index: 50;
-    /* This fixes rendering flickers on scroll in some browsers */
-    backface-visibility: hidden;
-    transform: translateZ(0);
   }
 
   /* Explicitly link primary variables to primary utility classes if needed */
@@ -169,5 +179,9 @@
   }
   .flex-between {
     @apply flex justify-between items-center;
+  }
+  .scrollbar-padding {
+    /* Add this class to your Sticky Header if you notice the scrollbar covers a button */
+    padding-right: calc(100vw - 100%);
   }
 }

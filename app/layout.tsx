@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { APP_DESCRIPTION, APP_NAME, APP_SLOGAN } from "@/lib/constants";
 import ClientProviders from "@/components/shared/client-providers";
-import { Toaster } from "@/components/ui/sonner";
+import { ToasterWrapper } from "@/components/ui/toaster-wrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: `%$ | ${APP_NAME}`,
+    template: `%s | ${APP_NAME}`,
     default: `${APP_NAME}. ${APP_SLOGAN}`,
   },
   description: `${APP_DESCRIPTION}`,
@@ -35,14 +35,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <ClientProviders>{children}</ClientProviders>
-        <Toaster
-          toastOptions={{
-            classNames: {
-              description: "!text-gray-800 dark:!text-white",
-            },
-          }}
-        />
+        {/* Your ClientProviders should already contain the ThemeProvider */}
+        <ClientProviders>
+          {children}
+          {/* Place the Toaster inside providers so it can access theme context */}
+          <ToasterWrapper />
+        </ClientProviders>
       </body>
     </html>
   );

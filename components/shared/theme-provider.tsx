@@ -12,8 +12,7 @@ export function ThemeProvider({
       attribute="class" // For Dark/Light
       defaultTheme="system"
       enableSystem
-      // Ensure this is NOT disabling transitions
-      disableTransitionOnChange={false}
+      disableTransitionOnChange
       {...props}
     >
       {children}
