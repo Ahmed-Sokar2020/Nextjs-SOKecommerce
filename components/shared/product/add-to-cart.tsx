@@ -36,6 +36,7 @@ export default function AddToCart({
             description: `item added successfully`,
             action: {
               label: "Go to Cart",
+
               onClick: () => router.push("/cart"),
             },
           });
@@ -73,7 +74,7 @@ export default function AddToCart({
             const itemId = await addItem(item, quantity);
 
             toast.success("Added to Cart 🛒", {
-              description: `item added successfully`,
+              description: `Item Added Successfully`,
             });
 
             router.push(`/cart/${itemId}`);

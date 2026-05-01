@@ -1,15 +1,15 @@
 "use client";
 
-import { SearchIcon, ChevronDown } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { APP_NAME } from "@/lib/constants";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { APP_NAME } from "@/lib/constants";
+import { ChevronDown, SearchIcon } from "lucide-react";
 import { useState } from "react";
 
 export default function SearchContent({
@@ -28,7 +28,7 @@ export default function SearchContent({
       {/* Hidden input ensures the category is submitted with the form */}
       <input type="hidden" name="category" value={selectedCategory} />
 
-      <DropdownMenu modal={false}>
+      <DropdownMenu modal={false} >
         <DropdownMenuTrigger asChild>
           <Button
             variant="ghost"

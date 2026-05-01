@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { Moon, Sun, Check, ChevronDown } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useThemeStore } from "@/store/use-theme-store";
@@ -13,15 +12,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import React from "react";
 
 export function ThemeColorSwitcher() {
   const { theme, setTheme } = useTheme();
   const { color, setColor } = useThemeStore();
-  const [mounted, setMounted] = React.useState(false);
+  const [mounted, setMounted] = useState(false);
 
   //Using Zustand (store/use-theme-store.ts) to implement switching between colors[gold,green,red]
   // Sync Zustand state with DOM on mount
-  React.useEffect(() => {
+React.useEffect(() => {
     setMounted(true);
     document.documentElement.setAttribute("data-theme", color);
   }, [color]);
@@ -39,7 +40,7 @@ export function ThemeColorSwitcher() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="h-9 px-2 gap-2 border border-white/20 transition-all duration-300"
+          className="h-9 px-2! gap-1 border border-white/20 transition-all duration-300"
         >
           <div className="relative h-[1.2rem] w-[1.2rem]">
             {theme === "dark" ? (

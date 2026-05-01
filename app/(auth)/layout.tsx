@@ -1,6 +1,7 @@
 // import { getSetting } from '@/lib/actions/setting.actions'
-import { APP_COPYRIGHT, APP_NAME } from "@/lib/constants";
-import Image from "next/image";
+import Logo from "@/components/shared/logo";
+import { APP_COPYRIGHT } from "@/lib/constants";
+// import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -13,15 +14,7 @@ export default async function AuthLayout({
   return (
     <div className="flex flex-col items-center min-h-screen highlight-link  ">
       <header className="mt-8">
-        <Link href="/">
-          <Image
-            className="w-10 h-auto"
-            src="/icons/logo2.svg"
-            width={100}
-            height={100}
-            alt={`${APP_NAME} logo`}
-          />
-        </Link>
+        <Logo />
       </header>
 
       <main className="mx-auto max-w-sm min-w-80 p-4">{children}</main>

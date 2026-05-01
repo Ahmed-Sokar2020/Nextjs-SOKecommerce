@@ -1,14 +1,14 @@
-import Image from "next/image";
+import { getAllCategories } from "@/lib/actions/product.actions";
 import Link from "next/link";
 import Menu from "./menu";
 import Search from "./search";
-import { getAllCategories } from "@/lib/actions/product.actions";
 import Sidebar from "./sidebar";
 // import { getSetting } from '@/lib/actions/setting.actions'
 // import { getTranslations } from 'next-intl/server'
 
 import { APP_NAME } from "@/lib/constants";
 import data from "@/lib/data";
+import Logo from "../logo";
 
 export default async function Header() {
   const categories = await getAllCategories();
@@ -21,22 +21,13 @@ export default async function Header() {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             {/* LOGO */}
-            <Link
-              href="/"
-              className="flex items-center header-button font-extrabold text-2xl m-1 "
-            >
-              <Image
-                className="w-10 h-auto"
-                src="/icons/logo.svg"
-                width={100}
-                height={100}
-                alt={`${APP_NAME} logo`}
-                priority
-              />
+
+            <div className="flex items-center header-button font-extrabold text-2xl m-1 ">
+              <Logo />
               <span className="text-primary hidden sm:block text-xl font-bold ml-3">
                 {APP_NAME}
               </span>
-            </Link>
+            </div>
           </div>
 
           <div className="hidden lg:block flex-1 max-w-xl">

@@ -1,5 +1,6 @@
 "use client";
 
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,17 +9,20 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { SignOut } from "@/lib/actions/user.actions";
+import { cn } from "@/lib/utils";
 import { ChevronDownIcon } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { SignOut } from "@/lib/actions/user.actions";
+// import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function UserButtonClient({ session }: any) {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="flex gap-2 items-center">
-      <DropdownMenu modal={false}>
+      <DropdownMenu modal={false} open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger asChild>
           <button className="header-button flex items-center">
             <div className="flex flex-col text-xs text-left">
