@@ -10,5 +10,11 @@ export default auth;
 
 export const config = {
   // Skip all paths that should not be internationalized
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
+  matcher: [
+    "/account/:path*",
+    "/admin/:path*",
+    "/checkout/:path*",
+    "/order/:path*",
+  ],
+  // matcher: ["/((?!api|_next|.*\\..*).*)"],
 };

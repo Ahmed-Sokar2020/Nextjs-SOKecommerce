@@ -21,11 +21,10 @@ export default async function Header() {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             {/* LOGO */}
-
             <div className="flex items-center header-button font-extrabold text-2xl m-1 ">
               <Logo />
               <Link href="/">
-                <span className="text-primary hidden sm:block text-xl font-bold ml-3">
+                <span className="text-primary text-xl font-bold ml-3">
                   {APP_NAME}
                 </span>
               </Link>

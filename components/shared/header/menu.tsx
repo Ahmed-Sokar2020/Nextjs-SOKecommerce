@@ -1,21 +1,3 @@
-// import CartButton from "./cart-button";
-// import { ThemeColorSwitcher } from "./theme-switcher";
-// import UserButton from "./user-button";
-
-// const Menu = () => {
-//   return (
-//     <div className="flex justify-end">
-//       <nav className="flex justify-center items-center gap-3 w-full">
-//         <ThemeColorSwitcher />
-//         <UserButton />
-//         <CartButton />
-//       </nav>
-//     </div>
-//   );
-// };
-
-// export default Menu;
-
 import {
   Sheet,
   SheetContent,
@@ -24,7 +6,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { EllipsisVertical } from "lucide-react";
+import { SquareMenu } from "lucide-react";
+// import { EllipsisVertical } from "lucide-react";
+import { APP_NAME } from "@/lib/constants";
 import CartButton from "./cart-button";
 import { ThemeColorSwitcher } from "./theme-color-switcher";
 import UserButton from "./user-button";
@@ -42,15 +26,16 @@ const Menu = ({ forAdmin = false }: { forAdmin?: boolean }) => {
         <UserButton />
         {forAdmin ? null : <CartButton />}
       </nav>
+      {/* For mobile Device */}
       <nav className="md:hidden">
         <Sheet>
           <SheetTrigger className="align-middle header-button">
-            <EllipsisVertical className="h-6 w-6" />
+            <SquareMenu className="h-7 w-7" />
           </SheetTrigger>
           <SheetContent className="bg-black text-white flex flex-col items-center gap-6">
             <SheetHeader className="w-full">
               <div className="flex items-center justify-between ">
-                <SheetTitle className="  ">Site Menu</SheetTitle>
+                <SheetTitle className="  ">{APP_NAME} Menu</SheetTitle>
                 <SheetDescription></SheetDescription>
               </div>
             </SheetHeader>

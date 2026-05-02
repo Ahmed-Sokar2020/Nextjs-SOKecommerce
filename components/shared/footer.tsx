@@ -1,7 +1,7 @@
 "use client";
+
 import { ChevronUp } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 // import useSettingStore from "@/store/use-setting-store";
@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 // import { i18n } from '@/i18n-config'
 
 import { APP_NAME } from "@/lib/constants";
+import Logo from "./logo";
 
 export default function Footer() {
   // const router = useRouter()
@@ -21,7 +22,8 @@ export default function Footer() {
   //   setting: { site, availableCurrencies, currency },
   //   setCurrency,
   // } = useSettingStore();
-  const locales = ["USA", "EGY", "ENG", "UAE", "KSA"];
+
+  // const locales = ["USA", "EGY", "ENG", "UAE", "KSA"];
 
   // const { locales } = i18n
 
@@ -39,7 +41,7 @@ export default function Footer() {
           Back to top
         </Button>
 
-        <div className="bg-gray-800 grid place-items-center grid-cols-1 md:grid-cols-3 gap-6 p-6 max-w-7xl mx-auto">
+        <div className="bg-gray-800 grid sm:place-items-start md:place-items-center grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 max-w-7xl mx-auto">
           <div>
             <h2 className="font-bold mb-2">Get to Know Us</h2>
             <ul className="space-y-2 ">
@@ -69,18 +71,62 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+          <div>
+            <h2 className="font-bold mb-2">Shop with Us</h2>
+            <ul className="space-y-2 ">
+              <li>
+                <Link
+                  href="/account"
+                  className="hover:opacity-70 transition-opacity duration-500"
+                >
+                  Your Account
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/account/orders"
+                  className="hover:opacity-70 transition-opacity duration-500"
+                >
+                  Your Orders
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/addresses"
+                  className="hover:opacity-70 transition-opacity duration-500"
+                >
+                  Your Addresses
+                </Link>
+              </li>
+            </ul>
+          </div>
 
           <div>
             <h2 className="font-bold mb-2">Make Money with Us</h2>
             <ul className="space-y-2">
               <li>
-                <Link href="/sell">Sell products on, {APP_NAME}</Link>
+                <Link
+                  href="/sell"
+                  className="hover:opacity-70 transition-opacity duration-500"
+                >
+                  Sell products on, {APP_NAME}
+                </Link>
               </li>
               <li>
-                <Link href="/become-affiliate">Become an Affiliate</Link>
+                <Link
+                  href="/become-affiliate"
+                  className="hover:opacity-70 transition-opacity duration-500"
+                >
+                  Become an Affiliate
+                </Link>
               </li>
               <li>
-                <Link href="/advertise">Advertise Your Products</Link>
+                <Link
+                  href="/advertise"
+                  className="hover:opacity-70 transition-opacity duration-500"
+                >
+                  Advertise Your Products
+                </Link>
               </li>
             </ul>
           </div>
@@ -89,13 +135,29 @@ export default function Footer() {
             <h2 className="font-bold mb-2">Let Us Help You</h2>
             <ul className="space-y-2">
               <li>
-                <Link href="/shipping">Shipping Rates & Policies</Link>
+                <Link
+                  href="/shipping"
+                  className="hover:opacity-70 transition-opacity duration-500"
+                >
+                  {" "}
+                  Shipping Rates & Policies
+                </Link>
               </li>
               <li>
-                <Link href="/returns-policy">Returns & Replacements</Link>
+                <Link
+                  href="/returns-policy"
+                  className="hover:opacity-70 transition-opacity duration-500"
+                >
+                  Returns & Replacements
+                </Link>
               </li>
               <li>
-                <Link href="/help">Help</Link>
+                <Link
+                  href="/help"
+                  className="hover:opacity-70 transition-opacity duration-500"
+                >
+                  Help
+                </Link>
               </li>
             </ul>
           </div>
@@ -120,7 +182,7 @@ export default function Footer() {
                         href="/"
                         // locale={lang.code}
                       >
-                         <span className='text-lg'>{lang.icon}</span> {lang.name} 
+                         <span className='text-lg'>{lang.icon}</span> {lang.name}
                       </Link>
                     </SelectItem>
                   ))}
@@ -152,22 +214,25 @@ export default function Footer() {
       </div>
       <div className="p-4">
         <div className="flex justify-center items-center  gap-3 text-sm">
-          <Link href="/">
-            <Image
-              src="/icons/logo.svg"
-              alt={`${APP_NAME} logo`}
-              width={48}
-              height={48}
-              className="w-14"
-              style={{
-                maxWidth: "100%",
-                height: "auto",
-              }}
-            />
+          <Logo />
+          <Link
+            href="/conditions-of-use"
+            className="hover:text-gray-300 transition-colors duration-300"
+          >
+            Conditions of Use
           </Link>
-          <Link href="/conditions-of-use">Conditions of Use</Link>
-          <Link href="/privacy-policy">Privacy Notice</Link>
-          <Link href="/help">Help</Link>
+          <Link
+            href="/privacy-notice"
+            className="hover:text-gray-300 transition-colors duration-300"
+          >
+            Privacy Notice
+          </Link>
+          <Link
+            href="/help"
+            className="hover:text-gray-300 transition-colors duration-300"
+          >
+            Help
+          </Link>
         </div>
 
         <div className="flex justify-center text-sm">

@@ -43,7 +43,12 @@ function ProductList({
   const { products } = useBrowsingHistoryStore();
   const [data, setData] = React.useState([]);
 
-  const productIds = products.map((p) => p.id).join(",");
+  // const productIds = products.map((p) => p.id).join(",");
+  const productIds = React.useMemo(
+    () => products.map((p) => p.id).join(","),
+    [products],
+  );
+
   const categories = products.map((p) => p.category).join(",");
 
   useEffect(() => {
