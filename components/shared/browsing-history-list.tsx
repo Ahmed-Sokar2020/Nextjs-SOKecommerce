@@ -1,10 +1,10 @@
 "use client";
 
-import useBrowsingHistory from "@/hooks/use-browsing-history";
-import React, { useEffect } from "react";
-import ProductSlider from "./product/product-slider";
-import { Separator } from "../ui/separator";
 import { cn } from "@/lib/utils";
+import useBrowsingHistoryStore from "@/store/use-browsing-history-store";
+import React, { useEffect } from "react";
+import { Separator } from "../ui/separator";
+import ProductSlider from "./product/product-slider";
 // import { useTranslations } from 'next-intl'
 
 export default function BrowsingHistoryList({
@@ -12,7 +12,7 @@ export default function BrowsingHistoryList({
 }: {
   className?: string;
 }) {
-  const { products } = useBrowsingHistory();
+  const { products } = useBrowsingHistoryStore();
   // const t = useTranslations('Home')
   return (
     products.length !== 0 && (
@@ -40,20 +40,25 @@ function ProductList({
   hideDetails?: boolean;
   // excludeId?: string;
 }) {
-  const { products } = useBrowsingHistory();
+  const { products } = useBrowsingHistoryStore();
   const [data, setData] = React.useState([]);
+
+  const productIds = products.map((p) => p.id).join(",");
+  const categories = products.map((p) => p.category).join(",");
+
   useEffect(() => {
+    if (!productIds) return;
     const fetchProducts = async () => {
       const res = await fetch(
-        `/api/products/browsing-history?type=${type}&categories=${products
-          .map((product) => product.category)
-          .join(",")}&ids=${products.map((product) => product.id).join(",")}`,
+        `/api/products/browsing-history?type=${type}&categories=${categories}&ids=${productIds}`,
       );
+
       const data = await res.json();
       setData(data);
     };
+
     fetchProducts();
-  }, [products, type]);
+  }, [productIds, categories, type]);
 
   return (
     data.length > 0 && (

@@ -1,5 +1,6 @@
 "use client";
-import useBrowsingHistory from "@/hooks/use-browsing-history";
+
+import useBrowsingHistoryStore from "@/store/use-browsing-history-store";
 import { useEffect } from "react";
 
 export default function AddToBrowsingHistory({
@@ -9,10 +10,10 @@ export default function AddToBrowsingHistory({
   id: string;
   category: string;
 }) {
-  const { addItem } = useBrowsingHistory();
+  const { addItem } = useBrowsingHistoryStore();
+
   useEffect(() => {
     addItem({ id, category });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id, category, addItem]);
   return null;
 }

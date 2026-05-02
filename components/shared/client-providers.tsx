@@ -5,7 +5,6 @@ import useCartSidebar from "@/hooks/use-cart-sidebar";
 import CartSidebar from "./cart-sidebar";
 import { ThemeProvider } from "./theme-provider";
 import { Toaster } from "../ui/sonner";
-// import AppInitializer from './app-initializer'
 // import { ClientSetting } from '@/types'
 
 export default function ClientProviders({

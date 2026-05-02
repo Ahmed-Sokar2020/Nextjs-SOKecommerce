@@ -24,9 +24,11 @@ export default async function Header() {
 
             <div className="flex items-center header-button font-extrabold text-2xl m-1 ">
               <Logo />
-              <span className="text-primary hidden sm:block text-xl font-bold ml-3">
-                {APP_NAME}
-              </span>
+              <Link href="/">
+                <span className="text-primary hidden sm:block text-xl font-bold ml-3">
+                  {APP_NAME}
+                </span>
+              </Link>
             </div>
           </div>
 
