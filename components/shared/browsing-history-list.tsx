@@ -49,7 +49,11 @@ function ProductList({
     [products],
   );
 
-  const categories = products.map((p) => p.category).join(",");
+  // const categories = products.map((p) => p.category).join(",");
+  const categories = React.useMemo(
+    () => products.map((p) => p.category).join(","),
+    [products],
+  );
 
   useEffect(() => {
     if (!productIds) return;

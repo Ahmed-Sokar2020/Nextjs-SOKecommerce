@@ -1,18 +1,30 @@
 import { z } from "zod";
-import { formatNumberWithDecimal } from "./utils";
 
 // Common
 const MongoId = z
   .string()
   .regex(/^[0-9a-fA-F]{24}$/, { message: "Invalid MongoDB ID" });
 
+// const Price = (field: string) =>
+//   z.coerce
+//     .number()
+//     .refine(
+//       (value) => /^\d+(\.\d{2})?$/.test(formatNumberWithDecimal(value)),
+//       `${field} must have exactly two decimal places (e.g., 49.99)`,
+//     );
+
+// const Price = (field: string): z.ZodType<number> =>
+//   z.coerce
+//     .number()
+//     .refine((value) => /^\d+(\.\d{2})?$/.test(formatNumberWithDecimal(value)), {
+//       message: `${field} must have exactly two decimal places (e.g., 49.99)`,
+//     });
+
 const Price = (field: string) =>
   z.coerce
     .number()
-    .refine(
-      (value) => /^\d+(\.\d{2})?$/.test(formatNumberWithDecimal(value)),
-      `${field} must have exactly two decimal places (e.g., 49.99)`,
-    );
+    .positive(`${field} must be positive`)
+    .multipleOf(0.01, `${field} must have exactly 2 decimal places`);
 
 export const ReviewInputSchema = z.object({
   product: MongoId,
@@ -242,7 +254,7 @@ export const PaymentMethodSchema = z.object({
 
 export const DeliveryDateSchema = z.object({
   name: z.string().min(1, "Name is required"),
-  daysToDeliver: z.number().min(0, "Days to deliver must be at least 0"),
+  daysToDeliver: z.coerce.number().min(0, "Days to deliver must be at least 0"),
   shippingPrice: z.coerce.number().min(0, "Shipping price must be at least 0"),
   freeShippingMinPrice: z.coerce
     .number()
