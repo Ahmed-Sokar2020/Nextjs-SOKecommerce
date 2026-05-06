@@ -18,7 +18,7 @@ const UpdateWebPage = async (props: UpdateWebPageProps) => {
   const webPage = await getWebPageById(id);
   if (!webPage) notFound();
   return (
-    <main className="max-w-6xl mx-auto p-4">
+    <main className="max-w-6xl mx-auto p-4 ">
       <div className="flex mb-4">
         <Link href="/admin/web-pages">Web Pages</Link>
         <span className="mx-1">›</span>

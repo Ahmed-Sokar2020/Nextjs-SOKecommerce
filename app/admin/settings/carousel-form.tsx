@@ -57,7 +57,11 @@ export default function CarouselForm({
                       {index === 0 && <FormLabel>Title</FormLabel>}
 
                       <FormControl>
-                        <Input {...field} placeholder="Title" />
+                        <Input
+                          {...field}
+                          placeholder="Title"
+                          value={field.value ?? ""}
+                        />
                       </FormControl>
 
                       <FormMessage>
@@ -76,7 +80,11 @@ export default function CarouselForm({
                       {index === 0 && <FormLabel>Url</FormLabel>}
 
                       <FormControl>
-                        <Input {...field} placeholder="Url" />
+                        <Input
+                          {...field}
+                          placeholder="Url"
+                          value={field.value ?? ""}
+                        />
                       </FormControl>
 
                       <FormMessage>
@@ -95,7 +103,11 @@ export default function CarouselForm({
                       {index === 0 && <FormLabel>Caption</FormLabel>}
 
                       <FormControl>
-                        <Input {...field} placeholder="Button caption" />
+                        <Input
+                          {...field}
+                          placeholder="Button caption"
+                          value={field.value ?? ""}
+                        />
                       </FormControl>
 
                       <FormMessage>
@@ -115,7 +127,11 @@ export default function CarouselForm({
                         {index === 0 && <FormLabel>Image</FormLabel>}
 
                         <FormControl>
-                          <Input {...field} placeholder="Image URL" />
+                          <Input
+                            {...field}
+                            placeholder="Image URL"
+                            value={field.value ?? ""}
+                          />
                         </FormControl>
 
                         <FormMessage />

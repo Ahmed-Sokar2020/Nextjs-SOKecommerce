@@ -29,6 +29,7 @@ export default async function WebPageAdminPage() {
           <Link href="/admin/web-pages/create">Create WebPage</Link>
         </Button>
       </div>
+
       <div>
         <Table>
           <TableHeader>

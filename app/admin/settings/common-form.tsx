@@ -42,7 +42,12 @@ export default function CommonForm({
               <FormItem className="w-full">
                 <FormLabel>Page Size</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter Page Size" {...field} />
+                  <Input
+                    placeholder="Enter Page Size"
+                    {...field}
+                    value={field.value ?? 0}
+                    onChange={(e) => field.onChange(Number(e.target.value))}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -58,6 +63,8 @@ export default function CommonForm({
                   <Input
                     placeholder="Enter Free Shipping Minimum Price"
                     {...field}
+                    value={field.value ?? 0}
+                    onChange={(e) => field.onChange(Number(e.target.value))}
                   />
                 </FormControl>
                 <FormMessage />
@@ -129,7 +136,7 @@ export default function CommonForm({
               <FormItem className="space-x-2 items-center">
                 <FormControl>
                   <Checkbox
-                    checked={field.value}
+                    checked={field.value ?? false}
                     onCheckedChange={field.onChange}
                   />
                 </FormControl>

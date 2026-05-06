@@ -66,7 +66,7 @@ const WebPageForm = ({
       if (!res.success) {
         toast.error(res.message);
       } else {
-        toast(res.message);
+        toast.success(res.message);
         router.push(`/admin/web-pages`);
       }
     }
@@ -86,11 +86,7 @@ const WebPageForm = ({
 
   return (
     <Form {...form}>
-      <form
-        method="post"
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
@@ -126,7 +122,7 @@ const WebPageForm = ({
                       onClick={() => {
                         form.setValue("slug", toSlug(form.getValues("title")));
                       }}
-                      className="absolute right-2 top-2.5"
+                      className="absolute right-2 top-2"
                     >
                       Generate
                     </button>
@@ -149,12 +145,12 @@ const WebPageForm = ({
                   <MdEditor
                     // value={markdown}
                     {...field}
-                    style={{ height: "500px" }}
+                    style={{ height: "500px", overflowX: "hidden" }}
                     renderHTML={(text) => <ReactMarkdown>{text}</ReactMarkdown>}
                     onChange={({ text }) => form.setValue("content", text)}
                   />
 
-                  {/* <Textarea placeholder='Enter content' {...field} /> */}
+                  {/* <Textarea placeholder="Enter content" {...field} /> */}
                 </FormControl>
                 <FormMessage />
               </FormItem>

@@ -66,7 +66,11 @@ export default function CurrencyForm({
                     {" "}
                     {index == 0 && <FormLabel>Name</FormLabel>}
                     <FormControl>
-                      <Input {...field} placeholder="Name" />
+                      <Input
+                        {...field}
+                        placeholder="Name"
+                        value={field.value ?? ""}
+                      />
                     </FormControl>
                     <FormMessage>
                       {errors.availableCurrencies?.[index]?.name?.message}
@@ -82,7 +86,11 @@ export default function CurrencyForm({
                   <FormItem>
                     {index == 0 && <FormLabel>Code</FormLabel>}
                     <FormControl>
-                      <Input {...field} placeholder="Code" />
+                      <Input
+                        {...field}
+                        placeholder="Code"
+                        value={field.value ?? ""}
+                      />
                     </FormControl>
                     <FormMessage>
                       {errors.availableCurrencies?.[index]?.code?.message}
@@ -97,7 +105,11 @@ export default function CurrencyForm({
                   <FormItem>
                     {index == 0 && <FormLabel>Symbol</FormLabel>}
                     <FormControl>
-                      <Input {...field} placeholder="Symbol" />
+                      <Input
+                        {...field}
+                        placeholder="Symbol"
+                        value={field.value ?? ""}
+                      />
                     </FormControl>
                     <FormMessage>
                       {errors.availableCurrencies?.[index]?.symbol?.message}
@@ -113,7 +125,12 @@ export default function CurrencyForm({
                   <FormItem>
                     {index == 0 && <FormLabel>Convert Rate</FormLabel>}
                     <FormControl>
-                      <Input {...field} placeholder="Convert Rate" />
+                      <Input
+                        {...field}
+                        placeholder="Convert Rate"
+                        value={field.value ?? 0}
+                        onChange={(e) => field.onChange(Number(e.target.value))}
+                      />
                     </FormControl>
                     <FormMessage>
                       {

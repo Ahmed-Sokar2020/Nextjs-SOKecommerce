@@ -65,7 +65,11 @@ export default function LanguageForm({
                   <FormItem>
                     {index == 0 && <FormLabel>Name</FormLabel>}
                     <FormControl>
-                      <Input {...field} placeholder="Name" />
+                      <Input
+                        {...field}
+                        placeholder="Name"
+                        value={field.value ?? ""}
+                      />
                     </FormControl>
                     <FormMessage>
                       {errors.availableLanguages?.[index]?.name?.message}
@@ -81,7 +85,11 @@ export default function LanguageForm({
                   <FormItem>
                     {index == 0 && <FormLabel>Code</FormLabel>}
                     <FormControl>
-                      <Input {...field} placeholder="Code" />
+                      <Input
+                        {...field}
+                        placeholder="Code"
+                        value={field.value ?? ""}
+                      />
                     </FormControl>
                     <FormMessage>
                       {errors.availableLanguages?.[index]?.code?.message}

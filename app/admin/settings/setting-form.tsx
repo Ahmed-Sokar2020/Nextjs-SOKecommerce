@@ -30,22 +30,20 @@ const SettingForm = ({ setting }: { setting: ISettingInput }) => {
   } = form;
 
   async function onSubmit(values: ISettingInput) {
+    // console.log("SUBMITTING", values);
     const res = await updateSetting({ ...values });
+    console.log(res);
     if (!res.success) {
       toast.error(res.message);
     } else {
-      toast(res.message);
+      toast.success(res.message);
       setSetting(values as ClientSetting);
     }
   }
 
   return (
     <Form {...form}>
-      <form
-        className="space-y-4"
-        method="post"
-        onSubmit={form.handleSubmit(onSubmit)}
-      >
+      <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
         <SiteInfoForm id="setting-site-info" form={form} />
         <CommonForm id="setting-common" form={form} />
         <CarouselForm id="setting-carousels" form={form} />

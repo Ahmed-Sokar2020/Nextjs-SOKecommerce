@@ -65,7 +65,11 @@ export default function PaymentMethodForm({
                   <FormItem>
                     {index == 0 && <FormLabel>Name</FormLabel>}
                     <FormControl>
-                      <Input {...field} placeholder="Name" />
+                      <Input
+                        {...field}
+                        placeholder="Name"
+                        value={field.value ?? ""}
+                      />
                     </FormControl>
                     <FormMessage>
                       {errors.availablePaymentMethods?.[index]?.name?.message}
@@ -80,7 +84,12 @@ export default function PaymentMethodForm({
                   <FormItem>
                     {index == 0 && <FormLabel>Commission</FormLabel>}
                     <FormControl>
-                      <Input {...field} placeholder="Commission" />
+                      <Input
+                        {...field}
+                        placeholder="Commission"
+                        value={field.value ?? ""}
+                        onChange={(e) => field.onChange(Number(e.target.value))}
+                      />
                     </FormControl>
                     <FormMessage>
                       {

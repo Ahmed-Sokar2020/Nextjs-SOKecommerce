@@ -65,7 +65,11 @@ export default function DeliveryDateForm({
                   <FormItem>
                     {index == 0 && <FormLabel>Name</FormLabel>}
                     <FormControl>
-                      <Input {...field} placeholder="Name" />
+                      <Input
+                        {...field}
+                        placeholder="Name"
+                        value={field.value ?? ""}
+                      />
                     </FormControl>
                     <FormMessage>
                       {errors.availableDeliveryDates?.[index]?.name?.message}
@@ -80,7 +84,12 @@ export default function DeliveryDateForm({
                   <FormItem>
                     {index == 0 && <FormLabel>Days</FormLabel>}
                     <FormControl>
-                      <Input {...field} placeholder="daysToDeliver" />
+                      <Input
+                        {...field}
+                        value={field.value ?? 0}
+                        onChange={(e) => field.onChange(Number(e.target.value))}
+                        placeholder="daysToDeliver"
+                      />
                     </FormControl>
                     <FormMessage>
                       {
@@ -98,7 +107,12 @@ export default function DeliveryDateForm({
                   <FormItem>
                     {index == 0 && <FormLabel>Shipping Price</FormLabel>}
                     <FormControl>
-                      <Input {...field} placeholder="shippingPrice" />
+                      <Input
+                        {...field}
+                        value={field.value ?? 0}
+                        onChange={(e) => field.onChange(Number(e.target.value))}
+                        placeholder="shippingPrice"
+                      />
                     </FormControl>
                     <FormMessage>
                       {
@@ -116,7 +130,12 @@ export default function DeliveryDateForm({
                   <FormItem>
                     {index == 0 && <FormLabel>Free Shipping</FormLabel>}
                     <FormControl>
-                      <Input {...field} placeholder="freeShippingMinPrice" />
+                      <Input
+                        {...field}
+                        value={field.value ?? 0}
+                        onChange={(e) => field.onChange(Number(e.target.value))}
+                        placeholder="freeShippingMinPrice"
+                      />
                     </FormControl>
                     <FormMessage>
                       {
