@@ -5,8 +5,8 @@ import useIsMounted from "@/hooks/use-is-mounted";
 import { cn } from "@/lib/utils";
 import useCartStore from "@/store/use-cart-store";
 import { ShoppingCartIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
-// import { useLocale, useTranslations } from 'next-intl'
 // import { getDirection } from '@/i18n-config'
 
 export default function CartButton() {
@@ -16,7 +16,7 @@ export default function CartButton() {
   } = useCartStore();
   const cartItemsCount = items.reduce((a, c) => a + c.quantity, 0);
   const isCartSidebarOpen = useCartSidebar();
-  // const t = useTranslations()
+  const t = useTranslations("Cart");
 
   // const locale = useLocale()
   return (
@@ -35,7 +35,7 @@ export default function CartButton() {
             {cartItemsCount}
           </span>
         )}
-        <span className="font-bold">Cart</span>
+        <span className="font-bold">{t("Cart")}</span>
 
         {isCartSidebarOpen && (
           <div

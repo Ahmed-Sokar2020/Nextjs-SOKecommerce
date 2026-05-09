@@ -1,8 +1,5 @@
 "use client";
 
-import * as React from "react";
-import Image from "next/image";
-import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
@@ -10,7 +7,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
 import Link from "next/link";
+import * as React from "react";
 // import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 // import { useTranslations } from 'next-intl'
@@ -23,7 +23,7 @@ interface ICarousel {
   url: string;
 }
 
-export function HomeCarousel({ items }: { items: ICarousel[] }) {
+export function HomeBannerCarousel({ items }: { items: ICarousel[] }) {
   const plugin = React.useRef(
     Autoplay({ delay: 3000, stopOnInteraction: true }),
   );

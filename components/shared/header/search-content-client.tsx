@@ -10,6 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { APP_NAME } from "@/lib/constants";
 import { ChevronDown, SearchIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 export default function SearchContent({
@@ -18,6 +19,7 @@ export default function SearchContent({
   categories: string[];
 }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const t = useTranslations("Search");
 
   return (
     <form
@@ -28,7 +30,7 @@ export default function SearchContent({
       {/* Hidden input ensures the category is submitted with the form */}
       <input type="hidden" name="category" value={selectedCategory} />
 
-      <DropdownMenu modal={false} >
+      <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
           <Button
             variant="ghost"
@@ -36,7 +38,7 @@ export default function SearchContent({
             className="w-auto h-full px-4 flex items-center gap-1 dark:border-gray-200 bg-gray-100 text-foreground border-r rounded-r-none rounded-l-md rtl:rounded-r-md rtl:rounded-l-none transition-colors dark:bg-black dark:border"
           >
             <span className="capitalize">
-              {selectedCategory === "all" ? "All" : selectedCategory}
+              {selectedCategory === "all" ? t("All") : selectedCategory}
             </span>
             <ChevronDown className="w-4 h-4 opacity-50" />
           </Button>
@@ -51,16 +53,16 @@ export default function SearchContent({
             onClick={() => setSelectedCategory("all")}
             className="cursor-pointer transition-colors focus:text-foreground"
           >
-            All
+            {t("All")}
           </DropdownMenuItem>
 
           {categories.map((category) => (
             <DropdownMenuItem
               key={category}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => setSelectedCategory(t(category))}
               className="cursor-pointer capitalize transition-colors focus:text-foreground"
             >
-              {category}
+              {t(category)}
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>
@@ -68,7 +70,7 @@ export default function SearchContent({
 
       <Input
         className="flex-1 rounded-none dark:border-gray-200 bg-gray-100 text-foreground text-base h-full outline-none focus-visible:ring-0 placeholder:text-muted-foreground"
-        placeholder={`Search Site ${APP_NAME}`}
+        placeholder={t("Search Site") + ` ${APP_NAME}`}
         name="q"
         type="search"
       />

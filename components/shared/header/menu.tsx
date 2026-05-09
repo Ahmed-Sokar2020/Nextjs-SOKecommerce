@@ -8,20 +8,19 @@ import {
 } from "@/components/ui/sheet";
 import { SquareMenu } from "lucide-react";
 // import { EllipsisVertical } from "lucide-react";
-import { APP_NAME } from "@/lib/constants";
+import { useTranslations } from "next-intl";
 import CartButton from "./cart-button";
+import LanguageSwitcher from "./language-switcher";
 import { ThemeColorSwitcher } from "./theme-color-switcher";
 import UserButton from "./user-button";
-// import LanguageSwitcher from './language-switcher'
-// import { useTranslations } from 'next-intl'
 
 const Menu = ({ forAdmin = false }: { forAdmin?: boolean }) => {
-  // const t = useTranslations()
-
+  const t = useTranslations();
+  // const [mounted, setMounted] = useState(false);
   return (
     <div className="flex justify-end">
       <nav className="md:flex gap-3 hidden w-full">
-        {/* <LanguageSwitcher /> */}
+        <LanguageSwitcher />
         <ThemeColorSwitcher />
         <UserButton />
         {forAdmin ? null : <CartButton />}
@@ -35,11 +34,11 @@ const Menu = ({ forAdmin = false }: { forAdmin?: boolean }) => {
           <SheetContent className="bg-black text-white flex flex-col items-center gap-6">
             <SheetHeader className="w-full">
               <div className="flex items-center justify-between ">
-                <SheetTitle className="  ">{APP_NAME} Menu</SheetTitle>
+                <SheetTitle className="  ">{t("Header.Site Menu")}</SheetTitle>
                 <SheetDescription></SheetDescription>
               </div>
             </SheetHeader>
-            {/* <LanguageSwitcher /> */}
+            <LanguageSwitcher />
             <ThemeColorSwitcher />
             <UserButton />
             <CartButton />

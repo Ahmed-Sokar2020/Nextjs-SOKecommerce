@@ -14,11 +14,13 @@ import { cn } from "@/lib/utils";
 import { ChevronDownIcon } from "lucide-react";
 import Link from "next/link";
 // import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function UserButtonClient({ session }: any) {
   const [open, setOpen] = useState(false);
+  const t = useTranslations("Header");
 
   return (
     <div className="flex gap-2 items-center">
@@ -26,8 +28,10 @@ export default function UserButtonClient({ session }: any) {
         <DropdownMenuTrigger asChild>
           <button className="header-button flex items-center">
             <div className="flex flex-col text-xs text-left">
-              <span>Hello, {session?.user?.name ?? "sign in"}</span>
-              <span className="font-bold">Account & Orders</span>
+              <span>
+                {t("Hello")}, {session?.user?.name ?? "sign in"}
+              </span>
+              <span className="font-bold">{t("Account & Orders")}</span>
             </div>
             <ChevronDownIcon />
           </button>
@@ -42,16 +46,16 @@ export default function UserButtonClient({ session }: any) {
 
             <DropdownMenuGroup>
               <Link href="/account">
-                <DropdownMenuItem>Your account</DropdownMenuItem>
+                <DropdownMenuItem>{t("Your account")}</DropdownMenuItem>
               </Link>
 
               <Link href="/account/orders">
-                <DropdownMenuItem>Your orders</DropdownMenuItem>
+                <DropdownMenuItem>{t("Your orders")}</DropdownMenuItem>
               </Link>
 
               {session?.user?.role === "Admin" && (
                 <Link href="/admin/overview">
-                  <DropdownMenuItem>Admin</DropdownMenuItem>
+                  <DropdownMenuItem>{t("Admin")}</DropdownMenuItem>
                 </Link>
               )}
             </DropdownMenuGroup>
@@ -59,7 +63,7 @@ export default function UserButtonClient({ session }: any) {
             <DropdownMenuItem className="p-0">
               <form action={SignOut}>
                 <Button variant="ghost" className="w-full justify-start">
-                  Sign out
+                  {t("Sign out")}
                 </Button>
               </form>
             </DropdownMenuItem>
@@ -72,13 +76,13 @@ export default function UserButtonClient({ session }: any) {
                   className={cn(buttonVariants(), "w-full")}
                   href="/sign-in"
                 >
-                  Sign in
+                  {t("Sign in")}
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuLabel>
               <div className="font-normal">
-                New Customer <Link href="/sign-up">Sign up</Link>
+                {t("New Customer")} <Link href="/sign-up">{t("Sign up")}</Link>
               </div>
             </DropdownMenuLabel>
           </DropdownMenuContent>

@@ -1,7 +1,10 @@
 import ClientProviders from "@/components/shared/client-providers";
+
 import { APP_DESCRIPTION, APP_NAME, APP_SLOGAN } from "@/lib/constants";
 import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
 import { Geist, Geist_Mono } from "next/font/google";
+import React from "react";
 import "./globals.css";
 
 // import { ToasterWrapper } from "@/components/ui/toaster-wrapper";
@@ -27,7 +30,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -40,11 +43,9 @@ export default function RootLayout({
     >
       <body className="min-h-full w-full flex flex-col">
         {/* Your ClientProviders should already contain the ThemeProvider */}
-        <ClientProviders>
-          {children}
-          {/* Place the Toaster inside providers so it can access theme context */}
-          {/* <ToasterWrapper /> */}
-        </ClientProviders>
+        <NextIntlClientProvider>
+          <ClientProviders>{children}</ClientProviders>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

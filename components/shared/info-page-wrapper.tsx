@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import { Button } from "../ui/button";
-import Footer from "./footer";
-import Header from "./header";
 
 export default function InfoPageWrapper({
   title,
@@ -13,7 +11,6 @@ export default function InfoPageWrapper({
 }) {
   return (
     <div className="flex flex-col min-h-full">
-      <Header />
       <main className="flex-1 min-h-screen bg-background">
         <div className="flex flex-col gap-4 max-w-5xl mx-auto px-4 py-12 md:py-16">
           <div className="flex gap-3">
@@ -32,7 +29,6 @@ export default function InfoPageWrapper({
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

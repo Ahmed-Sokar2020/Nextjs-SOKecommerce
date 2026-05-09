@@ -8,14 +8,18 @@ import { Button } from "@/components/ui/button";
 // import { Select, SelectContent, SelectItem, SelectTrigger } from "../ui/select";
 
 // import { SelectValue } from "@radix-ui/react-select";
-// import { useLocale, useTranslations } from 'next-intl'
+import { useTranslations } from "next-intl";
 // import { usePathname, useRouter } from '@/i18n/routing'
-// import { i18n } from '@/i18n-config'
 
 import { APP_NAME } from "@/lib/constants";
 import Logo from "./logo";
 
+// interface FooterProps {
+//   locale: string;
+// }
+
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
   // const router = useRouter()
   // const pathname = usePathname()
   // const {
@@ -23,12 +27,10 @@ export default function Footer() {
   //   setCurrency,
   // } = useSettingStore();
 
-  // const locales = ["USA", "EGY", "ENG", "UAE", "KSA"];
-
-  // const { locales } = i18n
+  // const { locales } = i18n;
 
   // const locale = useLocale()
-  // const t = useTranslations()
+  const t = useTranslations();
   return (
     <footer className="bg-black  text-white underline-link">
       <div className="w-full">
@@ -43,14 +45,14 @@ export default function Footer() {
 
         <div className="bg-gray-800 grid sm:place-items-start md:place-items-center grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 max-w-7xl mx-auto">
           <div>
-            <h2 className="font-bold mb-2">Get to Know Us</h2>
+            <h2 className="font-bold mb-2">{t("Footer.Get to Know Us")}</h2>
             <ul className="space-y-2 ">
               <li>
                 <Link
                   href="/careers"
                   className="hover:opacity-70 transition-opacity duration-500"
                 >
-                  Careers
+                  {t("Footer.Careers")}
                 </Link>
               </li>
               <li>
@@ -58,7 +60,7 @@ export default function Footer() {
                   href="/blog"
                   className="hover:opacity-70 transition-opacity duration-500"
                 >
-                  Blog
+                  {t("Footer.Blog")}
                 </Link>
               </li>
               <li>
@@ -66,7 +68,7 @@ export default function Footer() {
                   href="/about-us"
                   className="hover:opacity-70 transition-opacity duration-500"
                 >
-                  About, {APP_NAME}
+                  {t("Footer.About name", { name: APP_NAME })}
                 </Link>
               </li>
             </ul>
@@ -236,7 +238,10 @@ export default function Footer() {
         </div>
 
         <div className="flex justify-center text-sm">
-          <p> © 2026 , {APP_NAME}, Inc</p>
+          <p>
+            {" "}
+            © {currentYear} {APP_NAME}, Inc
+          </p>
         </div>
 
         <div className="mt-8 flex justify-center text-sm text-gray-400">

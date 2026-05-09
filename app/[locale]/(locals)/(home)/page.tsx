@@ -1,15 +1,15 @@
-import { HomeCarousel } from "@/components/shared/home/home-carousel";
-import data from "@/lib/data";
-import {
-  getProductsForCard,
-  getAllCategories,
-  getProductsByTag,
-} from "@/lib/actions/product.actions";
-import { toSlug } from "@/lib/utils";
+import BrowsingHistoryList from "@/components/shared/browsing-history-list";
 import { HomeCard } from "@/components/shared/home-card";
+import { HomeBannerCarousel } from "@/components/shared/home/home-banner-carousel";
 import ProductSlider from "@/components/shared/product/product-slider";
 import { Card, CardContent } from "@/components/ui/card";
-import BrowsingHistoryList from "@/components/shared/browsing-history-list";
+import {
+  getAllCategories,
+  getProductsByTag,
+  getProductsForCard,
+} from "@/lib/actions/product.actions";
+import data from "@/lib/data";
+import { toSlug } from "@/lib/utils";
 
 export default async function HomePage() {
   const categories = (await getAllCategories()).slice(0, 4);
@@ -64,9 +64,10 @@ export default async function HomePage() {
 
   const todaysDeals = await getProductsByTag({ tag: "todays-deal" });
   const bestSellingProducts = await getProductsByTag({ tag: "best-seller" });
+
   return (
     <>
-      <HomeCarousel items={data.carousels} />
+      <HomeBannerCarousel items={data.carousels} />
       <div className="md:p-4 md:space-y-4 bg-border">
         <HomeCard cards={cards} />
         {/* Render Todays Deals */}
@@ -75,6 +76,7 @@ export default async function HomePage() {
             <ProductSlider title="Today's Deals" products={todaysDeals} />
           </CardContent>
         </Card>
+
         {/* Render Best Selling Products */}
         <Card className="w-full rounded-none">
           <CardContent className="p-4 items-center gap-3">

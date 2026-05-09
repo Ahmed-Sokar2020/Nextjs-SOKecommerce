@@ -10,6 +10,7 @@ import { z } from "zod";
 // import { useTranslations } from 'next-intl'
 
 import Rating from "@/components/shared/product/rating";
+import RatingSummary from "@/components/shared/product/rating-summary";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -42,18 +43,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
 import {
   createUpdateReview,
   getReviewByProductId,
   getReviews,
 } from "@/lib/actions/review.actions";
-import { ReviewInputSchema } from "@/lib/validator";
-import RatingSummary from "@/components/shared/product/rating-summary";
 import { IProduct } from "@/lib/db/models/product.model";
-import { Separator } from "@/components/ui/separator";
+import { ReviewInputSchema } from "@/lib/validator";
 import { IReviewDetails } from "@/types";
+import { toast } from "sonner";
 
 const reviewFormDefaultValues = {
   title: "",
@@ -117,12 +117,6 @@ export default function ReviewList({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView]);
-
-  // type CustomerReview = z.infer<typeof ReviewInputSchema>
-  // const form = useForm<CustomerReview>({
-  // resolver: zodResolver(ReviewInputSchema),
-  //   defaultValues: reviewFormDefaultValues,
-  // })
 
   type CustomerReviewForm = z.input<typeof ReviewInputSchema>;
   type CustomerReview = z.output<typeof ReviewInputSchema>;

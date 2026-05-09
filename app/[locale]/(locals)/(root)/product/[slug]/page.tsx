@@ -5,18 +5,18 @@ import {
 } from "@/lib/actions/product.actions";
 
 // import ReviewList from './review-list'
-import { generateId, round2 } from "@/lib/utils";
-import SelectVariant from "@/components/shared/product/select-variant";
-import ProductPrice from "@/components/shared/product/product-price";
-import ProductGallery from "@/components/shared/product/product-gallery";
-import ProductSlider from "@/components/shared/product/product-slider";
-import { Separator } from "@/components/ui/separator";
+import { auth } from "@/auth";
 import BrowsingHistoryList from "@/components/shared/browsing-history-list";
 import AddToBrowsingHistory from "@/components/shared/product/add-to-browsing-history";
 import AddToCart from "@/components/shared/product/add-to-cart";
+import ProductGallery from "@/components/shared/product/product-gallery";
+import ProductPrice from "@/components/shared/product/product-price";
+import ProductSlider from "@/components/shared/product/product-slider";
 import RatingSummary from "@/components/shared/product/rating-summary";
+import SelectVariant from "@/components/shared/product/select-variant";
+import { Separator } from "@/components/ui/separator";
+import { generateId, round2 } from "@/lib/utils";
 import ReviewList from "./review-list";
-import { auth } from "@/auth";
 // import { getTranslations } from 'next-intl/server'
 
 export async function generateMetadata(props: {
@@ -63,14 +63,14 @@ export default async function ProductDetails(props: {
         id={product._id.toString()}
         category={product.category}
       />
-
+      {/* Product Details Section */}
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-5  ">
-          <div className="col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_2fr_1fr] gap-8 items-start grid-flow-dense">
+          <div>
             <ProductGallery images={product.images} />
           </div>
 
-          <div className="flex w-full flex-col gap-2 md:p-5 col-span-2">
+          <div className="flex w-full flex-col gap-2 md:p-5 ">
             <div className="flex flex-col gap-3">
               <p className="p-medium-16 rounded-full bg-grey-500/10   text-grey-500">
                 Brand: {product.brand} {product.category}
@@ -109,7 +109,9 @@ export default async function ProductDetails(props: {
               </p>
             </div>
           </div>
-          <div>
+
+          <div className="md:col-span-3 lg:col-span-1">
+            {/* <div className="md:col-span-3 lg:col-span-1"> */}
             <Card>
               <CardContent className="p-4 flex flex-col  gap-4">
                 <ProductPrice price={product.price} />
@@ -122,9 +124,7 @@ export default async function ProductDetails(props: {
                 {product.countInStock !== 0 ? (
                   <div className="text-green-700 text-xl">In Stock</div>
                 ) : (
-                  <div className="text-destructive text-xl">
-                    Product.Out of Stock
-                  </div>
+                  <div className="text-destructive text-xl">Out of Stock</div>
                 )}
 
                 {product.countInStock !== 0 && (

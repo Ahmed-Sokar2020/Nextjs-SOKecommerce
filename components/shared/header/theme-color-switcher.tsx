@@ -1,8 +1,6 @@
 "use client";
 
-import { Moon, Sun, Check, ChevronDown } from "lucide-react";
-import { useTheme } from "next-themes";
-import { useThemeStore } from "@/store/use-theme-store";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,18 +9,21 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
-import React from "react";
+import { useThemeStore } from "@/store/use-theme-store";
+import { Check, ChevronDown, Moon, Sun } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useTheme } from "next-themes";
+import React, { useState } from "react";
 
 export function ThemeColorSwitcher() {
   const { theme, setTheme } = useTheme();
   const { color, setColor } = useThemeStore();
   const [mounted, setMounted] = useState(false);
+  const t = useTranslations("Header");
 
   //Using Zustand (store/use-theme-store.ts) to implement switching between colors[gold,green,red]
   // Sync Zustand state with DOM on mount
-React.useEffect(() => {
+  React.useEffect(() => {
     setMounted(true);
     document.documentElement.setAttribute("data-theme", color);
   }, [color]);
@@ -49,19 +50,21 @@ React.useEffect(() => {
               <Sun className="absolute scale-100 transition-all rotate-0" />
             )}
           </div>
-          <span className="capitalize hidden sm:block">{theme}</span>
+          <span className="capitalize hidden sm:block">
+            {theme && t(theme)}
+          </span>
           <ChevronDown size={14} className="opacity-50" />
         </Button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" className="w-48">
-        <DropdownMenuLabel>Theme</DropdownMenuLabel>
+        <DropdownMenuLabel>{t("Theme")}</DropdownMenuLabel>
         <DropdownMenuItem
           onClick={() => setTheme("dark")}
           className="justify-between cursor-pointer"
         >
           <div className="flex items-center gap-2">
-            <Moon size={14} /> Dark
+            <Moon size={14} /> {t("Dark")}
           </div>
           {theme === "dark" && <Check size={14} className="text-primary" />}
         </DropdownMenuItem>
@@ -70,14 +73,14 @@ React.useEffect(() => {
           className="justify-between cursor-pointer"
         >
           <div className="flex items-center gap-2">
-            <Sun size={14} /> Light
+            <Sun size={14} /> {t("Light")}
           </div>
           {theme === "light" && <Check size={14} className="text-primary" />}
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuLabel>Accent Color</DropdownMenuLabel>
+        <DropdownMenuLabel>{t("Color")}</DropdownMenuLabel>
         {colorOptions.map((opt) => (
           <DropdownMenuItem
             key={opt.value}
@@ -86,7 +89,7 @@ React.useEffect(() => {
           >
             <div className="flex items-center gap-2">
               <div className={`w-3 h-3 rounded-full ${opt.tw}`} />
-              {opt.name}
+              {t(opt.name)}
             </div>
             {color === opt.value && (
               <Check size={14} className="text-primary" />
