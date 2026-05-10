@@ -189,7 +189,7 @@ export default function Footer() {
                       <Link
                         className="w-full flex items-center gap-1"
                         href={pathname}
-                        // locale={lang.code}
+                        locale={lang.code}
                       >
                         {/* <span className="text-lg">{lang.icon}</span> {lang.name} */}
                         <div className="flex items-center gap-2">

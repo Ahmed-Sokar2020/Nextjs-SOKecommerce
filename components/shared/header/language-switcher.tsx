@@ -105,7 +105,7 @@ export default function LanguageSwitcher() {
               <Link
                 className="w-full flex items-center gap-1"
                 href={pathname}
-                // locale={lang.code}
+                locale={lang.code}
               >
                 <div className="flex gap-2">
                   <span className={`fi fi-${lang.icon} w-5 h-4`}></span>
