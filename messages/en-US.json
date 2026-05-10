@@ -152,7 +152,7 @@
     "All": "All",
     "Customer Review": "Customer Review",
     "& Up": "& Up",
-    "Check each product page for other buying options": "Check each product page for other buying options.",
+    "Check each product page for other buying options": "Check each product page for other buying options",
     "No product found": "No product found",
     "Next": "Next",
     "Previous": "Previous",
@@ -179,7 +179,11 @@
     "Returns & Replacements": "Returns & Replacements",
     "Conditions of Use": "Conditions of Use",
     "Privacy Notice": "Privacy Notice",
-    "Help": "Help"
+    "Help": "Help",
+    "Shop with Us": "Shop with Us",
+    "Your Account": "Your Account",
+    "Your Orders": "Your Orders",
+    "Your Addresses": "Your Addresses"
   },
   "Loading": {
     "Loading": "Loading..."

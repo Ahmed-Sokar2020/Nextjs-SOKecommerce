@@ -10,10 +10,6 @@ import { APP_NAME } from "@/lib/constants";
 import data from "@/lib/data";
 import Logo from "../logo";
 
-// interface HeaderProps {
-//   locale: string;
-// }
-
 export default async function Header() {
   const categories = await getAllCategories();
   // const { site } = await getSetting()

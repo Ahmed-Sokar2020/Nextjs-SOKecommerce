@@ -1,12 +1,12 @@
 import ClientProviders from "@/components/shared/client-providers";
 
 import { APP_DESCRIPTION, APP_NAME, APP_SLOGAN } from "@/lib/constants";
+import "flag-icons/css/flag-icons.min.css"; // Add this line
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { Geist, Geist_Mono } from "next/font/google";
 import React from "react";
 import "./globals.css";
-
 // import { ToasterWrapper } from "@/components/ui/toaster-wrapper";
 
 const geistSans = Geist({
