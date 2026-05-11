@@ -10,9 +10,10 @@ import {
 } from "@/components/ui/select";
 import useCartStore from "@/store/use-cart-store";
 import { OrderItem } from "@/types";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { toast } from "sonner"; // ✅ NEW
+import { toast } from "sonner";
 
 export default function AddToCart({
   item,
@@ -25,6 +26,7 @@ export default function AddToCart({
   const { addItem } = useCartStore();
 
   const [quantity, setQuantity] = useState(1);
+  const t = useTranslations();
 
   return minimal ? (
     <Button
@@ -32,13 +34,17 @@ export default function AddToCart({
       onClick={() => {
         try {
           addItem(item, 1);
-          toast.success("Added to Cart 🛒", {
-            description: `item added successfully`,
-            action: {
-              label: "Go to Cart",
-
-              onClick: () => router.push("/cart"),
-            },
+          toast.success(t("Product.Added to Cart") + " 🛒", {
+            description: t("Product.Item added successfully"),
+            action: (
+              <Button
+                onClick={() => {
+                  router.push("/cart");
+                }}
+              >
+                {t("Product.Go to Cart")}
+              </Button>
+            ),
           });
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
@@ -46,7 +52,7 @@ export default function AddToCart({
         }
       }}
     >
-      Add to Cart
+      {t("Product.Add to Cart")}{" "}
     </Button>
   ) : (
     <div className="w-full space-y-2">
@@ -55,7 +61,9 @@ export default function AddToCart({
         onValueChange={(i) => setQuantity(Number(i))}
       >
         <SelectTrigger>
-          <SelectValue>Quantity: {quantity}</SelectValue>
+          <SelectValue>
+            {t("Product.Quantity")}: {quantity}
+          </SelectValue>
         </SelectTrigger>
         <SelectContent position="popper">
           {Array.from({ length: item.countInStock }).map((_, i) => (
@@ -73,8 +81,8 @@ export default function AddToCart({
           try {
             const itemId = await addItem(item, quantity);
 
-            toast.success("Added to Cart 🛒", {
-              description: `Item Added Successfully`,
+            toast.success(t("Product.Added to Cart") + " 🛒", {
+              description: t("Product.Item added successfully"),
             });
 
             router.push(`/cart/${itemId}`);
@@ -84,7 +92,7 @@ export default function AddToCart({
           }
         }}
       >
-        Add to Cart
+        {t("Product.Add to Cart")}
       </Button>
 
       <Button
@@ -93,7 +101,7 @@ export default function AddToCart({
           try {
             addItem(item, quantity);
 
-            toast.success("Proceeding to checkout");
+            toast.success(t("Product.Proceeding to checkout"));
 
             router.push(`/checkout`);
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -103,7 +111,7 @@ export default function AddToCart({
         }}
         className="w-full rounded-full"
       >
-        Buy Now
+        {t("Product.Buy Now")}
       </Button>
     </div>
   );

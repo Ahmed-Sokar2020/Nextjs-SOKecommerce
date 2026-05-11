@@ -4,12 +4,13 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import { FormEvent, useState } from "react";
+import { SyntheticEvent, useState } from "react";
 
-import { Button } from "@/components/ui/button";
 import ProductPrice from "@/components/shared/product/product-price";
+import { Button } from "@/components/ui/button";
+// import useSettingStore from "@/store/use-setting-store";
 import { SERVER_URL } from "@/lib/constants";
-// import useSettingStore from '@/hooks/use-setting-store'
+import { useTranslations } from "next-intl";
 
 export default function StripeForm({
   priceInCents,
@@ -20,7 +21,7 @@ export default function StripeForm({
 }) {
   // const {
   //   setting: { site },
-  // } = useSettingStore()
+  // } = useSettingStore();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -28,7 +29,7 @@ export default function StripeForm({
   const [errorMessage, setErrorMessage] = useState<string>();
   const [email, setEmail] = useState<string>();
 
-  async function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: SyntheticEvent) {
     e.preventDefault();
 
     if (stripe == null || elements == null || email == null) return;
@@ -51,9 +52,11 @@ export default function StripeForm({
       .finally(() => setIsLoading(false));
   }
 
+  const t = useTranslations("Checkout");
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="text-xl">Stripe Checkout</div>
+      <div className="text-xl">{t("Stripe Checkout")}</div>
       {errorMessage && <div className="text-destructive">{errorMessage}</div>}
       <PaymentElement />
       <div>
@@ -65,10 +68,10 @@ export default function StripeForm({
         disabled={stripe == null || elements == null || isLoading}
       >
         {isLoading ? (
-          "Purchasing..."
+          t("Processing")
         ) : (
           <div>
-            Purchase - <ProductPrice price={priceInCents / 100} plain />
+            {t("Purchase")} - <ProductPrice price={priceInCents / 100} plain />
           </div>
         )}
       </Button>

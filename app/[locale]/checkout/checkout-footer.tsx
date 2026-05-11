@@ -1,6 +1,6 @@
-// import useSettingStore from '@/hooks/use-setting-store'
-import Link from "next/link";
+// import useSettingStore from '@/store/use-setting-store'
 import { APP_NAME } from "@/lib/constants";
+import Link from "next/link";
 
 export default function CheckoutFooter() {
   // const {
@@ -18,7 +18,7 @@ export default function CheckoutFooter() {
         your order. Your contract to purchase an item will not be complete until
         we send you an e-mail notifying you that the item has been shipped to
         you. By placing your order, you agree to {APP_NAME}
-        &apos;s <Link href="/privacy-policy">privacy notice</Link> and
+        &apos;s <Link href="/privacy-notice">privacy notice</Link> and
         <Link href="/conditions-of-use"> conditions of use</Link>.
       </p>
       <p>

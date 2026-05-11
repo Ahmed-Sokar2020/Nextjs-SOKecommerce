@@ -1,14 +1,13 @@
+import { auth } from "@/auth";
+import AddToCart from "@/components/shared/product/add-to-cart";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   getProductBySlug,
   getRelatedProductsByCategory,
 } from "@/lib/actions/product.actions";
 
-// import ReviewList from './review-list'
-import { auth } from "@/auth";
 import BrowsingHistoryList from "@/components/shared/browsing-history-list";
 import AddToBrowsingHistory from "@/components/shared/product/add-to-browsing-history";
-import AddToCart from "@/components/shared/product/add-to-cart";
 import ProductGallery from "@/components/shared/product/product-gallery";
 import ProductPrice from "@/components/shared/product/product-price";
 import ProductSlider from "@/components/shared/product/product-slider";
@@ -16,17 +15,16 @@ import RatingSummary from "@/components/shared/product/rating-summary";
 import SelectVariant from "@/components/shared/product/select-variant";
 import { Separator } from "@/components/ui/separator";
 import { generateId, round2 } from "@/lib/utils";
+import { getTranslations } from "next-intl/server";
 import ReviewList from "./review-list";
-// import { getTranslations } from 'next-intl/server'
-
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }) {
-  // const t = await getTranslations()
+  const t = await getTranslations();
   const params = await props.params;
   const product = await getProductBySlug(params.slug);
   if (!product) {
-    return { title: "Product not found" };
+    return { title: t("Product.Product not found") };
   }
   return {
     title: product.name,
@@ -56,26 +54,26 @@ export default async function ProductDetails(props: {
     page: Number(page || "1"),
   });
 
-  // const t = await getTranslations()
+  const t = await getTranslations();
   return (
-    <div>
+    <div className="container p-4">
       <AddToBrowsingHistory
         id={product._id.toString()}
         category={product.category}
       />
-      {/* Product Details Section */}
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_2fr_1fr] gap-8 items-start grid-flow-dense">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-5  ">
+          <div className="col-span-2">
             <ProductGallery images={product.images} />
           </div>
 
-          <div className="flex w-full flex-col gap-2 md:p-5 ">
+          <div className="flex w-full flex-col gap-2 md:p-5 col-span-2">
             <div className="flex flex-col gap-3">
               <p className="p-medium-16 rounded-full bg-grey-500/10   text-grey-500">
-                Brand: {product.brand} {product.category}
+                {t("Product.Brand")} {product.brand} {product.category}
               </p>
               <h1 className="font-bold text-lg lg:text-xl">{product.name}</h1>
+
               <RatingSummary
                 avgRating={product.avgRating}
                 numReviews={product.numReviews}
@@ -103,28 +101,34 @@ export default async function ProductDetails(props: {
             </div>
             <Separator className="my-2" />
             <div className="flex flex-col gap-2">
-              <p className="p-bold-20 text-grey-600">Description:</p>
+              <p className="p-bold-20 text-grey-600">
+                {t("Product.Description")}:
+              </p>
               <p className="p-medium-16 lg:p-regular-18">
                 {product.description}
               </p>
             </div>
           </div>
-
-          <div className="md:col-span-3 lg:col-span-1">
-            {/* <div className="md:col-span-3 lg:col-span-1"> */}
+          <div>
             <Card>
               <CardContent className="p-4 flex flex-col  gap-4">
                 <ProductPrice price={product.price} />
 
                 {product.countInStock > 0 && product.countInStock <= 3 && (
                   <div className="text-destructive font-bold">
-                    {`${product.countInStock} left in stock - order soon`}
+                    {t("Product.Only X left in stock - order soon", {
+                      count: product.countInStock,
+                    })}
                   </div>
                 )}
                 {product.countInStock !== 0 ? (
-                  <div className="text-green-700 text-xl">In Stock</div>
+                  <div className="text-green-700 text-xl">
+                    {t("Product.In Stock")}
+                  </div>
                 ) : (
-                  <div className="text-destructive text-xl">Out of Stock</div>
+                  <div className="text-destructive text-xl">
+                    {t("Product.Out of Stock")}
+                  </div>
                 )}
 
                 {product.countInStock !== 0 && (
@@ -152,9 +156,10 @@ export default async function ProductDetails(props: {
         </div>
       </section>
 
+      {/* Product Details */}
       <section className="mt-10">
         <h2 className="h2-bold mb-2" id="reviews">
-          Customer Reviews
+          {t("Product.Customer Reviews")}
         </h2>
         <ReviewList product={product} userId={session?.user.id} />
       </section>
@@ -162,7 +167,7 @@ export default async function ProductDetails(props: {
       <section className="mt-10">
         <ProductSlider
           products={relatedProducts.data}
-          title={`Best Sellers in ${product.category}`}
+          title={t("Product.Best Sellers in", { name: product.category })}
         />
       </section>
 

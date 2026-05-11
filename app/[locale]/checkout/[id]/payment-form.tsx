@@ -1,25 +1,26 @@
 "use client";
 
-import {
-  PayPalButtons,
-  PayPalScriptProvider,
-  usePayPalScriptReducer,
-} from "@paypal/react-paypal-js";
+import ProductPrice from "@/components/shared/product/product-price";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { toast } from "sonner";
 import {
   approvePayPalOrder,
   createPayPalOrder,
 } from "@/lib/actions/order.actions";
 import { IOrder } from "@/lib/db/models/order.model";
 import { formatDateTime } from "@/lib/utils";
-import CheckoutFooter from "../checkout-footer";
-import { redirect, useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import ProductPrice from "@/components/shared/product/product-price";
+import {
+  PayPalButtons,
+  PayPalScriptProvider,
+  usePayPalScriptReducer,
+} from "@paypal/react-paypal-js";
 import { Elements } from "@stripe/react-stripe-js";
-import StripeForm from "./stripe-form";
 import { loadStripe } from "@stripe/stripe-js";
+import { useTranslations } from "next-intl";
+import { redirect, useRouter } from "next/navigation";
+import { toast } from "sonner";
+import CheckoutFooter from "../checkout-footer";
+import StripeForm from "./stripe-form";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string,
@@ -79,33 +80,35 @@ export default function PaymentForm({
     }
   };
 
+  const t = useTranslations("Checkout");
+
   const CheckoutSummary = () => (
     <Card>
       <CardContent className="p-4">
         <div>
-          <div className="text-lg font-bold">Order Summary</div>
+          <div className="text-lg font-bold">{t("Order Summary")}</div>
           <div className="space-y-2">
             <div className="flex justify-between">
-              <span>Items:</span>
+              <span>{t("Items")}:</span>
               <span>
                 {" "}
                 <ProductPrice price={itemsPrice} plain />
               </span>
             </div>
             <div className="flex justify-between">
-              <span>Shipping & Handling:</span>
+              <span>{t("Shipping & Handling")}:</span>
               <span>
                 {shippingPrice === undefined ? (
                   "--"
                 ) : shippingPrice === 0 ? (
-                  "FREE"
+                  t("Free")
                 ) : (
                   <ProductPrice price={shippingPrice} plain />
                 )}
               </span>
             </div>
             <div className="flex justify-between">
-              <span> Tax:</span>
+              <span>{t("Tax")}:</span>
               <span>
                 {taxPrice === undefined ? (
                   "--"
@@ -115,7 +118,7 @@ export default function PaymentForm({
               </span>
             </div>
             <div className="flex justify-between  pt-1 font-bold text-lg">
-              <span> Order Total:</span>
+              <span> {t("Order Total")}:</span>
               <span>
                 {" "}
                 <ProductPrice price={totalPrice} plain />
@@ -152,7 +155,7 @@ export default function PaymentForm({
                 className="w-full rounded-full"
                 onClick={() => router.push(`/account/orders/${order._id}`)}
               >
-                View Order
+                {t("View Order")}
               </Button>
             )}
           </div>
@@ -165,11 +168,10 @@ export default function PaymentForm({
     <main className="max-w-6xl mx-auto">
       <div className="grid md:grid-cols-4 gap-6">
         <div className="md:col-span-3">
-          {/* Shipping Address */}
           <div>
             <div className="grid md:grid-cols-3 my-3 pb-3">
               <div className="text-lg font-bold">
-                <span>Shipping Address</span>
+                <span>{t("Shipping Address")}</span>
               </div>
               <div className="col-span-2">
                 <p>
@@ -185,7 +187,7 @@ export default function PaymentForm({
           <div className="border-y">
             <div className="grid md:grid-cols-3 my-3 pb-3">
               <div className="text-lg font-bold">
-                <span>Payment Method</span>
+                <span>{t("Payment Method")}</span>
               </div>
               <div className="col-span-2">
                 <p>{paymentMethod}</p>
@@ -195,11 +197,11 @@ export default function PaymentForm({
 
           <div className="grid md:grid-cols-3 my-3 pb-3">
             <div className="flex text-lg font-bold">
-              <span>Items and shipping</span>
+              <span>{t("Items and shipping")}</span>
             </div>
             <div className="col-span-2">
               <p>
-                Delivery date:
+                {t("Delivery date")}:{" "}
                 {formatDateTime(expectedDeliveryDate).dateOnly}
               </p>
               <ul>
@@ -211,6 +213,7 @@ export default function PaymentForm({
               </ul>
             </div>
           </div>
+
           <div className="block md:hidden">
             <CheckoutSummary />
           </div>

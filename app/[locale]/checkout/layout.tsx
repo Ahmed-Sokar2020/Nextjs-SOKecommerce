@@ -1,5 +1,6 @@
 import Logo from "@/components/shared/logo";
 import { HelpCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import React from "react";
 
@@ -8,6 +9,7 @@ export default function CheckoutLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const t = useTranslations("Checkout");
   return (
     <div className="p-4">
       <header className="bg-card mb-4 pb-4 border-b">
@@ -15,7 +17,7 @@ export default function CheckoutLayout({
           <Logo />
 
           <div>
-            <h1 className="text-3xl">Checkout</h1>
+            <h1 className="text-3xl">{t("Checkout")}</h1>
           </div>
 
           <div>

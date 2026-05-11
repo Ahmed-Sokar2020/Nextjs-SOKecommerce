@@ -1,4 +1,5 @@
 import {
+  CarouselSchema,
   CartSchema,
   DeliveryDateSchema,
   OrderInputSchema,
@@ -9,6 +10,7 @@ import {
   SettingInputSchema,
   ShippingAddressSchema,
   SiteCurrencySchema,
+  SiteLanguageSchema,
   UserInputSchema,
   UserNameSchema,
   UserSignInSchema,
@@ -62,7 +64,6 @@ export type IOrderList = IOrderInput & {
   };
   createdAt: Date;
 };
-
 export type OrderItem = z.infer<typeof OrderItemSchema>;
 export type Cart = z.infer<typeof CartSchema>;
 export type ShippingAddress = z.infer<typeof ShippingAddressSchema>;
@@ -77,13 +78,16 @@ export type IUserName = z.infer<typeof UserNameSchema>;
 export type IWebPageInput = z.infer<typeof WebPageInputSchema>;
 
 // setting
-// export type ICarousel = z.infer<typeof CarouselSchema>
+export type ICarousel = z.infer<typeof CarouselSchema>;
 export type ISettingInput = z.infer<typeof SettingInputSchema>;
 export type ClientSetting = ISettingInput & {
   currency: string;
 };
 
-// export type SiteLanguage = z.infer<typeof SiteLanguageSchema>
+// Site Language and Currency
+export type SiteLanguage = z.infer<typeof SiteLanguageSchema>;
 export type SiteCurrency = z.infer<typeof SiteCurrencySchema>;
+
+// Payment Method and Delivery Date
 export type PaymentMethod = z.infer<typeof PaymentMethodSchema>;
 export type DeliveryDate = z.infer<typeof DeliveryDateSchema>;

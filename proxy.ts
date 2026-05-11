@@ -24,12 +24,12 @@ import NextAuth from "next-auth";
 import createMiddleware from "next-intl/middleware";
 import authConfig from "./auth.config";
 import { routing } from "./i18n/routing";
+
 // 1. Setup the i18n middleware
 const intlMiddleware = createMiddleware(routing);
 
 // 2. Setup Auth
 const { auth } = NextAuth(authConfig);
-
 export default auth((req) => {
   // This handles the automatic redirect from / to /en-US
   return intlMiddleware(req);

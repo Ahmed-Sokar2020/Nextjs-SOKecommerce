@@ -2,10 +2,10 @@
 
 import { cn } from "@/lib/utils";
 import useBrowsingHistoryStore from "@/store/use-browsing-history-store";
+import { useTranslations } from "next-intl";
 import React, { useEffect } from "react";
 import { Separator } from "../ui/separator";
 import ProductSlider from "./product/product-slider";
-// import { useTranslations } from 'next-intl'
 
 export default function BrowsingHistoryList({
   className,
@@ -13,17 +13,21 @@ export default function BrowsingHistoryList({
   className?: string;
 }) {
   const { products } = useBrowsingHistoryStore();
-  // const t = useTranslations('Home')
+  const t = useTranslations("Home");
   return (
     products.length !== 0 && (
       <div className="bg-background">
         <Separator className={cn("mb-4", className)} />
         <ProductList
-          title="Related to items that you've viewed"
+          title={t("Related to items that you've viewed")}
           type="related"
         />
         <Separator className="mb-4" />
-        <ProductList title="Your browsing history" hideDetails type="history" />
+        <ProductList
+          title={t("Your browsing history")}
+          hideDetails
+          type="history"
+        />
       </div>
     )
   );
