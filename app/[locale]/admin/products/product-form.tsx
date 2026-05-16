@@ -20,6 +20,7 @@ import { UploadButton } from "@/lib/uploadthing";
 import { toSlug } from "@/lib/utils";
 import { ProductInputSchema } from "@/lib/validator";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -79,17 +80,11 @@ const ProductForm = ({
   productId?: string;
 }) => {
   const router = useRouter();
-
-  // const form = useForm<IProductInput>({
-  //   resolver: zodResolver(ProductInputSchema),
-  //   defaultValues:
-  //     product && type === "Update" ? product : productDefaultValues,
-  // });
+  const t = useTranslations("Admin");
 
   type ProductFormValues = z.infer<typeof ProductInputSchema>;
 
   const form = useForm<ProductFormValues>({
-    // resolver: zodResolver(ProductInputSchema),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resolver: zodResolver(ProductInputSchema) as any,
     defaultValues:
@@ -135,9 +130,12 @@ const ProductForm = ({
             name="name"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Name</FormLabel>
+                <FormLabel>{t("Form.Name")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter product name" {...field} />
+                  <Input
+                    placeholder={t("Form.Enter product name")}
+                    {...field}
+                  />
                 </FormControl>
 
                 <FormMessage />
@@ -150,12 +148,12 @@ const ProductForm = ({
             name="slug"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Slug</FormLabel>
+                <FormLabel>{t("Form.Slug")}</FormLabel>
 
                 <FormControl>
                   <div className="relative">
                     <Input
-                      placeholder="Enter product slug"
+                      placeholder={t("Form.Enter product slug")}
                       className="pl-8"
                       {...field}
                     />
@@ -164,7 +162,7 @@ const ProductForm = ({
                       onClick={() => {
                         form.setValue("slug", toSlug(form.getValues("name")));
                       }}
-                      className="absolute right-2 top-2.5"
+                      className="absolute right-2 top-1 h-6 px-2 bg-primary text-primary-foreground rounded text-xs"
                     >
                       Generate
                     </button>
@@ -182,9 +180,9 @@ const ProductForm = ({
             name="category"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Category</FormLabel>
+                <FormLabel>{t("Form.Category")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter category" {...field} />
+                  <Input placeholder={t("Form.Enter category")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -196,9 +194,12 @@ const ProductForm = ({
             name="brand"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Brand</FormLabel>
+                <FormLabel>{t("Form.Brand")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter product brand" {...field} />
+                  <Input
+                    placeholder={t("Form.Enter product brand")}
+                    {...field}
+                  />
                 </FormControl>
 
                 <FormMessage />
@@ -212,9 +213,12 @@ const ProductForm = ({
             name="listPrice"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>List Price</FormLabel>
+                <FormLabel>{t("Form.List Price")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter product list price" {...field} />
+                  <Input
+                    placeholder={t("Form.Enter product list price")}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -225,9 +229,12 @@ const ProductForm = ({
             name="price"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Net Price</FormLabel>
+                <FormLabel>{t("Form.Net Price")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter product price" {...field} />
+                  <Input
+                    placeholder={t("Form.Enter product price")}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -238,11 +245,11 @@ const ProductForm = ({
             name="countInStock"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Count In Stock</FormLabel>
+                <FormLabel>{t("Form.Count In Stock")}</FormLabel>
                 <FormControl>
                   <Input
                     type="number"
-                    placeholder="Enter product count in stock"
+                    placeholder={t("Form.Enter product count in stock")}
                     {...field}
                   />
                 </FormControl>
@@ -258,7 +265,7 @@ const ProductForm = ({
             name="images"
             render={() => (
               <FormItem className="w-full">
-                <FormLabel>Images</FormLabel>
+                <FormLabel>{t("Form.Images")}</FormLabel>
                 <Card>
                   <CardContent className="space-y-2 mt-2 min-h-48">
                     <div className="flex justify-start items-center space-x-2">
@@ -309,17 +316,21 @@ const ProductForm = ({
             name="description"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Description</FormLabel>
+                <FormLabel>{t("Form.Description")}</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Tell us a little bit about yourself"
+                    placeholder={t("Form.Enter product description")}
                     className="resize-none"
                     {...field}
                   />
                 </FormControl>
                 <FormDescription>
-                  You can <span>@mention</span> other users and organizations to
-                  link to them.
+                  <span>
+                    {t(
+                      // "You can @mention other users and organizations to link to them",
+                      "Form.Mention",
+                    )}
+                  </span>
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -338,7 +349,7 @@ const ProductForm = ({
                     onCheckedChange={field.onChange}
                   />
                 </FormControl>
-                <FormLabel>Is Published?</FormLabel>
+                <FormLabel>{t("Form.Is Published")}</FormLabel>
               </FormItem>
             )}
           />
@@ -350,7 +361,9 @@ const ProductForm = ({
             disabled={form.formState.isSubmitting}
             className="button col-span-2 w-full"
           >
-            {form.formState.isSubmitting ? "Submitting..." : `${type} Product `}
+            {form.formState.isSubmitting
+              ? t("Submitting")
+              : `${t(`AdminProducts.${type}`)} ${t("AdminProducts.Product")}`}
           </Button>
         </div>
       </form>

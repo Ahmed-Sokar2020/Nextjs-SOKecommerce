@@ -1,8 +1,8 @@
 "use client";
 
+import { Link } from "@/i18n/navigation";
 import { ChevronUp } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import useSettingStore from "@/store/use-setting-store";
@@ -203,7 +203,9 @@ export default function Footer() {
                   ))}
                 </SelectContent>
               </Select>
+
               {/* Select for Currencies */}
+
               <Select
                 value={currency}
                 onValueChange={(value) => {
@@ -230,10 +232,25 @@ export default function Footer() {
       </div>
 
       <div className="p-4">
-        <div className="flex justify-center  gap-3 text-sm">
-          <Link href="/conditions-of-use">{t("Footer.Conditions of Use")}</Link>
-          <Link href="/privacy-notice">{t("Footer.Privacy Notice")}</Link>
-          <Link href="/help">{t("Footer.Help")}</Link>
+        <div className="flex justify-center  gap-3 text-sm ">
+          <Link
+            className="hover:opacity-60 transition-opacity duration-500"
+            href="/conditions-of-use"
+          >
+            {t("Footer.Conditions of Use")}
+          </Link>
+          <Link
+            className="hover:opacity-60 transition-opacity duration-500"
+            href="/privacy-notice"
+          >
+            {t("Footer.Privacy Notice")}
+          </Link>
+          <Link
+            className="hover:opacity-60 transition-opacity duration-500"
+            href="/help"
+          >
+            {t("Footer.Help")}
+          </Link>
         </div>
 
         <div className="flex justify-center text-sm">

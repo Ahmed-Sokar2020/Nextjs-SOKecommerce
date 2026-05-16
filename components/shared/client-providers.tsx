@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
 import useCartSidebar from "@/hooks/use-cart-sidebar";
+import React from "react";
+import { Toaster } from "../ui/sonner";
 import CartSidebar from "./cart-sidebar";
 import { ThemeProvider } from "./theme-provider";
-import { Toaster } from "../ui/sonner";
 // import { ClientSetting } from '@/types'
 
 export default function ClientProviders({

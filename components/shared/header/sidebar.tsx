@@ -13,7 +13,7 @@ import { getDirection } from "@/i18n-config";
 import { SignOut } from "@/lib/actions/user.actions";
 import { ChevronRight, MenuIcon, UserCircle, X } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
-import Link from "next/link";
+import {Link} from "@/i18n/navigation";
 
 export default async function Sidebar({
   categories,

@@ -57,7 +57,7 @@
     "Added to Cart": "أضيف إلى السلة",
     "Go to Cart": "اذهب إلى السلة",
     "Item added successfully": "تمت إضافة العنصر بنجاح",
-    "Proceeding to checkout": "المتابعة إلى الخروج",
+    "Proceeding to checkout": "المتابعة إلى الدفع",
     "Deleted User": "مستخدم محذوف",
     "Brand": "العلامة التجارية",
     "Limited time deal": "صفقة محدودة الوقت",
@@ -134,7 +134,25 @@
     "Checkout": "الخروج"
   },
   "Search": {
-    "for": "لـ",
+    "SortBy": "ترتيب حسب:",
+    "SortOptions": {
+      "best-selling": "الأكثر مبيعاً",
+      "newest-arrivals": "وصل حديثاً",
+      "price-low-to-high": "السعر: من الأقل إلى الأعلى",
+      "price-high-to-low": "السعر: من الأعلى إلى الأقل",
+      "avg-customer-review": "متوسط تقييمات العملاء"
+    },
+    "Todays Deal": "صفقة اليوم",
+    "New Arrival": "الوافد الجديد",
+    "Featured": "المنتجات المميزة",
+    "Best Seller": "الأكثر مبيعًا",
+    "Browsing History": "سجل التصفح",
+    "todays-deal": "صفقة اليوم",
+    "new-arrival": "الوافد الجديد",
+    "featured": "المنتجات المميزة",
+    "best-seller": "الأكثر مبيعًا",
+    "browsing-history": "سجل التصفح",
+    "for": "ل",
     "Search": "بحث",
     "Search Site": "البحث في الموقع",
     "Results": "النتائج",
@@ -225,6 +243,7 @@
     "continueShopping": "🛍️ متابعة التسوق",
     "help": "هل تحتاج إلى مساعدة؟ اتصل بالدعم في أي وقت."
   },
+
   "Footer": {
     "Select a currency": "حدد عملة",
     "Select a language": "حدد لغة",
@@ -249,23 +268,33 @@
     "Your Addresses": "عناوينك"
   },
   "Loading": {
-    "Loading": "جاري التحميل..."
+    "Loading": "جاري التحميل"
   },
   "Error": {
     "Error": "خطأ",
-    "Try again": "حاول مرة أخرى",
+    "Try Again": "حاول مرة أخرى",
     "Back To Home": "العودة إلى الرئيسية"
   },
+  "Not Found": {
+    "Page Not Found": {
+      "Page Not Found": "الصفحة غير موجودة",
+      "Description": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها."
+    },
+    "Go To Home": "اذهب إلى الصفحة الرئيسية"
+  },
   "Admin": {
+    "Admin Dashboard": "لوحه تحكم",
+    "Dashboard": "لوحة التحكم",
     "Deleted User": "مستخدم محذوف",
     "Overview": "نظرة عامة",
     "Products": "المنتجات",
     "Orders": "الطلبات",
     "Users": "المستخدمون",
     "Pages": "الصفحات",
-    "Carousel": "دائري",
+    "Page": "الصفحة",
+    "Carousel": "شريط التمرير",
+    "Carousels": "اشرطه التمرير",
     "Settings": "الإعدادات",
-    "Dashboard": "لوحة التحكم",
     "Total Revenue": "إجمالي الإيرادات",
     "View revenue": "عرض الإيرادات",
     "Sales": "المبيعات",
@@ -285,6 +314,64 @@
     "Total": "الإجمالي",
     "Status": "الحالة",
     "Actions": "الإجراءات",
-    "Details": "التفاصيل"
+    "Details": "التفاصيل",
+    "Previous": "السابق",
+    "Next": "التالي",
+    "Add": "إضافة",
+    "Loading": "جاري التحميل",
+    "Submitting": "...جاري الإرسال",
+    "of": "من",
+    "Form": {
+      "Id": "المعرف",
+      "Name": "الاسم",
+      "Price": "السعر",
+      "Category": "الفئة",
+      "Stock": "المخزون",
+      "Rating": "التقييم",
+      "Is Published": "تم النشر",
+      "Last Update": "آخر تحديث",
+      "Brand": " العلامة التجارية",
+      "List Price": "سعر القائمة",
+      "Net Price": "السعر الصافي",
+      "Count In Stock": "الكمية في المخزون",
+      "Images": "الصور",
+      "Description": "الوصف",
+      "Enter product count in stock": "أدخل عدد المنتجات في المخزون",
+      "Enter product description": "أدخل وصف المنتج",
+      "Enter product name": " ادخل اسم المنتج",
+      "Enter product slug": "ادخل الاسم المختصر للمنتج",
+      "Enter category": "ادخل الفئه",
+      "Enter product brand": "ادخل العلامه التجاريه للمنتج",
+      "Enter product list price": "أدخل سعر قائمة المنتج",
+      "Enter product price": "أدخل سعر المنتج",
+      "Mention": "يمكنك الإشارة إلى مستخدمين ومنظمات أخرى عبر @mention لربطها بهم",
+      "No": "لا",
+      "Actions": {
+        "Edit": "تعديل",
+        "Delete": "حذف",
+        "Deleting": "جاري الحذف...",
+        "View": "عرض",
+        "Details": "التفاصيل"
+      },
+      "Total": "الإجمالي",
+      "Paid": "مدفوع",
+      "Delivered": "تم التوصيل",
+      "Email": "البريد الإلكتروني",
+      "Role": "الدور",
+      "Slug": "الاسم المختصر"
+    },
+    "Dialog": {
+      "AlertDialogTitle": "هل أنت متأكد تمامًا؟",
+      "AlertDialogDescription": "لا يمكن التراجع عن هذا الإجراء. سيؤدي هذا إلى حذف المنتج بشكل دائم.",
+      "Cancel": "إلغاء"
+    },
+    "AdminProducts": {
+      "Product": "المنتج",
+      "Update": "تحديث",
+      "Create": "انشاء",
+      "Add Product": "إضافة منتج",
+      "Filter name": "تصفية بالاسم",
+      "results": "النتائج"
+    }
   }
 }

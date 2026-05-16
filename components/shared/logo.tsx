@@ -1,6 +1,6 @@
+import { Link } from "@/i18n/navigation";
 import { APP_NAME } from "@/lib/constants";
 import Image from "next/image";
-import Link from "next/link";
 
 const Logo = () => {
   return (

@@ -21,6 +21,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import useIsMounted from "@/hooks/use-is-mounted";
+import { Link } from "@/i18n/navigation";
 import { createOrder } from "@/lib/actions/order.actions";
 import {
   APP_NAME,
@@ -38,7 +39,6 @@ import useCartStore from "@/store/use-cart-store";
 import { ShippingAddress } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";

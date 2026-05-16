@@ -34,6 +34,7 @@ export const formatNumberWithDecimal = (num: number): string => {
   const [int, decimal] = num.toString().split(".");
   return decimal ? `${int}.${decimal.padEnd(2, "0")}` : int;
 };
+
 // PROMPT: [ChatGTP] create toSlug ts arrow function that convert text to lowercase, remove non-word,
 // non-whitespace, non-hyphen characters, replace whitespace, trim leading hyphens and trim trailing hyphens
 
@@ -65,30 +66,6 @@ export const round2 = (num: number) =>
 
 export const generateId = () =>
   Array.from({ length: 24 }, () => Math.floor(Math.random() * 10)).join("");
-
-// export const formatError = (error: any): string => {
-//   if (error.name === "ZodError") {
-//     const fieldErrors = Object.keys(error.errors).map((field) => {
-//       const errorMessage = error.errors[field].message;
-//       return `${error.errors[field].path}: ${errorMessage}`; // field: errorMessage
-//     });
-//     return fieldErrors.join(". ");
-//   } else if (error.name === "ValidationError") {
-//     const fieldErrors = Object.keys(error.errors).map((field) => {
-//       const errorMessage = error.errors[field].message;
-//       return errorMessage;
-//     });
-//     return fieldErrors.join(". ");
-//   } else if (error.code === 11000) {
-//     const duplicateField = Object.keys(error.keyValue)[0];
-//     return `${duplicateField} already exists`;
-//   } else {
-//     // return 'Something went wrong. please try again'
-//     return typeof error.message === "string"
-//       ? error.message
-//       : JSON.stringify(error.message);
-//   }
-// };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const formatError = (error: any): string => {

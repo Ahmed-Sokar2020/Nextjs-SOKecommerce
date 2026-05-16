@@ -8,12 +8,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { ICarousel } from "@/types";
 import Autoplay from "embla-carousel-autoplay";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import * as React from "react";
 
 export function HomeBannerCarousel({ items }: { items: ICarousel[] }) {

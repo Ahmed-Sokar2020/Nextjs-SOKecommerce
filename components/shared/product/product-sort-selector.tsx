@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Select,
   SelectContent,
@@ -7,6 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { getFilterUrl } from "@/lib/utils";
+import { useTranslations } from "next-intl"; // Import hook
 import { useRouter } from "next/navigation";
 
 export default function ProductSortSelector({
@@ -26,26 +28,32 @@ export default function ProductSortSelector({
   };
 }) {
   const router = useRouter();
-  return (
-    <Select
-      onValueChange={(v) => {
-        router.push(getFilterUrl({ params, sort: v }));
-      }}
-      value={sort}
-    >
-      <SelectTrigger>
-        <SelectValue>
-          Sort By: {sortOrders.find((s) => s.value === sort)!.name}
-        </SelectValue>
-      </SelectTrigger>
+  const t = useTranslations("Search");
 
-      <SelectContent position="popper" side="bottom">
-        {sortOrders.map((s) => (
-          <SelectItem key={s.value} value={s.value}>
-            {s.name}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+  return (
+    <div className="flex items-center gap-2">
+      <Select
+        onValueChange={(v) => {
+          router.push(getFilterUrl({ params, sort: v }));
+        }}
+        value={sort}
+      >
+        <SelectTrigger className="w-full md:w-[240px] min-w-fit px-4 text-left">
+          <SelectValue>
+            {/* Localized "Sort By" label */}
+            {t("SortBy")} {t(`SortOptions.${sort}`)}
+          </SelectValue>
+        </SelectTrigger>
+
+        <SelectContent position="popper" side="bottom">
+          {sortOrders.map((s) => (
+            <SelectItem key={s.value} value={s.value}>
+              {/* Translate each option using its value as a key */}
+              {t(`SortOptions.${s.value}`)}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
   );
 }

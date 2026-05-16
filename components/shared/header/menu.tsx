@@ -16,7 +16,6 @@ import UserButton from "./user-button";
 
 const Menu = ({ forAdmin = false }: { forAdmin?: boolean }) => {
   const t = useTranslations();
-  // const [mounted, setMounted] = useState(false);
   return (
     <div className="flex justify-end">
       <nav className="md:flex gap-3 hidden w-full">

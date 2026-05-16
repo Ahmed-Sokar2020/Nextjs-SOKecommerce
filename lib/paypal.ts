@@ -1,4 +1,3 @@
-// const base = process.env.PAYPAL_API_URL || "https:/sandbox.paypal.com";
 const base = process.env.PAYPAL_API_URL || "https://sandbox.paypal.com";
 
 export const paypal = {

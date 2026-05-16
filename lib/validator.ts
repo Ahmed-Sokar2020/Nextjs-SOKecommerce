@@ -5,21 +5,6 @@ const MongoId = z
   .string()
   .regex(/^[0-9a-fA-F]{24}$/, { message: "Invalid MongoDB ID" });
 
-// const Price = (field: string) =>
-//   z.coerce
-//     .number()
-//     .refine(
-//       (value) => /^\d+(\.\d{2})?$/.test(formatNumberWithDecimal(value)),
-//       `${field} must have exactly two decimal places (e.g., 49.99)`,
-//     );
-
-// const Price = (field: string): z.ZodType<number> =>
-//   z.coerce
-//     .number()
-//     .refine((value) => /^\d+(\.\d{2})?$/.test(formatNumberWithDecimal(value)), {
-//       message: `${field} must have exactly two decimal places (e.g., 49.99)`,
-//     });
-
 const Price = (field: string) =>
   z.coerce
     .number()

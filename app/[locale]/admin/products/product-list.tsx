@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -21,6 +21,7 @@ import DeleteDialog from "@/components/shared/delete-dialog";
 import { Input } from "@/components/ui/input";
 import { formatDateTime, formatId } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import React, { useEffect, useState, useTransition } from "react";
 
 type ProductListDataProps = {
@@ -77,51 +78,56 @@ const ProductList = () => {
     });
   }, []);
 
+  const t = useTranslations("Admin");
+
   return (
     <div>
       <div className="space-y-2">
         <div className="flex-between flex-wrap gap-2">
           <div className="flex flex-wrap items-center gap-2 ">
-            <h1 className="font-bold text-lg">Products</h1>
+            <h1 className="font-bold text-lg">{t("Products")}</h1>
             <div className="flex flex-wrap items-center  gap-2 ">
               <Input
                 className="w-auto"
                 type="text "
                 value={inputValue}
                 onChange={handleInputChange}
-                placeholder="Filter name..."
+                placeholder={t("AdminProducts.Filter name") + "..."}
               />
 
               {isPending ? (
-                <p>Loading...</p>
+                // <LoadingPage />
+                <p>{t("Loading")}...</p>
               ) : (
                 <p>
                   {data?.totalProducts === 0
                     ? "No"
-                    : `${data?.from}-${data?.to} of ${data?.totalProducts}`}
-                  {" results"}
+                    : `${data?.from}-${data?.to} ${t("of")} ${data?.totalProducts}`}{" "}
+                  {t("AdminProducts.results")}
                 </p>
               )}
             </div>
           </div>
 
           <Button asChild variant="default">
-            <Link href="/admin/products/create">Create Product</Link>
+            <Link href="/admin/products/create">
+              {t("AdminProducts.Add Product")}
+            </Link>
           </Button>
         </div>
         <div>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Id</TableHead>
-                <TableHead>Name</TableHead>
-                <TableHead className="text-right">Price</TableHead>
-                <TableHead>Category</TableHead>
-                <TableHead>Stock</TableHead>
-                <TableHead>Rating</TableHead>
-                <TableHead>Published</TableHead>
-                <TableHead>Last Update</TableHead>
-                <TableHead className="w-[100px]">Actions</TableHead>
+                <TableHead>{t("Form.Id")}</TableHead>
+                <TableHead>{t("Form.Name")}</TableHead>
+                <TableHead className="text-right">{t("Form.Price")}</TableHead>
+                <TableHead>{t("Form.Category")}</TableHead>
+                <TableHead>{t("Form.Stock")}</TableHead>
+                <TableHead>{t("Form.Rating")}</TableHead>
+                <TableHead>{t("Form.Is Published")}</TableHead>
+                <TableHead>{t("Form.Last Update")}</TableHead>
+                <TableHead className="w-[100px]">{t("Actions")}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -143,11 +149,13 @@ const ProductList = () => {
                   </TableCell>
                   <TableCell className="flex gap-1">
                     <Button asChild variant="outline" size="sm">
-                      <Link href={`/admin/products/${product._id}`}>Edit</Link>
+                      <Link href={`/admin/products/${product._id}`}>
+                        {t("Form.Actions.Edit")}
+                      </Link>
                     </Button>
                     <Button asChild variant="outline" size="sm">
                       <Link target="_blank" href={`/product/${product.slug}`}>
-                        View
+                        {t("Form.Actions.View")}
                       </Link>
                     </Button>
                     <DeleteDialog
@@ -175,16 +183,16 @@ const ProductList = () => {
                 disabled={Number(page) <= 1}
                 className="w-24"
               >
-                <ChevronLeft /> Previous
+                <ChevronLeft /> {t("Previous")}
               </Button>
-              Page {page} of {data?.totalPages}
+              {t("Page")} {page} {t("of")} {data?.totalPages}
               <Button
                 variant="outline"
                 onClick={() => handlePageChange("next")}
                 disabled={Number(page) >= (data?.totalPages ?? 0)}
                 className="w-24"
               >
-                Next <ChevronRight />
+                {t("Next")} <ChevronRight />
               </Button>
             </div>
           )}

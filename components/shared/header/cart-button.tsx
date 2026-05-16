@@ -2,11 +2,11 @@
 
 import useCartSidebar from "@/hooks/use-cart-sidebar";
 import useIsMounted from "@/hooks/use-is-mounted";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import useCartStore from "@/store/use-cart-store";
 import { ShoppingCartIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 // import { getDirection } from '@/i18n-config'
 
 export default function CartButton() {

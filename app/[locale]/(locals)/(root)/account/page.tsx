@@ -1,9 +1,8 @@
 import BrowsingHistoryList from "@/components/shared/browsing-history-list";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "@/i18n/navigation";
 import { Home, PackageCheckIcon, User } from "lucide-react";
 import { Metadata } from "next";
-import Link from "next/link";
-import React from "react";
 
 const PAGE_TITLE = "Your Account";
 export const metadata: Metadata = {

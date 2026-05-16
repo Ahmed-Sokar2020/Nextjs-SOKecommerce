@@ -38,7 +38,7 @@ export default function SearchContent({
             className="w-auto h-full px-4 flex items-center gap-1 dark:border-gray-200 bg-gray-100 text-foreground border-r rounded-r-none rounded-l-md rtl:rounded-r-md rtl:rounded-l-none transition-colors dark:bg-black dark:border"
           >
             <span className="capitalize">
-              {selectedCategory === "all" ? t("All") : selectedCategory}
+              {selectedCategory === "all" ? t("All") : t(selectedCategory)}
             </span>
             <ChevronDown className="w-4 h-4 opacity-50" />
           </Button>
@@ -47,7 +47,7 @@ export default function SearchContent({
         <DropdownMenuContent
           align="start"
           sideOffset={4}
-          className="w-48 bg-popover text-popover-foreground z-[100]"
+          className="w-48 bg-popover text-popover-foreground z-100]"
         >
           <DropdownMenuItem
             onClick={() => setSelectedCategory("all")}
@@ -59,7 +59,7 @@ export default function SearchContent({
           {categories.map((category) => (
             <DropdownMenuItem
               key={category}
-              onClick={() => setSelectedCategory(t(category))}
+              onClick={() => setSelectedCategory(category)}
               className="cursor-pointer capitalize transition-colors focus:text-foreground"
             >
               {t(category)}

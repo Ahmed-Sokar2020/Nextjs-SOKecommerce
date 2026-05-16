@@ -8,9 +8,9 @@ import {
 } from "@/components/ui/popover";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
+import { Link } from "@/i18n/navigation";
 import { ChevronDownIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import Rating from "./rating";
 
 type RatingSummaryProps = {

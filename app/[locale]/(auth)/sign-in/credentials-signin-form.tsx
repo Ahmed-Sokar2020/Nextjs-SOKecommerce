@@ -3,7 +3,7 @@ import { redirect, useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 // import useSettingStore from '@/hooks/use-setting-store'
 import {
   Form,
@@ -13,15 +13,15 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useForm } from "react-hook-form";
-import { IUserSignIn } from "@/types";
 import { signInWithCredentials } from "@/lib/actions/user.actions";
+import { IUserSignIn } from "@/types";
+import { useForm } from "react-hook-form";
 
-import { toast } from "sonner";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { UserSignInSchema } from "@/lib/validator";
-import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { APP_NAME } from "@/lib/constants";
+import { UserSignInSchema } from "@/lib/validator";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
+import { toast } from "sonner";
 
 const signInDefaultValues =
   process.env.NODE_ENV === "development"

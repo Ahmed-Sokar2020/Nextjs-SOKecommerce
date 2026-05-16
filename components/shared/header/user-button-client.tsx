@@ -9,10 +9,10 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Link } from "@/i18n/navigation";
 import { SignOut } from "@/lib/actions/user.actions";
 import { cn } from "@/lib/utils";
 import { ChevronDownIcon } from "lucide-react";
-import Link from "next/link";
 // import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -29,7 +29,7 @@ export default function UserButtonClient({ session }: any) {
           <button className="header-button flex items-center">
             <div className="flex flex-col text-xs text-left">
               <span>
-                {t("Hello")}, {session?.user?.name ?? "sign in"}
+                {t("Hello")}, {session?.user?.name ?? t("Sign in")}
               </span>
               <span className="font-bold">{t("Account & Orders")}</span>
             </div>
@@ -82,7 +82,7 @@ export default function UserButtonClient({ session }: any) {
             </DropdownMenuGroup>
             <DropdownMenuLabel>
               <div className="font-normal">
-                {t("New Customer")} <Link href="/sign-up">{t("Sign up")}</Link>
+                {t("New Customer")}? <Link href="/sign-up">{t("Sign up")}</Link>
               </div>
             </DropdownMenuLabel>
           </DropdownMenuContent>

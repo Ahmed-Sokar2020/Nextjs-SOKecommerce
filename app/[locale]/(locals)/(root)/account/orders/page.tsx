@@ -1,7 +1,9 @@
+import { Link } from "@/i18n/navigation";
 import { Metadata } from "next";
-import Link from "next/link";
 
+import BrowsingHistoryList from "@/components/shared/browsing-history-list";
 import Pagination from "@/components/shared/pagination";
+import ProductPrice from "@/components/shared/product/product-price";
 import {
   Table,
   TableBody,
@@ -13,8 +15,6 @@ import {
 import { getMyOrders } from "@/lib/actions/order.actions";
 import { IOrder } from "@/lib/db/models/order.model";
 import { formatDateTime, formatId } from "@/lib/utils";
-import BrowsingHistoryList from "@/components/shared/browsing-history-list";
-import ProductPrice from "@/components/shared/product/product-price";
 
 const PAGE_TITLE = "Your Orders";
 export const metadata: Metadata = {

@@ -1,6 +1,3 @@
-import { Metadata } from "next";
-import Link from "next/link";
-
 import { auth } from "@/auth";
 import DeleteDialog from "@/components/shared/delete-dialog";
 import Pagination from "@/components/shared/pagination";
@@ -14,9 +11,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Link } from "@/i18n/navigation";
 import { deleteOrder, getAllOrders } from "@/lib/actions/order.actions";
 import { formatDateTime, formatId } from "@/lib/utils";
 import { IOrderList } from "@/types";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Admin Orders",
@@ -35,20 +35,22 @@ export default async function OrdersPage(props: {
   const orders = await getAllOrders({
     page: Number(page),
   });
+  const t = await getTranslations("Admin");
+
   return (
     <div className="space-y-2">
-      <h1 className="h1-bold">Orders</h1>
+      <h1 className="h1-bold">{t("Orders")}</h1>
       <div className="overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Id</TableHead>
-              <TableHead>Date</TableHead>
-              <TableHead>Buyer</TableHead>
-              <TableHead>Total</TableHead>
-              <TableHead>Paid</TableHead>
-              <TableHead>Delivered</TableHead>
-              <TableHead>Actions</TableHead>
+              <TableHead>{t("Form.Id")}</TableHead>
+              <TableHead>{t("Date")}</TableHead>
+              <TableHead>{t("Buyer")}</TableHead>
+              <TableHead>{t("Form.Total")}</TableHead>
+              <TableHead>{t("Form.Paid")}</TableHead>
+              <TableHead>{t("Form.Delivered")}</TableHead>
+              <TableHead>{t("Actions")}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -59,7 +61,7 @@ export default async function OrdersPage(props: {
                   {formatDateTime(order.createdAt!).dateTime}
                 </TableCell>
                 <TableCell>
-                  {order.user ? order.user.name : "Deleted User"}
+                  {order.user ? order.user.name : t("Deleted User")}
                 </TableCell>
                 <TableCell>
                   {" "}
@@ -68,16 +70,18 @@ export default async function OrdersPage(props: {
                 <TableCell>
                   {order.isPaid && order.paidAt
                     ? formatDateTime(order.paidAt).dateTime
-                    : "No"}
+                    : t("Form.No")}
                 </TableCell>
                 <TableCell>
                   {order.isDelivered && order.deliveredAt
                     ? formatDateTime(order.deliveredAt).dateTime
-                    : "No"}
+                    : t("Form.No")}
                 </TableCell>
                 <TableCell className="flex gap-1">
                   <Button asChild variant="outline" size="sm">
-                    <Link href={`/admin/orders/${order._id}`}>Details</Link>
+                    <Link href={`/admin/orders/${order._id}`}>
+                      {t("Form.Actions.Details")}
+                    </Link>
                   </Button>
                   <DeleteDialog id={order._id} action={deleteOrder} />
                 </TableCell>

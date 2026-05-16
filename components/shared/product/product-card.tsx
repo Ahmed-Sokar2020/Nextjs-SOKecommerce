@@ -1,5 +1,5 @@
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import Link from "next/link";
 
 import {
   Card,
@@ -9,11 +9,11 @@ import {
 } from "@/components/ui/card";
 import { IProduct } from "@/lib/db/models/product.model";
 
-import Rating from "./rating";
 import { formatNumber, generateId, round2 } from "@/lib/utils";
-import ProductPrice from "./product-price";
-import ImageHover from "./image-hover";
 import AddToCart from "./add-to-cart";
+import ImageHover from "./image-hover";
+import ProductPrice from "./product-price";
+import Rating from "./rating";
 
 const ProductCard = ({
   product,
@@ -116,13 +116,13 @@ const ProductCard = ({
     </div>
   ) : (
     <Card className="flex flex-col  ">
-      <CardHeader className="p-3">
+      <CardHeader>
         {/* eslint-disable-next-line react-hooks/static-components */}
         <ProductImage />
       </CardHeader>
       {!hideDetails && (
         <>
-          <CardContent className="p-3 flex-1  text-center">
+          <CardContent className="flex-1  text-center">
             {/* eslint-disable-next-line react-hooks/static-components */}
             <ProductDetails />
           </CardContent>

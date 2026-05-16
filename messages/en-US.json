@@ -134,6 +134,24 @@
     "Checkout": "Checkout"
   },
   "Search": {
+    "SortBy": "Sort by:",
+    "SortOptions": {
+      "best-selling": "Best Selling",
+      "newest-arrivals": "Newest Arrivals",
+      "price-low-to-high": "Price: Low to High",
+      "price-high-to-low": "Price: High to Low",
+      "avg-customer-review": "Avg. Customer Review"
+    },
+    "Todays Deal": "Today's Deal",
+    "New Arrival": "New Arrival",
+    "Featured": "Featured",
+    "Best Seller": "Best Seller",
+    "Browsing History": "Browsing History",
+    "todays-deal": "Today's Deal",
+    "new-arrival": "New Arrival",
+    "featured": "Featured",
+    "best-seller": "Best Seller",
+    "browsing-history": "Browsing History",
     "for": "for",
     "Search": "Search",
     "Search Site": "Search Site",
@@ -249,23 +267,33 @@
     "Your Addresses": "Your Addresses"
   },
   "Loading": {
-    "Loading": "Loading..."
+    "Loading": "Loading"
   },
   "Error": {
     "Error": "Error",
-    "Try again": "Try again",
+    "Try Again": "Try Again",
     "Back To Home": "Back To Home"
   },
+  "Not Found": {
+    "Page Not Found": {
+      "Page Not Found": "Page Not Found",
+      "Description": "The page you’re looking for doesn’t exist or has been moved."
+    },
+    "Go To Home": "Go To Home"
+  },
   "Admin": {
+    "Admin Dashboard": "Admin Dashboard",
+    "Dashboard": "Dashboard",
     "Deleted User": "Deleted User",
     "Overview": "Overview",
     "Products": "Products",
     "Orders": "Orders",
     "Users": "Users",
     "Pages": "Pages",
+    "Page": "Page",
     "Carousel": "Carousel",
+    "Carousels": "Carousels",
     "Settings": "Settings",
-    "Dashboard": "Dashboard",
     "Total Revenue": "Total Revenue",
     "View revenue": "View revenue",
     "Sales": "Sales",
@@ -285,6 +313,65 @@
     "Total": "Total",
     "Status": "Status",
     "Actions": "Actions",
-    "Details": "Details"
+    "Details": "Details",
+    "Previous": "Previous",
+    "Next": "Next",
+    "Add:": "Add",
+    "Loading": "Loading",
+    "Submitting": "Submitting...",
+    "of": "of",
+    "Form": {
+      "Id": "Id",
+      "Name": "Name",
+      "Price": "Price",
+      "Category": "Category",
+      "Stock": "Stock",
+      "Rating": "Rating",
+      "Is Published": "Is Published",
+      "Last Update": "Last Update",
+      "Brand": "Brand",
+      "List Price": "List Price",
+      "Net Price": "Net Price",
+      "Count In Stock": "Count In Stock",
+      "Images": "Images",
+      "Description": "Description",
+      "Enter product count in stock": "Enter product count in stock",
+      "Enter product description": "Tell us a little bit about the product",
+      "Enter product name": "Enter product name",
+      "Enter product slug": "Enter product slug",
+      "Enter category": "Enter category",
+      "Enter product brand": "Enter product brand",
+      "Enter product list price": "Enter product list price",
+      "Enter product price": "Enter product price",
+      "Mention": "You can @mention other users and organizations to link to them",
+      "No": "No",
+      "Actions": {
+        "Edit": "Edit",
+        "Delete": "Delete",
+        "Deleting": "Deleting",
+        "View": "View",
+        "Details": "Details",
+        "Loading": "Loading"
+      },
+      "Total": "Total",
+      "Paid": "Paid",
+      "Delivered": "Delivered",
+      "Email": "Email",
+      "Role": "Role",
+      "Slug": "Slug"
+    },
+    "Dialog": {
+      "AlertDialogTitle": "Are you absolutely sure?",
+      "AlertDialogDescription": "This action cannot be undone. This will permanently delete the product.",
+      "Cancel": "Cancel"
+    },
+    "AdminProducts": {
+      "Product": "Product",
+      "Update": "Update",
+      "Create": "Create",
+      "Add Product": "Add Product",
+      "Filter name": "Filter name",
+      "results": "results"
+    }
   }
 }

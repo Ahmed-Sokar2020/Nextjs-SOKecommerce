@@ -3,10 +3,10 @@ import { SessionProvider } from "next-auth/react";
 
 import { auth } from "@/auth";
 
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 
 const PAGE_TITLE = "Login & Security";
 export const metadata: Metadata = {

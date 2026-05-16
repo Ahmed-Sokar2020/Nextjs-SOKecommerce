@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useTransition } from "react";
 
 import {
@@ -12,6 +13,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 export default function DeleteDialog({
@@ -25,23 +27,24 @@ export default function DeleteDialog({
 }) {
   const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
+  const t = useTranslations("Admin");
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>
         <Button size="sm" variant="outline">
-          Delete
+          {t("Form.Actions.Delete")}
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogTitle>{t("Dialog.AlertDialogTitle")}</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone.
+            {t("Dialog.AlertDialogDescription")}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>{t("Dialog.Cancel")}</AlertDialogCancel>
 
           <Button
             variant="destructive"
@@ -60,7 +63,7 @@ export default function DeleteDialog({
               })
             }
           >
-            {isPending ? "Deleting..." : "Delete"}
+            {isPending ? t("Form.Actions.Deleting") : t("Form.Actions.Delete")}
           </Button>
         </AlertDialogFooter>
       </AlertDialogContent>

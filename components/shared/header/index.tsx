@@ -1,10 +1,9 @@
+import { Link } from "@/i18n/navigation";
 import { getAllCategories } from "@/lib/actions/product.actions";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import Menu from "./menu";
 import Search from "./search";
 import Sidebar from "./sidebar";
-// import { getSetting } from '@/lib/actions/setting.actions'
-import { getTranslations } from "next-intl/server";
 
 import { APP_NAME } from "@/lib/constants";
 import data from "@/lib/data";
@@ -12,14 +11,11 @@ import Logo from "../logo";
 
 export default async function Header() {
   const categories = await getAllCategories();
-  // const { site } = await getSetting()
-  // const t = await getTranslations()
-  // Initialize translations for the 'Header' namespace in your JSON files
+
   const t = await getTranslations();
   return (
-    // <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95  backdrop-blur-md supports-[backdrop-filter]:bg-background/60 scrollbar-padding">
-    <header className="bg-black sticky top-0 z-50 text-white w-full">
-      {/* Now you can use the locale to translate links or switch languages */}
+    <header className="sticky top-0 z-50 w-full text-white bg-black border-b border-border  backdrop-blur-md supports-backdrop-filter:bg-black/60">
+      {/* <header className="bg-black sticky top-0 z-50 text-white w-full"> */}
 
       <div className="p-3">
         <div className="flex items-center justify-between">
@@ -29,6 +25,7 @@ export default async function Header() {
               <Logo />
               <Link href="/">
                 <span className="text-primary text-xl font-bold ml-3">
+                  {/* {APP_NAME} */}
                   {APP_NAME}
                 </span>
               </Link>

@@ -3,10 +3,10 @@ import { SessionProvider } from "next-auth/react";
 
 import { auth } from "@/auth";
 
-import { ProfileForm } from "./profile-form";
-import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "@/i18n/navigation";
 import { APP_NAME } from "@/lib/constants";
+import { ProfileForm } from "./profile-form";
 // import { getSetting } from '@/lib/actions/setting.actions'
 
 const PAGE_TITLE = "Change Your Name";

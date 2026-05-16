@@ -1,9 +1,10 @@
 "use client";
 
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Table,
@@ -15,7 +16,6 @@ import {
 } from "@/components/ui/table";
 import { IOrder } from "@/lib/db/models/order.model";
 import { cn, formatDateTime } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
 import ProductPrice from "../product/product-price";
 // import ActionButton from '../action-button'
 // import { deliverOrder, updateOrderToPaid } from '@/lib/actions/order.actions'

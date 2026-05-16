@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 import { IProduct } from "@/lib/db/models/product.model";
-import Link from "next/link";
 
 export default function SelectVariant({
   product,

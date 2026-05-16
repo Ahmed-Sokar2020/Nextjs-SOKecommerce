@@ -1253,18 +1253,18 @@ We also provide helpful resources such as order tracking, product guides, and FA
         pageSize: 9,
       },
       site: {
-        name: "NxtAmzn",
+        name: "SOKecommerce",
         description:
-          "NxtAmzn is a sample Ecommerce website built with Next.js, Tailwind CSS, and MongoDB.",
+          "SOKecommerce is a big Ecommerce website built with Next.js, Tailwind CSS, and MongoDB.",
         keywords: "Next Ecommerce, Next.js, Tailwind CSS, MongoDB",
         url: "https://next-mongo-ecommerce-final.vercel.app",
         logo: "/icons/logo.svg",
         slogan: "Spend less, enjoy more.",
         author: "Next Ecommerce",
-        copyright: "2000-2024, Next-Ecommerce.com, Inc. or its affiliates",
+        copyright: "2000-2026, Next-Ecommerce.com, Inc. or its affiliates",
         email: "admin@example.com",
-        address: "123, Main Street, Anytown, CA, Zip 12345",
-        phone: "+1 (123) 456-7890",
+        address: "123, Main Street, Alnozha, Cairo, Zip 12345",
+        phone: "+2 (123) 456-7890",
       },
       carousels: [
         {

@@ -2,7 +2,7 @@
 import Logo from "@/components/shared/logo";
 import { APP_COPYRIGHT } from "@/lib/constants";
 // import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import React from "react";
 
 export default async function AuthLayout({

@@ -1,6 +1,6 @@
 // import useSettingStore from '@/store/use-setting-store'
+import { Link } from "@/i18n/navigation";
 import { APP_NAME } from "@/lib/constants";
-import Link from "next/link";
 
 export default function CheckoutFooter() {
   // const {

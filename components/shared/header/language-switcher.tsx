@@ -68,6 +68,7 @@ import { setCurrencyOnServer } from "@/lib/actions/setting.actions";
 import useSettingStore from "@/store/use-setting-store";
 import { ChevronDownIcon } from "lucide-react";
 import { useLocale } from "next-intl";
+
 export default function LanguageSwitcher() {
   const { locales } = i18n;
   const locale = useLocale();
