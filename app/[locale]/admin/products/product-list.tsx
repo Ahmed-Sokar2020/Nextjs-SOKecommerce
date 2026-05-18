@@ -85,7 +85,7 @@ const ProductList = () => {
       <div className="space-y-2">
         <div className="flex-between flex-wrap gap-2">
           <div className="flex flex-wrap items-center gap-2 ">
-            <h1 className="font-bold text-lg">{t("Products")}</h1>
+            <h1 className="h1-bold ">{t("Products")}</h1>
             <div className="flex flex-wrap items-center  gap-2 ">
               <Input
                 className="w-auto"
@@ -143,7 +143,9 @@ const ProductList = () => {
                   <TableCell>{product.category}</TableCell>
                   <TableCell>{product.countInStock}</TableCell>
                   <TableCell>{product.avgRating}</TableCell>
-                  <TableCell>{product.isPublished ? "Yes" : "No"}</TableCell>
+                  <TableCell>
+                    {product.isPublished ? t("Form.Yes") : t("Form.No")}
+                  </TableCell>
                   <TableCell>
                     {formatDateTime(product.updatedAt).dateTime}
                   </TableCell>

@@ -77,10 +77,10 @@
     --warning: 47.9 95.8% 53.1%;
     --warning-foreground: 26 83.3% 14.1%;
   }
-  /* .animate-pulse {
-    Adjusting pulse speed for a more premium feel
+  .animate-pulse {
+    /* Adjusting pulse speed for a more premium feel */
     animation-duration: 1.5s;
-  } */
+  }
   /* Example of a custom shimmer in globals.css if pulse isn't enough */
   .shimmer {
     background: linear-gradient(

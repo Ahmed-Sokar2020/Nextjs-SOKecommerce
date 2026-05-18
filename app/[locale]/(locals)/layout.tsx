@@ -12,7 +12,7 @@ export default async function LocalsLayout({
 }) {
   const { locale } = await params;
   const messages = await getMessages();
-  // const direction = getDirection(locale);
+
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <div className="flex flex-col min-h-screen">

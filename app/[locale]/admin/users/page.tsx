@@ -16,6 +16,7 @@ import {
 import { deleteUser, getAllUsers } from "@/lib/actions/user.actions";
 import { IUser } from "@/lib/db/models/user.model";
 import { formatId } from "@/lib/utils";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Admin Users",
@@ -32,18 +33,21 @@ export default async function AdminUser(props: {
   const users = await getAllUsers({
     page,
   });
+
+  const t = await getTranslations("Admin");
+
   return (
     <div className="space-y-2">
-      <h1 className="h1-bold">Users</h1>
+      <h1 className="h1-bold">{t("Users")}</h1>
       <div>
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Id</TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Role</TableHead>
-              <TableHead>Actions</TableHead>
+              <TableHead>{t("Form.Id")}</TableHead>
+              <TableHead>{t("Form.Name")}</TableHead>
+              <TableHead>{t("Form.Email")}</TableHead>
+              <TableHead>{t("Form.Role")}</TableHead>
+              <TableHead>{t("Actions")}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -55,7 +59,9 @@ export default async function AdminUser(props: {
                 <TableCell>{user.role}</TableCell>
                 <TableCell className="flex gap-1">
                   <Button asChild variant="outline" size="sm">
-                    <Link href={`/admin/users/${user._id}`}>Edit</Link>
+                    <Link href={`/admin/users/${user._id}`}>
+                      {t("Form.Actions.Edit")}
+                    </Link>
                   </Button>
                   <DeleteDialog id={user._id.toString()} action={deleteUser} />
                 </TableCell>

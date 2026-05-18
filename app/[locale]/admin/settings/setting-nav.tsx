@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import {
   CreditCard,
@@ -9,6 +10,7 @@ import {
   Package,
   SettingsIcon,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { useEffect, useState } from "react";
 
@@ -31,6 +33,7 @@ const SettingNav = () => {
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, []);
+
   const handleScroll = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
@@ -39,9 +42,11 @@ const SettingNav = () => {
     }
   };
 
+  const t = useTranslations("Admin");
+
   return (
     <div>
-      <h1 className="h1-bold">Setting</h1>
+      <h1 className="h1-bold">{t("AdminSettings.Settings")}</h1>
       <nav className="flex md:flex-col gap-2 md:fixed mt-4 flex-wrap">
         {[
           { name: "Site Info", hash: "setting-site-info", icon: <Info /> },
@@ -81,7 +86,7 @@ const SettingNav = () => {
             }`}
           >
             {item.icon}
-            {item.name}
+            {t(`AdminSettings.${item.name}`)}
           </Button>
         ))}
       </nav>

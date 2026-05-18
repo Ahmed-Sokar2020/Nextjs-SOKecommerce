@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 
 import { getUserById } from "@/lib/actions/user.actions";
-
 import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import UserEditForm from "./user-edit-form";
 
@@ -21,10 +21,13 @@ export default async function UserEditPage(props: {
 
   const user = await getUserById(id);
   if (!user) notFound();
+
+  const t = await getTranslations("Admin");
+
   return (
     <main className="max-w-6xl mx-auto p-4">
       <div className="flex mb-4">
-        <Link href="/admin/users">Users</Link>
+        <Link href="/admin/users">{t("Users")}</Link>
         <span className="mx-1">›</span>
         <Link href={`/admin/users/${user._id}`}>{user._id.toString()}</Link>
       </div>

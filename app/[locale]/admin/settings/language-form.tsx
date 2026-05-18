@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/select";
 import { ISettingInput } from "@/types";
 import { TrashIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 
@@ -49,10 +50,12 @@ export default function LanguageForm({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(availableLanguages)]);
 
+  const t = useTranslations("Admin.AdminSettings");
+
   return (
     <Card id={id}>
       <CardHeader>
-        <CardTitle>Languages</CardTitle>
+        <CardTitle>{t("Languages")}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-4">
@@ -63,7 +66,7 @@ export default function LanguageForm({
                 name={`availableLanguages.${index}.name`}
                 render={({ field }) => (
                   <FormItem>
-                    {index == 0 && <FormLabel>Name</FormLabel>}
+                    {index == 0 && <FormLabel>{t("Name")}</FormLabel>}
                     <FormControl>
                       <Input
                         {...field}
@@ -83,7 +86,7 @@ export default function LanguageForm({
                 name={`availableLanguages.${index}.code`}
                 render={({ field }) => (
                   <FormItem>
-                    {index == 0 && <FormLabel>Code</FormLabel>}
+                    {index == 0 && <FormLabel>{t("Code")}</FormLabel>}
                     <FormControl>
                       <Input
                         {...field}
@@ -98,7 +101,7 @@ export default function LanguageForm({
                 )}
               />
               <div>
-                {index == 0 && <div>Action</div>}
+                {index == 0 && <div>{t("Action")}</div>}
                 <Button
                   type="button"
                   disabled={fields.length === 1}
@@ -119,7 +122,7 @@ export default function LanguageForm({
             variant={"outline"}
             onClick={() => append({ name: "", code: "" })}
           >
-            Add Language
+            {t("Add Language")}
           </Button>
         </div>
 
@@ -128,7 +131,7 @@ export default function LanguageForm({
           name="defaultLanguage"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Default Language</FormLabel>
+              <FormLabel>{t("Default Language")}</FormLabel>
               <FormControl>
                 <Select
                   value={field.value || ""}

@@ -7,6 +7,7 @@ import { SettingInputSchema } from "@/lib/validator";
 import useSetting from "@/store/use-setting-store";
 import { ClientSetting, ISettingInput } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import CarouselForm from "./carousel-form";
@@ -41,6 +42,8 @@ const SettingForm = ({ setting }: { setting: ISettingInput }) => {
     }
   }
 
+  const t = useTranslations("Admin.AdminSettings");
+
   return (
     <Form {...form}>
       <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
@@ -63,7 +66,7 @@ const SettingForm = ({ setting }: { setting: ISettingInput }) => {
             disabled={isSubmitting}
             className="w-full mb-24"
           >
-            {isSubmitting ? "Submitting..." : `Save Setting`}
+            {isSubmitting ? t("Submitting") : t("Save Settings")}
           </Button>
         </div>
       </form>

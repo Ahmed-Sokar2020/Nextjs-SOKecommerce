@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { UploadButton } from "@/lib/uploadthing";
 import { ISettingInput } from "@/types";
 import { TrashIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 import { toast } from "sonner";
@@ -32,10 +33,12 @@ export default function CarouselForm({
     formState: { errors },
   } = form;
 
+  const t = useTranslations("Admin.AdminSettings");
+
   return (
     <Card id={id}>
       <CardHeader>
-        <CardTitle>Carousels</CardTitle>
+        <CardTitle>{t("Carousels")}</CardTitle>
       </CardHeader>
 
       <CardContent className="space-y-4">
@@ -54,7 +57,7 @@ export default function CarouselForm({
                   name={`carousels.${index}.title`}
                   render={({ field }) => (
                     <FormItem className="w-full">
-                      {index === 0 && <FormLabel>Title</FormLabel>}
+                      {index === 0 && <FormLabel>{t("Title")}</FormLabel>}
 
                       <FormControl>
                         <Input
@@ -77,7 +80,7 @@ export default function CarouselForm({
                   name={`carousels.${index}.url`}
                   render={({ field }) => (
                     <FormItem className="w-full">
-                      {index === 0 && <FormLabel>Url</FormLabel>}
+                      {index === 0 && <FormLabel>{t("Url")}</FormLabel>}
 
                       <FormControl>
                         <Input
@@ -100,7 +103,7 @@ export default function CarouselForm({
                   name={`carousels.${index}.buttonCaption`}
                   render={({ field }) => (
                     <FormItem className="w-full">
-                      {index === 0 && <FormLabel>Caption</FormLabel>}
+                      {index === 0 && <FormLabel>{t("Caption")}</FormLabel>}
 
                       <FormControl>
                         <Input
@@ -124,7 +127,7 @@ export default function CarouselForm({
                     name={`carousels.${index}.image`}
                     render={({ field }) => (
                       <FormItem>
-                        {index === 0 && <FormLabel>Image</FormLabel>}
+                        {index === 0 && <FormLabel>{t("Image")}</FormLabel>}
 
                         <FormControl>
                           <Input
@@ -185,7 +188,7 @@ export default function CarouselForm({
                 {/* DELETE CAROUSEL */}
                 <div className="flex flex-col items-center gap-2">
                   {index === 0 && (
-                    <div className="text-sm font-medium">Action</div>
+                    <div className="text-sm font-medium">{t("Action")}</div>
                   )}
 
                   <Button
@@ -213,7 +216,7 @@ export default function CarouselForm({
               })
             }
           >
-            Add Carousel
+            {t("Add Carousel")}
           </Button>
         </div>
       </CardContent>

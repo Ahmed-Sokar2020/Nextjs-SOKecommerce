@@ -1,7 +1,7 @@
-import { notFound } from "next/navigation";
-
 import { getWebPageById } from "@/lib/actions/web-page.actions";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import WebPageForm from "../web-page-form";
 
 type UpdateWebPageProps = {
@@ -17,10 +17,11 @@ const UpdateWebPage = async (props: UpdateWebPageProps) => {
 
   const webPage = await getWebPageById(id);
   if (!webPage) notFound();
+  const t = await getTranslations("Admin");
   return (
     <main className="max-w-6xl mx-auto p-4 ">
       <div className="flex mb-4">
-        <Link href="/admin/web-pages">Web Pages</Link>
+        <Link href="/admin/web-pages">{t("Web Pages")}</Link>
         <span className="mx-1">›</span>
         <Link href={`/admin/web-pages/${webPage._id}`}>
           {webPage._id.toString()}

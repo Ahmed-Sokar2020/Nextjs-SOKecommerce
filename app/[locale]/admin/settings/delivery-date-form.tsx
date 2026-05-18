@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/select";
 import { ISettingInput } from "@/types";
 import { TrashIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 import { useFieldArray, UseFormReturn } from "react-hook-form";
 
@@ -49,10 +50,12 @@ export default function DeliveryDateForm({
     }
   }, [JSON.stringify(availableDeliveryDates)]);
 
+  const t = useTranslations("Admin.AdminSettings");
+
   return (
     <Card id={id}>
       <CardHeader>
-        <CardTitle>Delivery Dates</CardTitle>
+        <CardTitle>{t("Delivery Dates")}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-4">
@@ -63,7 +66,7 @@ export default function DeliveryDateForm({
                 name={`availableDeliveryDates.${index}.name`}
                 render={({ field }) => (
                   <FormItem>
-                    {index == 0 && <FormLabel>Name</FormLabel>}
+                    {index == 0 && <FormLabel>{t("Name")}</FormLabel>}
                     <FormControl>
                       <Input
                         {...field}
@@ -82,7 +85,7 @@ export default function DeliveryDateForm({
                 name={`availableDeliveryDates.${index}.daysToDeliver`}
                 render={({ field }) => (
                   <FormItem>
-                    {index == 0 && <FormLabel>Days</FormLabel>}
+                    {index == 0 && <FormLabel>{t("Days")}</FormLabel>}
                     <FormControl>
                       <Input
                         {...field}
@@ -105,7 +108,7 @@ export default function DeliveryDateForm({
                 name={`availableDeliveryDates.${index}.shippingPrice`}
                 render={({ field }) => (
                   <FormItem>
-                    {index == 0 && <FormLabel>Shipping Price</FormLabel>}
+                    {index == 0 && <FormLabel>{t("Shipping Price")}</FormLabel>}
                     <FormControl>
                       <Input
                         {...field}
@@ -128,7 +131,7 @@ export default function DeliveryDateForm({
                 name={`availableDeliveryDates.${index}.freeShippingMinPrice`}
                 render={({ field }) => (
                   <FormItem>
-                    {index == 0 && <FormLabel>Free Shipping</FormLabel>}
+                    {index == 0 && <FormLabel>{t("Free Shipping")}</FormLabel>}
                     <FormControl>
                       <Input
                         {...field}
@@ -147,7 +150,7 @@ export default function DeliveryDateForm({
                 )}
               />
               <div>
-                {index == 0 && <div className="">Action</div>}
+                {index == 0 && <div className="">{t("Action")}</div>}
                 <Button
                   type="button"
                   disabled={fields.length === 1}
@@ -175,7 +178,7 @@ export default function DeliveryDateForm({
               })
             }
           >
-            Add DeliveryDate
+            {t("Add Delivery Date")}
           </Button>
         </div>
 
@@ -184,7 +187,7 @@ export default function DeliveryDateForm({
           name="defaultDeliveryDate"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Default DeliveryDate</FormLabel>
+              <FormLabel>{t("Default Delivery Date")}</FormLabel>
               <FormControl>
                 <Select
                   value={field.value || ""}
@@ -198,7 +201,7 @@ export default function DeliveryDateForm({
                       .filter((x) => x.name)
                       .map((lang, index) => (
                         <SelectItem key={index} value={lang.name}>
-                          {lang.name} ({lang.name})
+                          {t(lang.name)} ({lang.name})
                         </SelectItem>
                       ))}
                   </SelectContent>

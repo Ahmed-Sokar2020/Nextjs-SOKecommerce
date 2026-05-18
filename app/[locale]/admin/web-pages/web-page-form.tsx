@@ -21,6 +21,7 @@ import { createWebPage, updateWebPage } from "@/lib/actions/web-page.actions";
 import { IWebPage } from "@/lib/db/models/web-page.model";
 import { toSlug } from "@/lib/utils";
 import { WebPageInputSchema, WebPageUpdateSchema } from "@/lib/validator";
+import { useTranslations } from "next-intl";
 import ReactMarkdown from "react-markdown";
 import MdEditor from "react-markdown-editor-lite";
 import "react-markdown-editor-lite/lib/index.css";
@@ -49,6 +50,8 @@ const WebPageForm = ({
   webPageId?: string;
 }) => {
   const router = useRouter();
+
+  const t = useTranslations("Admin");
 
   const form = useForm<z.infer<typeof WebPageInputSchema>>({
     resolver:
@@ -93,9 +96,9 @@ const WebPageForm = ({
             name="title"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Title</FormLabel>
+                <FormLabel>{t("Form.Title")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter title" {...field} />
+                  <Input placeholder={t("Form.Enter title")} {...field} />
                 </FormControl>
 
                 <FormMessage />
@@ -108,12 +111,12 @@ const WebPageForm = ({
             name="slug"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Slug</FormLabel>
+                <FormLabel>{t("Form.Slug")}</FormLabel>
 
                 <FormControl>
                   <div className="relative">
                     <Input
-                      placeholder="Enter slug"
+                      placeholder={t("Form.Enter slug")}
                       className="pl-8"
                       {...field}
                     />
@@ -122,7 +125,7 @@ const WebPageForm = ({
                       onClick={() => {
                         form.setValue("slug", toSlug(form.getValues("title")));
                       }}
-                      className="absolute right-2 top-2"
+                      className="absolute right-2 top-1 h-6 px-2 bg-primary text-primary-foreground rounded text-xs"
                     >
                       Generate
                     </button>
@@ -140,7 +143,7 @@ const WebPageForm = ({
             name="content"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Content</FormLabel>
+                <FormLabel>{t("Form.Content")}</FormLabel>
                 <FormControl>
                   <MdEditor
                     // value={markdown}
@@ -169,7 +172,7 @@ const WebPageForm = ({
                     onCheckedChange={field.onChange}
                   />
                 </FormControl>
-                <FormLabel>Is Published?</FormLabel>
+                <FormLabel>{t("Form.Is Published")}</FormLabel>
               </FormItem>
             )}
           />
@@ -181,7 +184,9 @@ const WebPageForm = ({
             disabled={form.formState.isSubmitting}
             className="button col-span-2 w-full"
           >
-            {form.formState.isSubmitting ? "Submitting..." : `${type} Page `}
+            {form.formState.isSubmitting
+              ? t("Submitting")
+              : `${t(`AdminWepPages.${type}`)} ${t("AdminWepPages.Page")}`}
           </Button>
         </div>
       </form>

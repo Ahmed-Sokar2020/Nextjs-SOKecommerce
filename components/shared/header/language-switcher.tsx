@@ -3,48 +3,82 @@
 // import {
 //   DropdownMenu,
 //   DropdownMenuContent,
-//   DropdownMenuItem,
+//   DropdownMenuLabel,
+//   DropdownMenuRadioGroup,
+//   DropdownMenuRadioItem,
+//   DropdownMenuSeparator,
 //   DropdownMenuTrigger,
-// } from "@/components/ui/dropdown-menu"; // Assuming you use Shadcn UI
+// } from "@/components/ui/dropdown-menu";
+
 // import { i18n } from "@/i18n-config";
-// import { usePathname, useRouter } from "@/i18n/navigation";
+// import { Link, usePathname } from "@/i18n/navigation";
+// import { setCurrencyOnServer } from "@/lib/actions/setting.actions";
+// import useSettingStore from "@/store/use-setting-store";
+// import { ChevronDownIcon } from "lucide-react";
 // import { useLocale } from "next-intl";
 
 // export default function LanguageSwitcher() {
+//   const { locales } = i18n;
 //   const locale = useLocale();
-//   const router = useRouter();
 //   const pathname = usePathname();
 
-//   // Find the current language object to show the active flag/name
-//   const currentLanguage = i18n.locales.find((l) => l.code === locale);
+//   const {
+//     setting: { availableCurrencies, currency },
+//     setCurrency,
+//   } = useSettingStore();
 
-//   const handleLocaleChange = (newLocale: string) => {
-//     // In the new API, you just pass the locale directly as the first argument
-//     // next-intl automatically handles the pathname!
-//     router.replace(pathname, { locale: newLocale });
+//   const handleCurrencyChange = async (newCurrency: string) => {
+//     await setCurrencyOnServer(newCurrency);
+//     setCurrency(newCurrency);
 //   };
 
-//   return (
-//     <DropdownMenu>
-//       <DropdownMenuTrigger className="flex items-center gap-1 outline-none text-white text-sm font-bold">
-//         <span>{currentLanguage?.icon}</span>
-//         <span className="uppercase">{currentLanguage?.code.split("-")[0]}</span>
-//         <span className="text-[10px] opacity-60">▼</span>
-//       </DropdownMenuTrigger>
+//   const currentLanguage = locales.find((l) => l.code === locale);
 
-//       <DropdownMenuContent align="end" className="bg-white text-black">
-//         {i18n.locales.map((lang) => (
-//           <DropdownMenuItem
-//             key={lang.code}
-//             className="flex items-center gap-3 cursor-pointer"
-//             onClick={() => handleLocaleChange(lang.code)}
-//           >
-//             <span>{lang.icon}</span>
-//             <span className={locale === lang.code ? "font-bold" : ""}>
-//               {lang.name}
-//             </span>
-//           </DropdownMenuItem>
-//         ))}
+//   return (
+//     <DropdownMenu modal={false}>
+//       <DropdownMenuTrigger className="header-button h-[41px]">
+//         <div className="flex items-center gap-1">
+//           {/* Flag Icon from library */}
+//           <span
+//             className={`fi fi-${currentLanguage?.icon} w-5 h-4 shadow-sm`}
+//           />
+//           {locale.toUpperCase().slice(0, 2)}
+//           <ChevronDownIcon />
+//         </div>
+//       </DropdownMenuTrigger>
+//       <DropdownMenuContent className="w-56">
+//         <DropdownMenuLabel>Language</DropdownMenuLabel>
+//         <DropdownMenuRadioGroup value={locale}>
+//           {locales.map((lang) => (
+//             <DropdownMenuRadioItem key={lang.name} value={lang.code}>
+//               <Link
+//                 className="w-full flex items-center gap-1"
+//                 href={pathname}
+//               >
+//                 <div className="flex gap-2">
+//                   <span className={`fi fi-${lang.icon} w-5 h-4`}></span>
+//                   <span>
+//                     {lang.icon} {lang.name}
+//                   </span>
+//                 </div>
+//               </Link>
+//             </DropdownMenuRadioItem>
+//           ))}
+//         </DropdownMenuRadioGroup>
+
+//         <DropdownMenuSeparator />
+
+//         <DropdownMenuLabel>Currency</DropdownMenuLabel>
+//         <DropdownMenuRadioGroup
+//           value={currency}
+//           onValueChange={handleCurrencyChange}
+//         >
+//           {availableCurrencies.map((c) => (
+//             <DropdownMenuRadioItem key={c.name} value={c.code}>
+//               {c.symbol} {c.code}
+//             </DropdownMenuRadioItem>
+//           ))}
+//         </DropdownMenuRadioGroup>
 //       </DropdownMenuContent>
 //     </DropdownMenu>
 //   );
@@ -63,7 +97,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { i18n } from "@/i18n-config";
-import { Link, usePathname } from "@/i18n/navigation";
+// 1. Swap Link for useRouter to handle programmatic navigation
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { setCurrencyOnServer } from "@/lib/actions/setting.actions";
 import useSettingStore from "@/store/use-setting-store";
 import { ChevronDownIcon } from "lucide-react";
@@ -73,6 +108,7 @@ export default function LanguageSwitcher() {
   const { locales } = i18n;
   const locale = useLocale();
   const pathname = usePathname();
+  const router = useRouter(); // 2. Initialize the router hook
 
   const {
     setting: { availableCurrencies, currency },
@@ -84,13 +120,20 @@ export default function LanguageSwitcher() {
     setCurrency(newCurrency);
   };
 
+  // 3. Clean navigation handler that handles switching languages correctly
+  const handleLocaleChange = (newLocale: string) => {
+    // next-intl's router expects the clean pathname and the locale option object
+    router.replace(pathname, { locale: newLocale });
+    // If switching within secure panels, force an immediate data refresh
+    router.refresh();
+  };
+
   const currentLanguage = locales.find((l) => l.code === locale);
 
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger className="header-button h-[41px]">
         <div className="flex items-center gap-1">
-          {/* Flag Icon from library */}
           <span
             className={`fi fi-${currentLanguage?.icon} w-5 h-4 shadow-sm`}
           />
@@ -98,23 +141,25 @@ export default function LanguageSwitcher() {
           <ChevronDownIcon />
         </div>
       </DropdownMenuTrigger>
+
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>Language</DropdownMenuLabel>
-        <DropdownMenuRadioGroup value={locale}>
+
+        {/* 4. Fire handleLocaleChange natively when an item is selected */}
+        <DropdownMenuRadioGroup
+          value={locale}
+          onValueChange={handleLocaleChange}
+        >
           {locales.map((lang) => (
-            <DropdownMenuRadioItem key={lang.name} value={lang.code}>
-              <Link
-                className="w-full flex items-center gap-1"
-                href={pathname}
-                locale={lang.code}
-              >
-                <div className="flex gap-2">
-                  <span className={`fi fi-${lang.icon} w-5 h-4`}></span>
-                  <span>
-                    {lang.icon} {lang.name}
-                  </span>
-                </div>
-              </Link>
+            <DropdownMenuRadioItem
+              key={lang.code}
+              value={lang.code}
+              className="cursor-pointer"
+            >
+              <div className="flex items-center gap-2 w-full">
+                <span className={`fi fi-${lang.icon} w-5 h-4`}></span>
+                <span>{lang.name}</span>
+              </div>
             </DropdownMenuRadioItem>
           ))}
         </DropdownMenuRadioGroup>
@@ -127,7 +172,7 @@ export default function LanguageSwitcher() {
           onValueChange={handleCurrencyChange}
         >
           {availableCurrencies.map((c) => (
-            <DropdownMenuRadioItem key={c.name} value={c.code}>
+            <DropdownMenuRadioItem key={c.code} value={c.code}>
               {c.symbol} {c.code}
             </DropdownMenuRadioItem>
           ))}

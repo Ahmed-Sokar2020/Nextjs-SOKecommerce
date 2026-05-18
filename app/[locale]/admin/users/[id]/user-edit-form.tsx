@@ -26,6 +26,7 @@ import { updateUser } from "@/lib/actions/user.actions";
 import { USER_ROLES } from "@/lib/constants";
 import { IUser } from "@/lib/db/models/user.model";
 import { UserUpdateSchema } from "@/lib/validator";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 const UserEditForm = ({ user }: { user: IUser }) => {
@@ -55,6 +56,7 @@ const UserEditForm = ({ user }: { user: IUser }) => {
       toast.error(error.message);
     }
   }
+  const t = useTranslations("Admin");
 
   return (
     <Form {...form}>
@@ -69,9 +71,9 @@ const UserEditForm = ({ user }: { user: IUser }) => {
             name="name"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Name</FormLabel>
+                <FormLabel>{t("Form.Name")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter user name" {...field} />
+                  <Input placeholder={t("Form.Enter user name")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -82,9 +84,9 @@ const UserEditForm = ({ user }: { user: IUser }) => {
             name="email"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Email</FormLabel>
+                <FormLabel>{t("Form.Email")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter user email" {...field} />
+                  <Input placeholder={t("Form.Enter user email")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -97,7 +99,7 @@ const UserEditForm = ({ user }: { user: IUser }) => {
             name="role"
             render={({ field }) => (
               <FormItem className="space-x-2 items-center">
-                <FormLabel>Role</FormLabel>
+                <FormLabel>{t("Form.Role")}</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   value={field.value.toString()}
@@ -110,7 +112,7 @@ const UserEditForm = ({ user }: { user: IUser }) => {
                   <SelectContent>
                     {USER_ROLES.map((role) => (
                       <SelectItem key={role} value={role}>
-                        {role}
+                        {t(`Form.${role}`)}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -123,14 +125,16 @@ const UserEditForm = ({ user }: { user: IUser }) => {
         </div>
         <div className="flex-between">
           <Button type="submit" disabled={form.formState.isSubmitting}>
-            {form.formState.isSubmitting ? "Submitting..." : `Update User `}
+            {form.formState.isSubmitting
+              ? t("Submitting")
+              : `${t("Form.Update User")} `}
           </Button>
           <Button
             variant="outline"
             type="button"
             onClick={() => router.push(`/admin/users`)}
           >
-            Back
+            {t("Form.Back")}
           </Button>
         </div>
       </form>

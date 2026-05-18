@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/select";
 import { COLORS, THEMES } from "@/lib/constants";
 import { ISettingInput } from "@/types";
+import { useTranslations } from "next-intl";
 import { UseFormReturn } from "react-hook-form";
 
 export default function CommonForm({
@@ -28,10 +29,12 @@ export default function CommonForm({
 }) {
   const { control } = form;
 
+  const t = useTranslations("Admin");
+
   return (
     <Card id={id}>
       <CardHeader>
-        <CardTitle>Common Settings</CardTitle>
+        <CardTitle>{t("AdminSettings.Common Settings")}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex flex-col gap-5 md:flex-row">
@@ -40,7 +43,7 @@ export default function CommonForm({
             name="common.pageSize"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Page Size</FormLabel>
+                <FormLabel>{t("AdminSettings.Page Size")}</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Enter Page Size"
@@ -58,7 +61,9 @@ export default function CommonForm({
             name="common.freeShippingMinPrice"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Free Shipping Minimum Price</FormLabel>
+                <FormLabel>
+                  {t("AdminSettings.Free Shipping Minimum Price")}
+                </FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Enter Free Shipping Minimum Price"
@@ -78,7 +83,7 @@ export default function CommonForm({
             name="common.defaultColor"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Default Color</FormLabel>
+                <FormLabel>{t("AdminSettings.Default Color")}</FormLabel>
                 <FormControl>
                   <Select
                     value={field.value || ""}
@@ -90,7 +95,7 @@ export default function CommonForm({
                     <SelectContent>
                       {COLORS.map((color, index) => (
                         <SelectItem key={index} value={color}>
-                          {color}
+                          {t(`AdminSettings.${color}`)}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -105,7 +110,7 @@ export default function CommonForm({
             name="common.defaultTheme"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Default Theme</FormLabel>
+                <FormLabel>{t("AdminSettings.Default Theme")}</FormLabel>
                 <FormControl>
                   <Select
                     value={field.value || ""}
@@ -117,7 +122,7 @@ export default function CommonForm({
                     <SelectContent>
                       {THEMES.map((theme, index) => (
                         <SelectItem key={index} value={theme}>
-                          {theme}
+                          {t(`AdminSettings.${theme}`)}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -140,7 +145,7 @@ export default function CommonForm({
                     onCheckedChange={field.onChange}
                   />
                 </FormControl>
-                <FormLabel>Maintenance Mode?</FormLabel>
+                <FormLabel>{t("AdminSettings.Maintenance Mode")}</FormLabel>
                 <FormMessage />
               </FormItem>
             )}
