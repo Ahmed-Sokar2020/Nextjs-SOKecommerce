@@ -450,5 +450,101 @@
       "Save Settings": "Save Settings",
       "Submitting": "Submitting..."
     }
+  },
+  "InfoPages": {
+    "Go To Home": "Go To Home",
+    "CustomerService": {
+      "title": "Customer Service",
+      "description": "Our Customer Service team is dedicated to providing a smooth, secure, and enjoyable shopping experience.",
+      "phoneSupportTitle": "Phone Support",
+      "phoneSupportDesc": "Contact our support team for assistance with orders, shipping, returns, or account issues.",
+      "phoneNumber": "+20 121 020 3040",
+      "emailSupportTitle": "Email Support",
+      "emailSupportDesc": "Reach out anytime through email and our team will respond as quickly as possible.",
+      "emailAddress": "support@example.com",
+      "workingHoursTitle": "Working Hours",
+      "workingHoursDesc": "Our support team is available 7 days a week.",
+      "hours": "9:00 AM - 9:00 PM (GMT+2)"
+    },
+    "AboutUs": {
+      "title": "About {appName}",
+      "intro": "{appName} is a modern e-commerce platform focused on delivering a fast, secure, and enjoyable shopping experience.",
+      "missionTitle": "Our Mission",
+      "missionDesc": "Our mission is to connect customers with high-quality products through a reliable and user-friendly marketplace.",
+      "offerTitle": "What We Offer",
+      "offerDesc": "We provide a wide range of products including fashion, electronics, accessories, and more.",
+      "experienceTitle": "Customer Experience",
+      "experienceDesc": "We prioritize customer satisfaction through responsive support, secure payments, and a seamless shopping journey."
+    },
+    "HelpCenter": {
+      "title": "Help Center",
+      "welcome": "Welcome to our Help Center. Find answers to common questions and support resources below.",
+      "ordersTitle": "Orders & Shipping",
+      "ordersDesc": "Track orders, view shipping updates, and learn more about delivery timelines.",
+      "returnsTitle": "Returns & Refunds",
+      "returnsDesc": "Learn about return eligibility, refund requests, and replacement procedures.",
+      "accountTitle": "Account Support",
+      "accountDesc": "Manage account settings, update personal information, and reset passwords securely.",
+      "contactTitle": "Contact Support",
+      "contactDesc": "Need additional help? Our support team is available anytime."
+    },
+    "ConditionsOfUse": {
+      "title": "Conditions of Use",
+      "welcome": "Welcome to {appName}. By accessing or using our platform, you agree to comply with these Conditions of Use.",
+      "accountTitle": "Account Responsibilities",
+      "accountDesc": "Users are responsible for maintaining the confidentiality of their account credentials and all activities performed under their account.",
+      "productTitle": "Product Information",
+      "productDesc": "We strive to ensure that product descriptions, pricing, and images are accurate. However, errors may occasionally occur.",
+      "prohibitedTitle": "Prohibited Activities",
+      "prohibitedDesc": "Users may not misuse the platform, attempt unauthorized access, or interfere with website operations.",
+      "changesTitle": "Changes to Terms",
+      "changesDesc": "We reserve the right to update these terms at any time."
+    },
+    "PrivacyNotice": {
+      "title": "Privacy Notice",
+      "intro": "{appName} respects your privacy and is committed to protecting your personal information.",
+      "collectTitle": "Information We Collect",
+      "collectDesc": "We may collect personal information such as your name, email address, shipping details, and payment information.",
+      "useTitle": "How We Use Your Information",
+      "useDesc": "Your information helps us process orders, improve user experience, provide support, and enhance our services.",
+      "securityTitle": "Data Security",
+      "securityDesc": "We implement modern security measures to protect your data against unauthorized access or misuse.",
+      "contactTitle": "Contact Us",
+      "contactDesc": "If you have questions regarding our privacy practices, please contact our support team."
+    },
+    "ContactUs": {
+      "title": "Contact Us",
+      "intro": "Have a question or feedback? We'd love to hear from you. Please fill out the form below.",
+      "formName": "Full Name",
+      "formEmail": "Email Address",
+      "formSubject": "Subject",
+      "formMessage": "Message",
+      "formSubmit": "Send Message",
+      "successMessage": "Your message has been sent successfully!",
+      "officeTitle": "Our Office",
+      "officeDesc": "Visit us at our headquarters for direct support.",
+      "address": "123 Tech Plaza, E-Commerce St, Cairo, Egypt"
+    },
+    "ReturnsPolicy": {
+      "title": "Returns Policy",
+      "intro": "At {appName}, we want you to be completely satisfied with your purchase. If you are not entirely happy, we are here to help with our straightforward return process.",
+      "eligibilityTitle": "1. Return Eligibility",
+      "eligibilityDesc": "To qualify for a return, please ensure that your items meet the following conditions:",
+      "cond1": "Items must be returned within 14 days of delivery (or 30 days if the product has a manufacturing defect).",
+      "cond2": "Products must be unused, unwashed, and in the same condition that you received them.",
+      "cond3": "Items must remain in their original packaging with all original tags and seals intact.",
+      "nonReturnableTitle": "2. Non-Returnable Items",
+      "nonReturnableDesc": "For hygiene and security reasons, certain types of goods cannot be returned:",
+      "item1": "Personal care products, cosmetics, and undergarments.",
+      "item2": "Perishable goods or grocery items.",
+      "item3": "Digital software, gift cards, or downloadable products.",
+      "processTitle": "3. How to Start a Return",
+      "processDesc": "Initiating a return is simple and can be completed directly through your dashboard:",
+      "step1": "Go to your 'Order History' inside your account dashboard.",
+      "step2": "Select the order and click on the 'Request Return' button next to the relevant product.",
+      "step3": "Choose your reason for the return and submit the request. Our courier will pick up the package within 3-5 business days.",
+      "refundsTitle": "4. Refunds Timeline",
+      "refundsDesc": "Once your return is received and inspected at our warehouse, we will process your refund. The funds will be credited via your original payment method or as store wallet balance within 7-14 business days."
+    }
   }
 }

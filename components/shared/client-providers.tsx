@@ -1,20 +1,24 @@
 "use client";
 
 import useCartSidebar from "@/hooks/use-cart-sidebar";
-import React from "react";
+import { useThemeStore } from "@/store/use-theme-store";
+import React, { useEffect } from "react";
 import { Toaster } from "../ui/sonner";
 import CartSidebar from "./cart-sidebar";
 import { ThemeProvider } from "./theme-provider";
-// import { ClientSetting } from '@/types'
 
 export default function ClientProviders({
-  // setting,
   children,
 }: {
-  // setting: ClientSetting
   children: React.ReactNode;
 }) {
   const isCartSidebarOpen = useCartSidebar();
+  const color = useThemeStore((state) => state.color);
+
+  // Keep the DOM completely in sync whenever the store state updates
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", color);
+  }, [color]);
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system">
@@ -24,7 +28,7 @@ export default function ClientProviders({
           <CartSidebar />
         </div>
       ) : (
-        <div>{children}</div>
+        <>{children}</>
       )}
       <Toaster />
     </ThemeProvider>

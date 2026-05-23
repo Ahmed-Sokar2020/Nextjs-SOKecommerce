@@ -1,4 +1,5 @@
-import {Link} from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
 import { Button } from "../ui/button";
 
@@ -9,13 +10,15 @@ export default function InfoPageWrapper({
   title: string;
   children: ReactNode;
 }) {
+  const t = useTranslations("InfoPages");
+
   return (
     <div className="flex flex-col min-h-full">
       <main className="flex-1 min-h-screen bg-background">
         <div className="flex flex-col gap-4 max-w-5xl mx-auto px-4 py-12 md:py-16">
           <div className="flex gap-3">
             <Link href="/">
-              <Button className="cursor-pointer">Go Home</Button>
+              <Button className="cursor-pointer">{t("Go To Home")}</Button>
             </Link>
           </div>
           <div className="bg-card border rounded-2xl p-6 md:p-10 shadow-sm">

@@ -1,18 +1,22 @@
+import { auth } from "@/auth";
 import { Link } from "@/i18n/navigation";
 import { getAllCategories } from "@/lib/actions/product.actions";
+import { SignOut } from "@/lib/actions/user.actions";
+import { APP_NAME } from "@/lib/constants";
+import data from "@/lib/data";
 import { getTranslations } from "next-intl/server";
+import Logo from "../logo";
 import Menu from "./menu";
 import Search from "./search";
 import Sidebar from "./sidebar";
 
-import { APP_NAME } from "@/lib/constants";
-import data from "@/lib/data";
-import Logo from "../logo";
-
 export default async function Header() {
+  const session = await auth();
+
   const categories = await getAllCategories();
 
   const t = await getTranslations();
+
   return (
     <header className="sticky top-0 z-50 w-full text-white bg-black border-b border-border  backdrop-blur-md supports-backdrop-filter:bg-black/60">
       {/* <header className="bg-black sticky top-0 z-50 text-white w-full"> */}
@@ -45,7 +49,11 @@ export default async function Header() {
       </div>
 
       <div className="flex items-center px-3 mb-px  bg-gray-800">
-        <Sidebar categories={categories} />
+        <Sidebar
+          categories={categories || []}
+          session={session}
+          signOutAction={SignOut}
+        />{" "}
         {/* Header Menus after the Navbar */}
         <div className="flex items-center flex-wrap gap-3 overflow-hidden max-h-10.5">
           {data.headerMenus.map((menu) => (

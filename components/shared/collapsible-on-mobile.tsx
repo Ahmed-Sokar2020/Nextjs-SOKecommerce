@@ -1,15 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
-
+import useDeviceType from "@/hooks/use-device-type";
+import React, { useEffect, useState, useTransition } from "react";
+import { Button } from "../ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../ui/collapsible";
-import useDeviceType from "@/hooks/use-device-type";
-import { Button } from "../ui/button";
 
 export default function CollapsibleOnMobile({
   title,
@@ -18,32 +16,46 @@ export default function CollapsibleOnMobile({
   title: string;
   children: React.ReactNode;
 }) {
-  const searchParams = useSearchParams();
-
   const deviceType = useDeviceType();
+  const [isPending, startTransition] = useTransition();
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (deviceType === "mobile") setOpen(false);
-    else if (deviceType === "desktop") setOpen(true);
-  }, [deviceType, searchParams]);
-  if (deviceType === "unknown") return null;
+    // 🧠 الحل: جدولة تحديث الـ State داخل الانتقالات (Transition)
+    // لمنع الـ Cascading Renders المتزامنة وحل خطأ الـ Console تماماً
+    startTransition(() => {
+      if (deviceType === "mobile") {
+        setOpen(false);
+      } else if (deviceType === "desktop") {
+        setOpen(true);
+      }
+    });
+  }, [deviceType]); // 🚨 قمنا بإزالة searchParams لحماية القائمة من الانغلاق العشوائي عند الفلترة
+
+  // بدلاً من عمل return null يكسر الهيكل، نترك الـ Collapsible يفرش بشكل طبيعي
+  const isMobile = deviceType === "mobile";
+
   return (
-    <Collapsible open={open}>
-      <CollapsibleTrigger asChild>
-        {deviceType === "mobile" && (
+    <Collapsible open={open} onOpenChange={setOpen}>
+      {isMobile && (
+        <CollapsibleTrigger asChild>
           <Button
+            disabled={isPending} // 🟩 يمنع الضغط المتكرر أثناء تغير الحالة
             onClick={() => setOpen(!open)}
-            variant={"outline"}
-            className="w-full"
+            variant="outline"
+            className="w-full my-2 flex items-center justify-between"
           >
-            {title}
+            <span>{title}</span>
+            <span className="text-xs text-muted-foreground">
+              {open ? "▲" : "▼"}
+            </span>
           </Button>
-        )}
-      </CollapsibleTrigger>
-      <CollapsibleContent>{children}</CollapsibleContent>
+        </CollapsibleTrigger>
+      )}
+      <CollapsibleContent className="transition-all data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
+        {children}
+      </CollapsibleContent>
     </Collapsible>
   );
 }
