@@ -200,6 +200,42 @@ export const UserNameSchema = z.object({
   name: UserName,
 });
 
+// Email Validation Schema
+export const UserEmailSchema = z.object({
+  // email: z.string().email("Invalid email address"),
+  email: z.email("Invalid email address"),
+});
+
+// Password Validation Schema
+export const UserPasswordSchema = z
+  .object({
+    currentPassword: z
+      .string()
+      .min(6, "Current password must be at least 6 characters"),
+    newPassword: z
+      .string()
+      .min(6, "New password must be at least 6 characters"),
+    confirmPassword: z
+      .string()
+      .min(6, "Confirm password must be at least 6 characters"),
+  })
+  .refine((data) => data.newPassword === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
+
+export const UserAddressSchema = z.object({
+  fullName: z.string().min(3, "Full name must be at least 3 characters"),
+  streetAddress: z
+    .string()
+    .min(5, "Street address must be at least 5 characters"),
+  city: z.string().min(2, "City is required"),
+  state: z.string().min(2, "State/Region is required"),
+  postalCode: z.string().min(3, "Postal/ZIP code is required"),
+  phone: z.string().min(7, "Valid phone number is required"),
+  isDefault: z.boolean(),
+});
+
 // WEBPAGE
 export const WebPageInputSchema = z.object({
   title: z.string().min(3, "Title must be at least 3 characters"),

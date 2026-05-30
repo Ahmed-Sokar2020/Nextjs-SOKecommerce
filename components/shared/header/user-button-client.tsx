@@ -62,7 +62,10 @@ export default function UserButtonClient({ session }: any) {
 
             <DropdownMenuItem className="p-0">
               <form action={SignOut}>
-                <Button variant="ghost" className="w-full justify-start">
+                <Button
+                  variant="ghost"
+                  className="w-full hover:bg-destructive/10 text-destructive hover:text-destructive bg-transparent"
+                >
                   {t("Sign out")}
                 </Button>
               </form>

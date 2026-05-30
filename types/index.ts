@@ -11,6 +11,8 @@ import {
   ShippingAddressSchema,
   SiteCurrencySchema,
   SiteLanguageSchema,
+  UserAddressSchema,
+  UserEmailSchema,
   UserInputSchema,
   UserNameSchema,
   UserSignInSchema,
@@ -73,6 +75,8 @@ export type IUserInput = z.infer<typeof UserInputSchema>;
 export type IUserSignIn = z.infer<typeof UserSignInSchema>;
 export type IUserSignUp = z.infer<typeof UserSignUpSchema>;
 export type IUserName = z.infer<typeof UserNameSchema>;
+export type IUserEmail = z.infer<typeof UserEmailSchema>;
+export type IUserAddressFormValues = z.infer<typeof UserAddressSchema>;
 
 // webpage
 export type IWebPageInput = z.infer<typeof WebPageInputSchema>;

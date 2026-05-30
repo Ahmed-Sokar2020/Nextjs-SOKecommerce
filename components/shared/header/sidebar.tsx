@@ -156,7 +156,7 @@ export default function Sidebar({
               {session ? (
                 <form action={signOutAction} className="w-full mt-1">
                   <Button
-                    className="w-full justify-start text-sm font-medium h-[44px] rounded-none px-6 hover:bg-destructive/10 text-destructive bg-transparent"
+                    className="w-full justify-start text-sm font-medium h-[44px] rounded-none px-6 hover:bg-destructive/10 text-destructive hover:text-destructive bg-transparent"
                     variant="ghost"
                   >
                     {t("Header.Sign out")}
