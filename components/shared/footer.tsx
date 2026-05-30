@@ -2,7 +2,6 @@
 
 import { Link } from "@/i18n/navigation";
 import { ChevronUp } from "lucide-react";
-import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import useSettingStore from "@/store/use-setting-store";
@@ -12,6 +11,7 @@ import { i18n } from "@/i18n-config";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { SelectValue } from "@radix-ui/react-select";
 import { useLocale, useTranslations } from "next-intl";
+import Logo from "./logo";
 
 export default function Footer() {
   const router = useRouter();
@@ -162,17 +162,9 @@ export default function Footer() {
         <div className="border-t border-gray-800">
           <div className="max-w-7xl mx-auto py-8 px-4 flex flex-col items-center space-y-4">
             <div className="flex items-center space-x-4 flex-wrap md:flex-nowrap">
-              <Image
-                src="/icons/logo.svg"
-                alt={`${site.name} logo`}
-                width={48}
-                height={48}
-                className="w-14"
-                style={{
-                  maxWidth: "100%",
-                  height: "auto",
-                }}
-              />
+              <Link href="/">
+                <Logo inverted />
+              </Link>
               {/* Select for Languages */}
               <Select
                 value={locale}

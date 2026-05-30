@@ -2,7 +2,6 @@ import { auth } from "@/auth";
 import { Link } from "@/i18n/navigation";
 import { getAllCategories } from "@/lib/actions/product.actions";
 import { SignOut } from "@/lib/actions/user.actions";
-import { APP_NAME } from "@/lib/constants";
 import data from "@/lib/data";
 import { getTranslations } from "next-intl/server";
 import Logo from "../logo";
@@ -26,12 +25,8 @@ export default async function Header() {
           <div className="flex items-center">
             {/* LOGO */}
             <div className="flex items-center header-button font-extrabold text-2xl m-1 ">
-              <Logo />
               <Link href="/">
-                <span className="text-primary text-xl font-bold ml-3">
-                  {/* {APP_NAME} */}
-                  {APP_NAME}
-                </span>
+                <Logo inverted />
               </Link>
             </div>
           </div>

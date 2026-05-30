@@ -1,3 +1,52 @@
+// "use client";
+
+// import useCartSidebar from "@/hooks/use-cart-sidebar";
+// import useIsMounted from "@/hooks/use-is-mounted";
+// import { Link } from "@/i18n/navigation";
+// import { cn } from "@/lib/utils";
+// import useCartStore from "@/store/use-cart-store";
+// import { ShoppingCartIcon } from "lucide-react";
+// import { useTranslations } from "next-intl";
+// // import { getDirection } from '@/i18n-config'
+
+// export default function CartButton() {
+//   const isMounted = useIsMounted();
+//   const {
+//     cart: { items },
+//   } = useCartStore();
+//   const cartItemsCount = items.reduce((a, c) => a + c.quantity, 0);
+//   const isCartSidebarOpen = useCartSidebar();
+//   const t = useTranslations("Cart");
+
+//   // const locale = useLocale()
+//   return (
+//     <Link href="/cart" className="px-1 header-button">
+//       <div className="flex items-end text-xs relative">
+//         <ShoppingCartIcon className="h-8 w-8" />
+
+//         {isMounted && (
+//           <span
+//             className={cn(
+//               `bg-primary text-primary-foreground px-[7px] rounded-full  text-base font-semibold absolute right-[15px]
+//               top-[-16px] z-10`,
+//               cartItemsCount >= 10 && "text-sm p-1 py-0",
+//             )}
+//           >
+//             {cartItemsCount}
+//           </span>
+//         )}
+//         <span className="font-bold">{t("Cart")}</span>
+
+//         {isCartSidebarOpen && (
+//           <div
+//             className={`absolute top-[20px] right-[-16px] rotate-[-90deg] z-10  w-0 h-0 border-l-[7px] border-r-[7px] border-b-[8px] border-transparent border-b-background dark:border-b-white`}
+//           ></div>
+//         )}
+//       </div>
+//     </Link>
+//   );
+// }
+
 "use client";
 
 import useCartSidebar from "@/hooks/use-cart-sidebar";
@@ -5,9 +54,7 @@ import useIsMounted from "@/hooks/use-is-mounted";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import useCartStore from "@/store/use-cart-store";
-import { ShoppingCartIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-// import { getDirection } from '@/i18n-config'
 
 export default function CartButton() {
   const isMounted = useIsMounted();
@@ -18,31 +65,71 @@ export default function CartButton() {
   const isCartSidebarOpen = useCartSidebar();
   const t = useTranslations("Cart");
 
-  // const locale = useLocale()
   return (
-    <Link href="/cart" className="px-1 header-button">
-      <div className="flex items-end text-xs relative">
-        <ShoppingCartIcon className="h-8 w-8" />
-
+    <Link
+      href="/cart"
+      className="relative flex items-end pb-[6px] pt-2 px-2 text-white hover:outline hover:outline-1 hover:outline-white rounded-sm h-[44px] cursor-pointer select-none transition-all duration-100 group gap-1"
+    >
+      {/* 1. Icon Wrapper */}
+      <div className="relative flex items-end h-full">
+        {/* 🎯 Centered Orange Count Digit */}
         {isMounted && (
           <span
             className={cn(
-              `bg-primary text-primary-foreground px-[7px] rounded-full  text-base font-semibold absolute right-[15px]
-              top-[-16px] z-10`,
-              cartItemsCount >= 10 && "text-sm p-1 py-0",
+              "absolute top-[-3px] left-[21px] -translate-x-1/2 text-primary text-[16px] font-black leading-none text-center z-10 tracking-tighter",
+              cartItemsCount >= 10 && "text-[14px] left-[21px] top-[-3px]",
             )}
           >
             {cartItemsCount}
           </span>
         )}
-        <span className="font-bold">{t("Cart")}</span>
 
-        {isCartSidebarOpen && (
-          <div
-            className={`absolute top-[20px] right-[-16px] rotate-[-90deg] z-10  w-0 h-0 border-l-[7px] border-r-[7px] border-b-[8px] border-transparent border-b-background dark:border-b-white`}
-          ></div>
-        )}
+        {/* 🛒 Balanced Open Basket Geometry */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 42 34"
+          className="w-[40px] h-[32px]"
+        >
+          <g
+            className="stroke-white"
+            strokeWidth="3.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+          >
+            {/* Smooth continuous handle, low rail, and right side wedge */}
+            <path d="M3 7h5.5l5 15.5h18.5l5.5-12.5" />
+          </g>
+
+          {/* 🎯 FIXED: Small, clean wheels matching the correct layout radius */}
+          <circle
+            cx="16.5"
+            cy="29.5"
+            r="2.5"
+            className="fill-white stroke-white"
+            strokeWidth="0.5"
+          />
+          <circle
+            cx="31.5"
+            cy="29.5"
+            r="2.5"
+            className="fill-white stroke-white"
+            strokeWidth="0.5"
+          />
+        </svg>
       </div>
+
+      {/* 2. Text Label */}
+      <span className="text-[14px] font-bold pb-1px hidden sm:inline-block text-white self-end tracking-wide">
+        {t("Cart")}
+      </span>
+
+      {/* 3. Dropdown Indicator Triangle */}
+      {isCartSidebarOpen && (
+        <div
+          className={`absolute top-[20px] right-[-16px] rotate-[-90deg] z-10  w-0 h-0 border-l-[7px] border-r-[7px] border-b-[8px] border-transparent border-b-background dark:border-b-white`}
+        ></div>
+      )}
     </Link>
   );
 }
