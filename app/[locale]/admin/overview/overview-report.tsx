@@ -1,8 +1,5 @@
 "use client";
 
-import { BadgeDollarSign, Barcode, CreditCard, Users } from "lucide-react";
-import { useTranslations } from "next-intl";
-
 import {
   Card,
   CardContent,
@@ -19,6 +16,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { calculatePastDate, formatDateTime, formatNumber } from "@/lib/utils";
+import { BadgeDollarSign, Barcode, CreditCard, Users } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 import SalesCategoryPieChart from "./sales-category-pie-chart";

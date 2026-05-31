@@ -7,12 +7,12 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { SquareMenu } from "lucide-react";
-// import { EllipsisVertical } from "lucide-react";
 import { useTranslations } from "next-intl";
 import CartButton from "./cart-button";
 import LanguageSwitcher from "./language-switcher";
 import { ThemeColorSwitcher } from "./theme-color-switcher";
 import UserButton from "./user-button";
+// import { EllipsisVertical } from "lucide-react";
 
 const Menu = ({ forAdmin = false }: { forAdmin?: boolean }) => {
   const t = useTranslations();

@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import DeleteDialog from "@/components/shared/delete-dialog";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +13,7 @@ import { IWebPage } from "@/lib/db/models/web-page.model";
 import { formatId } from "@/lib/utils";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import Link from "next/link";
 export const metadata: Metadata = {
   title: "Admin Web Pages",
 };

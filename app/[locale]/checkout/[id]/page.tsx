@@ -1,9 +1,8 @@
-import { notFound } from "next/navigation";
-
 import { auth } from "@/auth";
 import { getOrderById } from "@/lib/actions/order.actions";
-import PaymentForm from "./payment-form";
+import { notFound } from "next/navigation";
 import Stripe from "stripe";
+import PaymentForm from "./payment-form";
 
 export const metadata = {
   title: "Payment",

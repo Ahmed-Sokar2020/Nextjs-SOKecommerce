@@ -1059,7 +1059,6 @@ const reviews = [
       "Love this product! It's durable, stylish, and works great. Would buy again without hesitation.",
   },
 ];
-// const webPages =
 
 const data: Data = {
   users,

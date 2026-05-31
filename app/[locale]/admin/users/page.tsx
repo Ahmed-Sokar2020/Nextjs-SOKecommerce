@@ -1,6 +1,3 @@
-import { Metadata } from "next";
-import Link from "next/link";
-
 import { auth } from "@/auth";
 import DeleteDialog from "@/components/shared/delete-dialog";
 import Pagination from "@/components/shared/pagination";
@@ -16,7 +13,9 @@ import {
 import { deleteUser, getAllUsers } from "@/lib/actions/user.actions";
 import { IUser } from "@/lib/db/models/user.model";
 import { formatId } from "@/lib/utils";
+import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Admin Users",

@@ -1,11 +1,9 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
-
 import { formUrlQuery } from "@/lib/utils";
-
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "../ui/button";
 
 type PaginationProps = {

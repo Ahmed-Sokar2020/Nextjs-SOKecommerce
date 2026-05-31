@@ -1,16 +1,14 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
-import { ChevronUp } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-import useSettingStore from "@/store/use-setting-store";
-import { Select, SelectContent, SelectItem, SelectTrigger } from "../ui/select";
-
 import { i18n } from "@/i18n-config";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import { APP_NAME } from "@/lib/constants";
+import useSettingStore from "@/store/use-setting-store";
 import { SelectValue } from "@radix-ui/react-select";
+import { ChevronUp } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import { Select, SelectContent, SelectItem, SelectTrigger } from "../ui/select";
 import Logo from "./logo";
 
 export default function Footer() {
@@ -28,6 +26,7 @@ export default function Footer() {
   return (
     <footer className="bg-black text-white underline-link">
       <div className="w-full">
+        {/* Scroll To Top Btn */}
         <Button
           variant="ghost"
           className="bg-gray-800 w-full rounded-none cursor-pointer hover:bg-gray-800 hover:text-white dark:hover:bg-gray-800"
@@ -37,6 +36,7 @@ export default function Footer() {
           {t("Footer.Back to top")}
         </Button>
 
+        {/* Links */}
         <div className="grid sm:place-items-start md:place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 max-w-7xl mx-auto">
           <div>
             <h3 className="font-bold mb-2">{t("Footer.Get to Know Us")}</h3>
@@ -44,7 +44,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="hover:opacity-60 transition-opacity duration-500"
-                  href="/careers"
+                  href="/"
                 >
                   {t("Footer.Careers")}
                 </Link>
@@ -52,7 +52,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="hover:opacity-60 transition-opacity duration-500"
-                  href="/blog"
+                  href="/"
                 >
                   {t("Footer.Blog")}
                 </Link>
@@ -62,7 +62,7 @@ export default function Footer() {
                   className="hover:opacity-60 transition-opacity duration-500"
                   href="/about-us"
                 >
-                  {t("Footer.About name", { name: site.name })}
+                  {t("Footer.About name", { name: APP_NAME })}
                 </Link>
               </li>
             </ul>
@@ -104,15 +104,15 @@ export default function Footer() {
               <li>
                 <Link
                   className="hover:opacity-60 transition-opacity duration-500"
-                  href="/sell"
+                  href="/"
                 >
-                  {t("Footer.Sell products on", { name: site.name })}
+                  {t("Footer.Sell products on", { name: APP_NAME })}
                 </Link>
               </li>
               <li>
                 <Link
                   className="hover:opacity-60 transition-opacity duration-500"
-                  href="/become-affiliate"
+                  href="/"
                 >
                   {t("Footer.Become an Affiliate")}
                 </Link>
@@ -120,7 +120,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="hover:opacity-60 transition-opacity duration-500"
-                  href="/advertise"
+                  href="/"
                 >
                   {t("Footer.Advertise Your Products")}
                 </Link>
@@ -134,7 +134,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="hover:opacity-60 transition-opacity duration-500"
-                  href="/shipping"
+                  href="/"
                 >
                   {t("Footer.Shipping Rates & Policies")}
                 </Link>
@@ -159,9 +159,11 @@ export default function Footer() {
           </div>
         </div>
 
+        {/*Logo, Language and Currency Selection */}
         <div className="border-t border-gray-800">
           <div className="max-w-7xl mx-auto py-8 px-4 flex flex-col items-center space-y-4">
             <div className="flex gap-2 items-center justify-center flex-wrap">
+              {/* LOGO */}
               <Logo inverted />
 
               {/* Select for Languages */}
@@ -196,7 +198,6 @@ export default function Footer() {
               </Select>
 
               {/* Select for Currencies */}
-
               <Select
                 value={currency}
                 onValueChange={(value) => {
@@ -222,6 +223,7 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Links and Copyright */}
       <div className="p-4">
         <div className="flex justify-center  gap-3 text-sm ">
           <Link

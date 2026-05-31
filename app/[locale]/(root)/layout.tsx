@@ -1,7 +1,6 @@
-import React from "react";
-
 import Footer from "@/components/shared/footer";
 import Header from "@/components/shared/header";
+import React from "react";
 
 export default async function RootLayout({
   children,

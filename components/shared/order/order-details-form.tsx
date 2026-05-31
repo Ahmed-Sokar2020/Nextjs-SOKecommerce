@@ -1,8 +1,5 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
-import Image from "next/image";
-
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -14,9 +11,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Link } from "@/i18n/navigation";
 import { IOrder } from "@/lib/db/models/order.model";
 import { cn, formatDateTime } from "@/lib/utils";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import ProductPrice from "../product/product-price";
 
 export default function OrderDetailsForm({

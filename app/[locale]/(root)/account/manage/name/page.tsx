@@ -1,11 +1,9 @@
-import { Metadata } from "next";
-import { SessionProvider } from "next-auth/react";
-
 import { auth } from "@/auth";
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "@/i18n/navigation";
 import { APP_NAME } from "@/lib/constants";
+import { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 import { getTranslations } from "next-intl/server";
 import { NameForm } from "./name-form";
 

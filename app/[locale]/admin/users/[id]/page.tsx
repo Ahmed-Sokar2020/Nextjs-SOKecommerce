@@ -1,9 +1,8 @@
-import { notFound } from "next/navigation";
-
 import { getUserById } from "@/lib/actions/user.actions";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import UserEditForm from "./user-edit-form";
 
 export const metadata: Metadata = {

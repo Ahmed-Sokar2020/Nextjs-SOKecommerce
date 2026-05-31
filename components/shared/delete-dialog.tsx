@@ -1,7 +1,5 @@
 "use client";
 
-import { useState, useTransition } from "react";
-
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -14,6 +12,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
+import { useState, useTransition } from "react";
 import { toast } from "sonner";
 
 export default function DeleteDialog({

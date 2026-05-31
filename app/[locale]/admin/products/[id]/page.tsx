@@ -1,9 +1,8 @@
-import { getTranslations } from "next-intl/server";
-import { notFound } from "next/navigation";
-
 import { getProductById } from "@/lib/actions/product.actions";
 import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import ProductForm from "../product-form";
 
 export const metadata: Metadata = {

@@ -1,7 +1,6 @@
 import Logo from "@/components/shared/logo";
-import { getSetting } from "@/lib/actions/setting.actions";
-// import Image from "next/image";
 import { Link } from "@/i18n/navigation";
+import { getSetting } from "@/lib/actions/setting.actions";
 import React from "react";
 
 export default async function AuthLayout({
@@ -13,7 +12,7 @@ export default async function AuthLayout({
   return (
     <div className="flex flex-col items-center min-h-screen highlight-link  ">
       <header className="mt-8">
-        <Logo />
+        <Logo inverted />
       </header>
 
       <main className="mx-auto max-w-sm min-w-80 p-4">{children}</main>

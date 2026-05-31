@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import { Link } from "@/i18n/navigation";
-
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -11,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Link } from "@/i18n/navigation";
 import {
   deleteProduct,
   getAllProductsForAdmin,

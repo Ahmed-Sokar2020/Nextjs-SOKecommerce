@@ -1,6 +1,5 @@
-import { Metadata } from "next";
-// import CheckoutForm from './checkout-form'
 import { auth } from "@/auth";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import CheckoutForm from "./checkout-form";
 

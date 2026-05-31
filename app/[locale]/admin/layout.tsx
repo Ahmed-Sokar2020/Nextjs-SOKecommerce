@@ -14,7 +14,7 @@ export default async function AdminLayout({
 
   return (
     /* 4. we supply key={locale}.
-       When changing languages, React destroys this layout instance
+        When changing languages, React destroys this layout instance
        and builds a fresh one using the clean language dictionary instantly. */
     <div
       key={locale}

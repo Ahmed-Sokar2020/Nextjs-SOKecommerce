@@ -1,10 +1,9 @@
-import { Link } from "@/i18n/navigation";
-
 import Pagination from "@/components/shared/pagination";
 import ProductCard from "@/components/shared/product/product-card";
 import ProductSortSelector from "@/components/shared/product/product-sort-selector";
 import Rating from "@/components/shared/product/rating";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 import {
   getAllCategories,
   getAllProducts,
