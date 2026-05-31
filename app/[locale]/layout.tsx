@@ -29,7 +29,7 @@ import { getDirection } from "@/i18n-config";
 import { routing } from "@/i18n/routing";
 import { getSetting } from "@/lib/actions/setting.actions";
 import { APP_DESCRIPTION, APP_NAME, APP_SLOGAN } from "@/lib/constants";
-import "flag-icons/css/flag-icons.min.css"; // Add this line
+import "flag-icons/css/flag-icons.min.css"; // Add this line for flag icons in all locales
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -64,7 +64,7 @@ export default async function RootLayout({
   params,
   children,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
   children: React.ReactNode;
 }) {
   const setting = await getSetting();
