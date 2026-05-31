@@ -1,6 +1,5 @@
-// import { getSetting } from '@/lib/actions/setting.actions'
 import Logo from "@/components/shared/logo";
-import { APP_COPYRIGHT } from "@/lib/constants";
+import { getSetting } from "@/lib/actions/setting.actions";
 // import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import React from "react";
@@ -10,7 +9,7 @@ export default async function AuthLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // const { site } = await getSetting()
+  const { site } = await getSetting();
   return (
     <div className="flex flex-col items-center min-h-screen highlight-link  ">
       <header className="mt-8">
@@ -43,7 +42,8 @@ export default async function AuthLayout({
           </Link>
         </div>
         <div>
-          <p className="text-gray-400">{APP_COPYRIGHT}</p>
+          <p className="text-gray-400">{site.copyright}</p>
+          {/* <p className="text-gray-400">{APP_COPYRIGHT}</p> */}
         </div>
       </footer>
     </div>

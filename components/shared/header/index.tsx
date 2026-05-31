@@ -20,17 +20,16 @@ export default async function Header() {
     <header className="sticky top-0 z-50 w-full text-white bg-black border-b border-border  backdrop-blur-md supports-backdrop-filter:bg-black/60">
       {/* <header className="bg-black sticky top-0 z-50 text-white w-full"> */}
 
-      <div className="p-3">
+      <div className="p-2">
         <div className="flex items-center justify-between">
+          {/* LOGO */}
           <div className="flex items-center">
-            {/* LOGO */}
             <div className="flex items-center header-button font-extrabold text-2xl m-1 ">
-              <Link href="/">
-                <Logo inverted />
-              </Link>
+              <Logo inverted />
             </div>
           </div>
 
+          {/* Search */}
           <div className="hidden lg:block flex-1 max-w-xl">
             <Search />
           </div>
@@ -38,7 +37,7 @@ export default async function Header() {
           <Menu />
         </div>
 
-        <div className="lg:hidden flex items-center px-3">
+        <div className="lg:hidden flex items-center px-2 my-2">
           <Search />
         </div>
       </div>

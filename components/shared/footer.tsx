@@ -89,7 +89,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/addresses"
+                  href="/account/addresses"
                   className="hover:opacity-60 transition-opacity duration-500"
                 >
                   {t("Footer.Your Addresses")}
@@ -161,10 +161,9 @@ export default function Footer() {
 
         <div className="border-t border-gray-800">
           <div className="max-w-7xl mx-auto py-8 px-4 flex flex-col items-center space-y-4">
-            <div className="flex items-center space-x-4 flex-wrap md:flex-nowrap">
-              <Link href="/">
-                <Logo inverted />
-              </Link>
+            <div className="flex gap-2 items-center justify-center flex-wrap">
+              <Logo inverted />
+
               {/* Select for Languages */}
               <Select
                 value={locale}

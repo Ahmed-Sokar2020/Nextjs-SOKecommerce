@@ -5,12 +5,12 @@ import { AdminNav } from "./admin-nav";
 
 export default async function AdminLayout({
   children,
-  params, // 1. Pass the route parameters object
+  params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>; // 2. Add the proper Next.js 15 typing
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params; // 3. Await the parameters token
+  const { locale } = await params;
 
   return (
     /* 4. we supply key={locale}.
@@ -23,7 +23,7 @@ export default async function AdminLayout({
     >
       <div className="bg-black text-white">
         <div className="flex h-16 items-center px-2">
-          <Logo />
+          <Logo inverted />
 
           <AdminNav className="mx-6 hidden md:flex" />
 

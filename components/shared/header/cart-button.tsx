@@ -88,7 +88,7 @@ export default function CartButton() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 42 34"
-          className="w-[40px] h-[32px]"
+          className="w-[38px] h-[26px]"
         >
           <g
             className="stroke-white"

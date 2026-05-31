@@ -25,7 +25,7 @@ export default function SearchContent({
     <form
       action="/search"
       method="GET"
-      className="flex items-stretch h-10 w-full max-w-[700px]"
+      className="flex items-stretch h-10 w-full max-w-full]"
     >
       {/* Hidden input ensures the category is submitted with the form */}
       <input type="hidden" name="category" value={selectedCategory} />

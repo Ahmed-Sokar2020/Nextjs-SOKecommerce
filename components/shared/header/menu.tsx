@@ -17,8 +17,8 @@ import UserButton from "./user-button";
 const Menu = ({ forAdmin = false }: { forAdmin?: boolean }) => {
   const t = useTranslations();
   return (
-    <div className="flex justify-end">
-      <nav className="md:flex gap-3 hidden w-full">
+    <div className="flex justify-between items-center gap-2">
+      <nav className="md:flex items-center gap-3 hidden w-full">
         <LanguageSwitcher />
         <ThemeColorSwitcher />
         <UserButton />
