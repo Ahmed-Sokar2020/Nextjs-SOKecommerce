@@ -1,8 +1,10 @@
 "use client";
 
 import useSettingStore from "@/store/use-setting-store";
+import { useThemeStore } from "@/store/use-theme-store";
 import { ClientSetting } from "@/types";
-import React, { useLayoutEffect } from "react";
+
+let initialized = false;
 
 export default function AppInitializer({
   setting,
@@ -11,13 +13,22 @@ export default function AppInitializer({
   setting: ClientSetting;
   children: React.ReactNode;
 }) {
-  // 🎯 FIX: Move the Zustand state update safely out of the render pass.
-  // This executes after React computes the elements but right BEFORE the browser paints the screen.
-  useLayoutEffect(() => {
+  if (!initialized) {
     useSettingStore.setState({
       setting,
     });
-  }, [setting]); // Runs once on mount, and re-triggers only if the setting prop actually changes
+
+    const theme =
+      typeof document !== "undefined"
+        ? document.documentElement.getAttribute("data-theme") || "gold"
+        : "gold";
+
+    useThemeStore.setState({
+      color: theme as "gold" | "green" | "red",
+    });
+
+    initialized = true;
+  }
 
   return children;
 }

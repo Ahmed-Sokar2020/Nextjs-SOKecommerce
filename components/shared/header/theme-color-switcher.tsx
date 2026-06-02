@@ -9,6 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { setColorCookie } from "@/lib/actions/color.actions";
 import { useThemeStore } from "@/store/use-theme-store";
 import { Check, ChevronDown, Moon, Sun } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -25,10 +26,16 @@ export function ThemeColorSwitcher() {
   // Sync Zustand state with DOM on mount
   React.useEffect(() => {
     setMounted(true);
-    document.documentElement.setAttribute("data-theme", color);
-  }, [color]);
+    // document.documentElement.setAttribute("data-theme", color);
+  }, []);
 
   if (!mounted) return <div className="h-9 w-28" />;
+
+  const handleColorChange = async (color: "gold" | "green" | "red") => {
+    setColor(color);
+
+    await setColorCookie(color);
+  };
 
   const colorOptions = [
     { name: "Gold", value: "gold" as const, tw: "bg-yellow-400" },
@@ -84,7 +91,8 @@ export function ThemeColorSwitcher() {
         {colorOptions.map((opt) => (
           <DropdownMenuItem
             key={opt.value}
-            onClick={() => setColor(opt.value)}
+            // onClick={() => setColor(opt.value)}
+            onClick={() => handleColorChange(opt.value)}
             className="justify-between cursor-pointer"
           >
             <div className="flex items-center gap-2">

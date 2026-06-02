@@ -1,12 +1,10 @@
-import { Metadata } from "next";
-import { SessionProvider } from "next-auth/react";
-
 import { auth } from "@/auth";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Link } from "@/i18n/navigation";
+import { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 import { getTranslations } from "next-intl/server";
 
 // Dynamic metadata generation supporting both AR and EN contexts

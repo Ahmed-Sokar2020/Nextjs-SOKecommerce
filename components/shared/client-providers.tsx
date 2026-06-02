@@ -28,7 +28,8 @@ export default function ClientProviders({
     <AppInitializer setting={setting}>
       <ThemeProvider
         attribute="class"
-        defaultTheme={setting.common.defaultTheme.toLocaleLowerCase()}
+        defaultTheme="system"
+        // defaultTheme={setting.common.defaultTheme.toLocaleLowerCase()}
       >
         {isCartSidebarOpen ? (
           <div className="flex min-h-screen">

@@ -18,8 +18,17 @@ const ProductPrice = ({
   forListing?: boolean;
   plain?: boolean;
 }) => {
-  const { getCurrency } = useSettingStore();
-  const currency = getCurrency();
+  // const { getCurrency } = useSettingStore();
+  // const currency = getCurrency();
+
+  const currency = useSettingStore((state) => {
+    return (
+      state.setting.availableCurrencies.find(
+        (c) => c.code === state.setting.currency,
+      ) ?? state.setting.availableCurrencies[0]
+    );
+  });
+
   const t = useTranslations();
   const convertedPrice = round2(currency.convertRate * price);
   const convertedListPrice = round2(currency.convertRate * listPrice);

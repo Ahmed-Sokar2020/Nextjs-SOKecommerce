@@ -38,7 +38,7 @@ export default function LanguageSwitcher() {
     // next-intl's router expects the clean pathname and the locale option object
     router.replace(pathname, { locale: newLocale });
     // If switching within secure panels, force an immediate data refresh
-    router.refresh();
+    // router.refresh();
   };
 
   const currentLanguage = locales.find((l) => l.code === locale);
