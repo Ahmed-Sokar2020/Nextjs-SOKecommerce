@@ -12,7 +12,12 @@ A production-ready, full‑stack e-commerce platform built with modern technolog
 
 ## 📸 Preview
 
+### Image Preview1
+
 ![Image Preview1](public/images/preview-en.png)
+
+### Image Preview2
+
 ![Image Preview2](public/images/preview-ar.png)
 
 ---
@@ -270,6 +275,6 @@ graph TD
 
 ---
 
-- GitHub repo link: [https://github.com/Ahmed-Sokar2020/Nextjs-SOKecommerce]
-- LinkedIn link: [https://www.linkedin.com/in/ahmed-sokar]
-- Portfolio link: [https://ahmed-sokar2020.github.io/react-personal-portfolio]
+- GitHub repo link: https://github.com/Ahmed-Sokar2020/Nextjs-SOKecommerce
+- LinkedIn link: https://www.linkedin.com/in/ahmed-sokar
+- Portfolio link: https://ahmed-sokar2020.github.io/react-personal-portfolio
