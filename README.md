@@ -12,13 +12,7 @@ A production-ready, full‑stack e-commerce platform built with modern technolog
 
 ## 📸 Preview
 
-### Image Preview1
-
-![Image Preview1](public/images/preview-en.png)
-
-### Image Preview2
-
-![Image Preview2](public/images/preview-ar.png)
+![Image Preview](public/images/preview-en.png)
 
 ---
 
