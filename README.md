@@ -4,6 +4,19 @@ A production-ready, full‑stack e-commerce platform built with modern technolog
 
 ---
 
+## 🌐 Live Demo
+
+👉 https://nextjs-sokecommerce.vercel.app
+
+---
+
+## 📸 Preview
+
+![Image Preview1](public/images/preview-en.png)
+![Image Preview2](public/images/preview-ar.png)
+
+---
+
 ## 🚀 Key Features
 
 ### 🛍️ Customer Experience
@@ -201,42 +214,27 @@ If you find this project helpful, please give it a ⭐ on GitHub!
 
 ---
 
-## 🌐 Live Demo
-
-🔗 **Live App:** [https://nextjs-sokecommerce.vercel.app]
-📂 **Repository:** [https://github.com/Ahmed-Sokar2020/Nextjs-SOKecommerce]
-
----
-
 ## 📸 Screenshots
-
-> ⚠️ Replace these with real screenshots of your project
 
 ### 🏠 Home Page
 
-![Home](https://via.placeholder.com/1200x600?text=Home+Page)
+![Home](public/images/Preview-en.png)
 
 ### 🛍️ Product Page
 
-![Product](https://via.placeholder.com/1200x600?text=Product+Page)
+![Product](public/images/product.png)
 
-### 🛒 Cart & Checkout
+### 🛍️ Search Page
 
-![Checkout](https://via.placeholder.com/1200x600?text=Checkout+Page)
+![Search](public/images/search.png)
+
+### 🛒 Cart & Checkout Page
+
+![Checkout](public/images/stripe-payment.png)
 
 ### 📊 Admin Dashboard
 
-![Dashboard](https://via.placeholder.com/1200x600?text=Admin+Dashboard)
-
----
-
-## 🎥 Demo Video
-
-> Add a Loom / YouTube demo here
-
-```
-https://www.youtube.com/watch?v=your-demo-video
-```
+![Dashboard](public/images/admin.png)
 
 ---
 
@@ -271,3 +269,7 @@ graph TD
 - Built to simulate a **production-grade e-commerce system**
 
 ---
+
+- GitHub repo link: [https://github.com/Ahmed-Sokar2020/Nextjs-SOKecommerce]
+- LinkedIn link: [https://www.linkedin.com/in/ahmed-sokar]
+- Portfolio link: [https://ahmed-sokar2020.github.io/react-personal-portfolio]
