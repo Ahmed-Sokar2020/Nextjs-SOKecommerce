@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { i18n } from "@/i18n-config";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
-import { APP_NAME } from "@/lib/constants";
+// import { APP_NAME } from "@/lib/constants";
 import useSettingStore from "@/store/use-setting-store";
 import { SelectValue } from "@radix-ui/react-select";
 import { ChevronUp } from "lucide-react";
@@ -62,7 +62,7 @@ export default function Footer() {
                   className="hover:opacity-60 transition-opacity duration-500"
                   href="/about-us"
                 >
-                  {t("Footer.About name", { name: APP_NAME })}
+                  {t("Footer.About name", { name: site.name })}
                 </Link>
               </li>
             </ul>
@@ -106,7 +106,7 @@ export default function Footer() {
                   className="hover:opacity-60 transition-opacity duration-500"
                   href="/"
                 >
-                  {t("Footer.Sell products on", { name: APP_NAME })}
+                  {t("Footer.Sell products on", { name: site.name })}
                 </Link>
               </li>
               <li>

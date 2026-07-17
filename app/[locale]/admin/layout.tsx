@@ -13,22 +13,24 @@ export default async function AdminLayout({
   const { locale } = await params;
 
   return (
-    /* 4. we supply key={locale}.
+    /* we supply key={locale}.
         When changing languages, React destroys this layout instance
        and builds a fresh one using the clean language dictionary instantly. */
     <div
       key={locale}
       className="flex flex-col"
-      // dir={locale === "ar" ? "rtl" : "ltr"}
+      dir={locale === "ar" ? "rtl" : "ltr"}
     >
       <div className="bg-black text-white">
-        <div className="flex h-16 items-center px-2">
+        <div className="flex h-16 items-center justify-between px-2">
           <Logo inverted />
 
-          <AdminNav className="mx-6 hidden md:flex" />
+          <div className="flex h-16 items-center px-2">
+            <AdminNav className="mx-6 hidden md:flex" />
 
-          <div className="ml-auto flex items-center space-x-4">
-            <Menu forAdmin />
+            <div className="ml-auto flex items-center space-x-4">
+              <Menu forAdmin />
+            </div>
           </div>
         </div>
 

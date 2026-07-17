@@ -117,7 +117,7 @@
     "Your Shopping Cart is empty": "Your Shopping Cart is empty.",
     "Your order qualifies for FREE Shipping": "Your order qualifies for FREE Shipping.",
     "of eligible items to your order to qualify for FREE Shipping": "of eligible items to your order to qualify for FREE Shipping.",
-    "Continue shopping on": "Continue shopping on <home>{name} home page</home>",
+    "Continue shopping on": "Continue shopping on <home>{name}</home>",
     "Add": "Add",
     "Added to cart": "Added to cart",
     "Color": "Color",

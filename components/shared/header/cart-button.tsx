@@ -19,7 +19,7 @@ export default function CartButton() {
   return (
     <Link
       href="/cart"
-      className="relative flex items-end pb-[6px] pt-2 px-2 text-white hover:outline hover:outline-1 hover:outline-white rounded-sm h-[44px] cursor-pointer select-none transition-all duration-100 group gap-1"
+      className="relative flex items-end pb-[6px] pt-2 px-2 text-white hover:outline hover:outline-1 hover:outline-white rounded-sm h-[44px] cursor-pointer select-none transition-all duration-100 group "
     >
       {/* 1. Icon Wrapper */}
       <div className="relative flex items-end h-full">
@@ -27,8 +27,8 @@ export default function CartButton() {
         {isMounted && (
           <span
             className={cn(
-              "absolute top-[-3px] left-[21px] -translate-x-1/2 text-primary text-[16px] font-black leading-none text-center z-10 tracking-tighter",
-              cartItemsCount >= 10 && "text-[14px] left-[21px] top-[-3px]",
+              "absolute top-[2px] left-[20px] -translate-x-1/2 text-primary text-[15px] font-black leading-none text-center z-10 tracking-tighter",
+              cartItemsCount >= 10 && "text-[12px] left-[20px] top-[2px]",
             )}
           >
             {cartItemsCount}
@@ -71,14 +71,14 @@ export default function CartButton() {
       </div>
 
       {/* 2. Text Label */}
-      <span className="text-[14px] font-bold pb-1px hidden sm:inline-block text-white self-end tracking-wide">
+      <span className="text-[14px] font-bold pb-1px hidden sm:inline-block text-white self-end tracking-wide ml-[-3px]">
         {t("Cart")}
       </span>
 
       {/* 3. Dropdown Indicator Triangle */}
       {isCartSidebarOpen && (
         <div
-          className={`absolute top-[20px] right-[-16px] rotate-[-90deg] z-10  w-0 h-0 border-l-[7px] border-r-[7px] border-b-[8px] border-transparent border-b-background dark:border-b-white`}
+          className={`absolute top-[24px] right-[-10px] rotate-[-90deg] z-10  w-0 h-0 border-l-[7px] border-r-[7px] border-b-[8px] border-transparent border-b-background dark:border-b-white`}
         ></div>
       )}
     </Link>

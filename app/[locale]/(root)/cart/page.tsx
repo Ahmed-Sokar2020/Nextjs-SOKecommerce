@@ -44,7 +44,14 @@ export default function CartPage() {
             <CardContent>
               {t.rich("Cart.Continue shopping on", {
                 name: site.name,
-                home: (chunks) => <Link href="/">{chunks}</Link>,
+                home: (chunks) => (
+                  <Link
+                    href="/"
+                    className="text-primary hover:underline font-medium"
+                  >
+                    {chunks}
+                  </Link>
+                ),
               })}
             </CardContent>
           </Card>
